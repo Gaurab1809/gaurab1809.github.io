@@ -1,0 +1,66 @@
+[
+  {
+    "id": "1",
+    "title": "NeuralChat",
+    "description": "An advanced conversational AI platform powered by fine-tuned LLMs with retrieval-augmented generation for domain-specific knowledge.",
+    "techStack": ["Python", "PyTorch", "FastAPI", "React", "PostgreSQL"],
+    "category": "AI",
+    "github": "https://github.com",
+    "demo": "https://demo.example.com",
+    "image": "neural-chat",
+    "featured": true
+  },
+  {
+    "id": "2",
+    "title": "VisionFlow",
+    "description": "Real-time object detection and tracking system using YOLOv8 with custom-trained models for industrial inspection.",
+    "techStack": ["Python", "OpenCV", "TensorFlow", "Docker", "AWS"],
+    "category": "ML",
+    "github": "https://github.com",
+    "demo": "https://demo.example.com",
+    "image": "vision-flow",
+    "featured": true
+  },
+  {
+    "id": "3",
+    "title": "DataForge",
+    "description": "A full-stack data pipeline orchestration platform with real-time monitoring, alerting, and automated ML model deployment.",
+    "techStack": ["React", "Node.js", "Apache Kafka", "Kubernetes", "Grafana"],
+    "category": "Web",
+    "github": "https://github.com",
+    "demo": "https://demo.example.com",
+    "image": "data-forge",
+    "featured": false
+  },
+  {
+    "id": "4",
+    "title": "SentimentScope",
+    "description": "Multi-language sentiment analysis engine using transformer models with explainable AI visualizations.",
+    "techStack": ["Python", "HuggingFace", "Streamlit", "spaCy"],
+    "category": "Research",
+    "github": "https://github.com",
+    "image": "sentiment-scope",
+    "featured": false
+  },
+  {
+    "id": "5",
+    "title": "CodeMentor AI",
+    "description": "An intelligent code review assistant that provides suggestions, detects bugs, and explains complex code patterns.",
+    "techStack": ["TypeScript", "React", "OpenAI API", "Monaco Editor"],
+    "category": "AI",
+    "github": "https://github.com",
+    "demo": "https://demo.example.com",
+    "image": "code-mentor",
+    "featured": true
+  },
+  {
+    "id": "6",
+    "title": "RL-Navigator",
+    "description": "Reinforcement learning environment for autonomous robot navigation with sim-to-real transfer capabilities.",
+    "techStack": ["Python", "PyTorch", "OpenAI Gym", "ROS", "Gazebo"],
+    "category": "Research",
+    "github": "https://github.com",
+    "image": "rl-navigator",
+    "featured": false
+  }
+]
