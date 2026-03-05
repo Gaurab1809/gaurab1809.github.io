@@ -3,41 +3,80 @@
     {
       "name": "Languages",
       "skills": [
-        { "name": "Python", "level": 95 },
-        { "name": "TypeScript", "level": 90 },
-        { "name": "C++", "level": 80 },
-        { "name": "Java", "level": 75 },
-        { "name": "Rust", "level": 60 }
+        { "name": "Python", "level": 92 },
+        { "name": "C++", "level": 85 },
+        { "name": "JavaScript", "level": 88 },
+        { "name": "Java", "level": 80 },
+        { "name": "TypeScript", "level": 82 },
+        { "name": "C", "level": 78 },
+        { "name": "Dart", "level": 72 },
+        { "name": "PHP", "level": 75 },
+        { "name": "C#", "level": 68 },
+        { "name": "Kotlin", "level": 65 }
       ]
     },
     {
-      "name": "AI / ML",
+      "name": "AI / ML / Research",
       "skills": [
-        { "name": "PyTorch", "level": 92 },
-        { "name": "TensorFlow", "level": 85 },
-        { "name": "HuggingFace", "level": 88 },
+        { "name": "PyTorch", "level": 90 },
+        { "name": "TensorFlow", "level": 88 },
         { "name": "scikit-learn", "level": 90 },
-        { "name": "OpenCV", "level": 78 }
+        { "name": "OpenCV", "level": 85 },
+        { "name": "Keras", "level": 85 },
+        { "name": "NumPy / Pandas", "level": 92 },
+        { "name": "Matplotlib / Plotly", "level": 82 },
+        { "name": "NLP / Transformers", "level": 80 },
+        { "name": "mlflow", "level": 65 }
       ]
     },
     {
-      "name": "Frameworks",
+      "name": "Frameworks & Libraries",
       "skills": [
-        { "name": "React", "level": 92 },
-        { "name": "Next.js", "level": 85 },
-        { "name": "FastAPI", "level": 88 },
-        { "name": "Node.js", "level": 82 },
-        { "name": "Django", "level": 75 }
+        { "name": "React / React Native", "level": 88 },
+        { "name": "Next.js", "level": 82 },
+        { "name": "Django", "level": 80 },
+        { "name": "Flask", "level": 78 },
+        { "name": "Express.js", "level": 85 },
+        { "name": "Flutter", "level": 75 },
+        { "name": "Node.js", "level": 85 },
+        { "name": "Laravel", "level": 70 },
+        { "name": "TailwindCSS", "level": 90 },
+        { "name": "Bootstrap", "level": 82 }
       ]
     },
     {
-      "name": "Tools & Infra",
+      "name": "Cloud & DevOps",
       "skills": [
-        { "name": "Docker", "level": 88 },
-        { "name": "Kubernetes", "level": 72 },
-        { "name": "AWS", "level": 80 },
-        { "name": "Git", "level": 95 },
-        { "name": "Linux", "level": 90 }
+        { "name": "Docker", "level": 85 },
+        { "name": "AWS", "level": 78 },
+        { "name": "Google Cloud", "level": 75 },
+        { "name": "Azure", "level": 72 },
+        { "name": "Firebase", "level": 82 },
+        { "name": "Vercel / Netlify", "level": 85 },
+        { "name": "Git / GitHub", "level": 92 },
+        { "name": "Linux", "level": 85 }
+      ]
+    },
+    {
+      "name": "Databases",
+      "skills": [
+        { "name": "MySQL", "level": 88 },
+        { "name": "PostgreSQL", "level": 82 },
+        { "name": "MongoDB", "level": 85 },
+        { "name": "SQLite", "level": 78 },
+        { "name": "MariaDB", "level": 72 },
+        { "name": "MS SQL Server", "level": 68 }
+      ]
+    },
+    {
+      "name": "Design & Tools",
+      "skills": [
+        { "name": "Figma", "level": 80 },
+        { "name": "Adobe Photoshop", "level": 78 },
+        { "name": "Adobe Premiere Pro", "level": 72 },
+        { "name": "Canva", "level": 85 },
+        { "name": "LaTeX", "level": 82 },
+        { "name": "Arduino / Raspberry Pi", "level": 70 }
       ]
     }
   ]

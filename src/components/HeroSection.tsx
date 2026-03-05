@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Download, Mail } from 'lucide-react';
 import profile from '@/data/profile.json';
 
 const NeuralNetwork3D = lazy(() => import('./NeuralNetwork3D'));
@@ -34,11 +34,11 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-5xl sm:text-7xl lg:text-8xl font-display font-bold mb-6 leading-tight"
+          className="text-4xl sm:text-6xl lg:text-7xl font-display font-bold mb-6 leading-tight"
         >
-          <span className="text-foreground">{profile.name.split(' ')[0]}</span>
+          <span className="text-foreground">Hi 👋, I'm</span>
           <br />
-          <span className="text-gradient-primary">{profile.name.split(' ').slice(1).join(' ')}</span>
+          <span className="text-gradient-primary">{profile.nickname || profile.name}</span>
         </motion.h1>
 
         <motion.p
@@ -73,9 +73,17 @@ export default function HeroSection() {
           </a>
           <a
             href="#contact"
-            className="px-8 py-3 rounded-lg font-display font-medium text-sm border border-primary/30 text-primary hover:bg-primary/10 transition-all"
+            className="px-8 py-3 rounded-lg font-display font-medium text-sm border border-primary/30 text-primary hover:bg-primary/10 transition-all flex items-center gap-2"
           >
-            Get in Touch
+            <Mail size={16} /> Get in Touch
+          </a>
+          <a
+            href={profile.resumeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-8 py-3 rounded-lg font-display font-medium text-sm border border-accent/30 text-accent hover:bg-accent/10 transition-all flex items-center gap-2"
+          >
+            <Download size={16} /> Resume
           </a>
         </motion.div>
       </div>
