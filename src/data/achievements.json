@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Best Paper Award – ICML Workshop",
+    "description": "Awarded for research on efficient transformer architectures for edge deployment.",
+    "year": "2024",
+    "type": "award"
+  },
+  {
+    "title": "1st Place – HackMIT",
+    "description": "Built an AI-powered accessibility tool for visually impaired users in 36 hours.",
+    "year": "2023",
+    "type": "hackathon"
+  },
+  {
+    "title": "Published: 'Adaptive Attention Mechanisms for Low-Resource NLP'",
+    "description": "Published in ACL 2024 proceedings with 3 co-authors.",
+    "year": "2024",
+    "type": "publication"
+  },
+  {
+    "title": "Google Summer of Code",
+    "description": "Contributed to TensorFlow's model optimization toolkit.",
+    "year": "2023",
+    "type": "award"
+  },
+  {
+    "title": "Kaggle Competition – Top 2%",
+    "description": "Achieved top 2% ranking in the Cassava Leaf Disease Classification challenge.",
+    "year": "2023",
+    "type": "competition"
+  },
+  {
+    "title": "Teaching Assistant – Deep Learning",
+    "description": "TA for Stanford CS230 Deep Learning course, mentoring 200+ students.",
+    "year": "2024",
+    "type": "academic"
+  }
+]

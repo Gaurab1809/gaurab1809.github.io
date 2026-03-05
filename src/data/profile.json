@@ -1,0 +1,29 @@
+{
+  "name": "Alex Chen",
+  "title": "AI Researcher & Full-Stack Developer",
+  "tagline": "Building intelligent systems at the intersection of machine learning and software engineering.",
+  "bio": "I'm a Computer Science student passionate about pushing the boundaries of artificial intelligence. My research focuses on deep learning architectures and their applications in natural language processing and computer vision. When I'm not training models, I'm building full-stack applications that solve real-world problems.",
+  "education": [
+    {
+      "degree": "M.S. Computer Science (AI Specialization)",
+      "institution": "Stanford University",
+      "year": "2024 - Present",
+      "details": "Focus: Deep Learning, NLP, Computer Vision"
+    },
+    {
+      "degree": "B.S. Computer Science",
+      "institution": "UC Berkeley",
+      "year": "2020 - 2024",
+      "details": "GPA: 3.92/4.0, Summa Cum Laude"
+    }
+  ],
+  "interests": ["Deep Learning", "Natural Language Processing", "Computer Vision", "Reinforcement Learning", "MLOps"],
+  "goals": "To develop AI systems that are not only powerful but also interpretable, fair, and accessible to everyone.",
+  "social": {
+    "github": "https://github.com",
+    "linkedin": "https://linkedin.com",
+    "scholar": "https://scholar.google.com",
+    "kaggle": "https://kaggle.com"
+  },
+  "resumeUrl": "/resume.pdf"
+}
