@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Send, Github, Linkedin, BookOpen, BarChart3 } from 'lucide-react';
+import { Send, Github, Linkedin, BookOpen, BarChart3, Youtube, Mail } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import profile from '@/data/profile.json';
 
@@ -18,7 +18,6 @@ export default function ContactSection() {
       return;
     }
     setSending(true);
-    // Simulate sending
     await new Promise(r => setTimeout(r, 1000));
     toast({ title: 'Message sent!', description: "Thanks for reaching out. I'll get back to you soon." });
     setForm({ name: '', email: '', message: '' });
@@ -28,8 +27,10 @@ export default function ContactSection() {
   const socials = [
     { icon: Github, href: profile.social.github, label: 'GitHub' },
     { icon: Linkedin, href: profile.social.linkedin, label: 'LinkedIn' },
+    { icon: Youtube, href: profile.social.youtube, label: 'YouTube' },
     { icon: BookOpen, href: profile.social.scholar, label: 'Scholar' },
     { icon: BarChart3, href: profile.social.kaggle, label: 'Kaggle' },
+    { icon: Mail, href: `mailto:${profile.social.email}`, label: 'Email' },
   ];
 
   return (
@@ -104,8 +105,11 @@ export default function ContactSection() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="flex flex-col justify-center"
           >
-            <p className="text-muted-foreground mb-8">
+            <p className="text-muted-foreground mb-4">
               I'm always open to discussing research collaborations, interesting projects, or opportunities. Feel free to reach out!
+            </p>
+            <p className="text-sm text-primary font-mono mb-6">
+              ✉️ {profile.social.email}
             </p>
 
             <div className="flex flex-wrap gap-3">

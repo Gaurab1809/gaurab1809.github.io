@@ -1,38 +1,38 @@
 [
   {
-    "title": "Best Paper Award – ICML Workshop",
-    "description": "Awarded for research on efficient transformer architectures for edge deployment.",
+    "title": "AI/ML Research Projects",
+    "description": "Active research in AI, ML, NLP, and Image Processing with focus on real-world applications for social good.",
+    "year": "2024-Present",
+    "type": "publication"
+  },
+  {
+    "title": "E-PATHSHALA Platform Launch",
+    "description": "Built and launched a full-stack e-learning platform making education accessible and engaging for everyone.",
     "year": "2024",
     "type": "award"
   },
   {
-    "title": "1st Place – HackMIT",
-    "description": "Built an AI-powered accessibility tool for visually impaired users in 36 hours.",
-    "year": "2023",
-    "type": "hackathon"
-  },
-  {
-    "title": "Published: 'Adaptive Attention Mechanisms for Low-Resource NLP'",
-    "description": "Published in ACL 2024 proceedings with 3 co-authors.",
+    "title": "Digital Image Processing Research",
+    "description": "Research and implementation of advanced image processing techniques including computer vision algorithms.",
     "year": "2024",
     "type": "publication"
   },
   {
-    "title": "Google Summer of Code",
-    "description": "Contributed to TensorFlow's model optimization toolkit.",
+    "title": "Full-Stack Development Projects",
+    "description": "Developed multiple end-to-end applications including restaurant management systems and course management platforms.",
     "year": "2023",
     "type": "award"
   },
   {
-    "title": "Kaggle Competition – Top 2%",
-    "description": "Achieved top 2% ranking in the Cassava Leaf Disease Classification challenge.",
+    "title": "NLP & Word2Vec Implementation",
+    "description": "Built an intelligent spell checker using Word2Vec embeddings for context-aware corrections.",
     "year": "2023",
     "type": "competition"
   },
   {
-    "title": "Teaching Assistant – Deep Learning",
-    "description": "TA for Stanford CS230 Deep Learning course, mentoring 200+ students.",
-    "year": "2024",
+    "title": "Open Source Contributions",
+    "description": "Active contributor on GitHub with 106+ contributions, maintaining multiple public repositories.",
+    "year": "2023-Present",
     "type": "academic"
   }
 ]

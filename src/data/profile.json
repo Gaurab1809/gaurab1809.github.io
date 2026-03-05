@@ -1,29 +1,32 @@
 {
-  "name": "Alex Chen",
-  "title": "AI Researcher & Full-Stack Developer",
-  "tagline": "Building intelligent systems at the intersection of machine learning and software engineering.",
-  "bio": "I'm a Computer Science student passionate about pushing the boundaries of artificial intelligence. My research focuses on deep learning architectures and their applications in natural language processing and computer vision. When I'm not training models, I'm building full-stack applications that solve real-world problems.",
+  "name": "A. K. M. Masudur Rahman",
+  "nickname": "Gaurab",
+  "title": "Cloud & DevOps Engineer || AI/ML Researcher || Full-Stack Developer",
+  "tagline": "Turning research ideas into fully working systems — building intelligent solutions at the intersection of AI, machine learning, and software engineering.",
+  "bio": "I am A. K. M. Masudur Rahman, a final year Computer Science and Engineering student from Bangladesh with a strong passion for research and real-world problem solving. My primary interests lie in Artificial Intelligence, Machine Learning, Natural Language Processing (NLP), and Image Processing, with a particular focus on computer vision and applied machine learning for social good. I actively engage in research-driven projects involving image processing, NLP, custom dataset creation, rigorous model evaluation, and experimental analysis using real-world data. Alongside my research work, I am a skilled web and software developer who enjoys building complete applications from scratch and designing original, well-structured systems to support research and practical deployment.",
+  "currentWork": "Research projects in AI, ML, NLP, and Image Processing; building end-to-end software and web apps.",
+  "learning": "Advanced deep learning architectures, modern NLP transformers, and scalable system design.",
+  "collaborating": "Research-driven projects in Computer Vision, NLP, and applied ML; AI for social good, education, transportation, and public safety.",
+  "askAbout": "AI & ML research, dataset creation, image processing, NLP projects, full-stack web development, and software system design.",
   "education": [
     {
-      "degree": "M.S. Computer Science (AI Specialization)",
-      "institution": "Stanford University",
-      "year": "2024 - Present",
-      "details": "Focus: Deep Learning, NLP, Computer Vision"
-    },
-    {
-      "degree": "B.S. Computer Science",
-      "institution": "UC Berkeley",
-      "year": "2020 - 2024",
-      "details": "GPA: 3.92/4.0, Summa Cum Laude"
+      "degree": "B.Sc. Computer Science and Engineering",
+      "institution": "University in Bangladesh",
+      "year": "Final Year",
+      "details": "Focus: AI, ML, NLP, Image Processing, Computer Vision"
     }
   ],
-  "interests": ["Deep Learning", "Natural Language Processing", "Computer Vision", "Reinforcement Learning", "MLOps"],
-  "goals": "To develop AI systems that are not only powerful but also interpretable, fair, and accessible to everyone.",
+  "interests": ["Artificial Intelligence", "Machine Learning", "NLP", "Image Processing", "Computer Vision", "Deep Learning", "Cloud & DevOps"],
+  "goals": "To publish journal-quality research, develop impactful AI solutions for local and global challenges, and grow as a researcher and engineer contributing to domains such as education, transportation, and public safety.",
   "social": {
-    "github": "https://github.com",
-    "linkedin": "https://linkedin.com",
+    "github": "https://github.com/Gaurab1809",
+    "linkedin": "https://www.linkedin.com/in/akmmasudurrahman",
     "scholar": "https://scholar.google.com",
-    "kaggle": "https://kaggle.com"
+    "kaggle": "https://kaggle.com",
+    "youtube": "https://youtube.com/@infoman-z9y",
+    "facebook": "https://facebook.com/akm.gaurab",
+    "email": "akmmasudurrahmangaurab@gmail.com"
   },
-  "resumeUrl": "/resume.pdf"
+  "resumeUrl": "/resume.pdf",
+  "funFact": "I enjoy turning research ideas into fully working systems—and yes, I do think I'm funny 😄"
 }
