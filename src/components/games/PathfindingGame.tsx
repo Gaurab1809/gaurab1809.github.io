@@ -52,7 +52,7 @@ export default function PathfindingGame() {
     setFound(null);
     setVisitedCount(0);
 
-    const g = grid.map(row => row.map(c => (c === 'visited' || c === 'path') ? 'empty' : c));
+    const g: Cell[][] = grid.map(row => row.map(c => (c === 'visited' || c === 'path') ? 'empty' as Cell : c));
     setGrid(g);
 
     const queue: Point[] = [start];
