@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronDown, Download, Mail } from 'lucide-react';
+import { ChevronDown, Download, Mail, FlaskConical } from 'lucide-react';
 import profile from '@/data/profile.json';
 
 const NeuralNetwork3D = lazy(() => import('./NeuralNetwork3D'));
@@ -8,16 +8,13 @@ const NeuralNetwork3D = lazy(() => import('./NeuralNetwork3D'));
 export default function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* 3D Background */}
       <Suspense fallback={null}>
         <NeuralNetwork3D />
       </Suspense>
 
-      {/* Gradient overlays */}
       <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/60 to-background pointer-events-none" />
       <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-accent/5 pointer-events-none" />
 
-      {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -26,7 +23,7 @@ export default function HeroSection() {
           className="mb-4"
         >
           <span className="inline-block px-4 py-1.5 text-xs font-mono tracking-wider uppercase text-primary border border-primary/30 rounded-full glow-border">
-            Available for Research Collaboration
+            {profile.availability}
           </span>
         </motion.div>
 
@@ -72,23 +69,28 @@ export default function HeroSection() {
             View Projects
           </a>
           <a
+            href="#research"
+            className="px-8 py-3 rounded-lg font-display font-medium text-sm border border-accent/30 text-accent hover:bg-accent/10 transition-all flex items-center gap-2"
+          >
+            <FlaskConical size={16} /> Explore Research
+          </a>
+          <a
             href="#contact"
             className="px-8 py-3 rounded-lg font-display font-medium text-sm border border-primary/30 text-primary hover:bg-primary/10 transition-all flex items-center gap-2"
           >
-            <Mail size={16} /> Get in Touch
+            <Mail size={16} /> Contact Me
           </a>
           <a
             href={profile.resumeUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-8 py-3 rounded-lg font-display font-medium text-sm border border-accent/30 text-accent hover:bg-accent/10 transition-all flex items-center gap-2"
+            className="px-8 py-3 rounded-lg font-display font-medium text-sm border border-border text-muted-foreground hover:text-primary hover:border-primary/30 transition-all flex items-center gap-2"
           >
             <Download size={16} /> Resume
           </a>
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

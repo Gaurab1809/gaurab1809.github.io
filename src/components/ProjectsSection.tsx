@@ -4,7 +4,7 @@ import { useRef } from 'react';
 import { ExternalLink, Github } from 'lucide-react';
 import projects from '@/data/projects.json';
 
-const categories = ['All', 'AI', 'ML', 'Web', 'Research'];
+const categories = ['All', 'AI', 'Web', 'Mobile', 'Research', 'Systems'];
 
 export default function ProjectsSection() {
   const [filter, setFilter] = useState('All');
@@ -53,7 +53,6 @@ export default function ProjectsSection() {
               transition={{ duration: 0.5, delay: 0.1 * i }}
               className="group glass rounded-xl overflow-hidden hover:glow-border transition-all duration-300"
             >
-              {/* Project visual */}
               <div className="h-40 bg-gradient-to-br from-primary/10 via-secondary to-accent/5 flex items-center justify-center relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent opacity-60" />
                 <span className="relative z-10 font-display font-bold text-2xl text-primary/40 group-hover:text-primary/60 transition-colors">

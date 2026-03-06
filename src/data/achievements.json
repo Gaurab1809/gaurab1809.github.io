@@ -1,9 +1,21 @@
 [
   {
+    "title": "President, BAUST Computer Club",
+    "description": "Leading the largest tech community at BAUST, organizing events, workshops, and mentoring junior members.",
+    "year": "2025-Present",
+    "type": "leadership"
+  },
+  {
     "title": "AI/ML Research Projects",
     "description": "Active research in AI, ML, NLP, and Image Processing with focus on real-world applications for social good.",
     "year": "2024-Present",
     "type": "publication"
+  },
+  {
+    "title": "National Undergraduate Mathematics Olympiad",
+    "description": "Organized the National Undergraduate Mathematics Olympiad and Math Olympiad Preliminary Contest at BAUST.",
+    "year": "2024",
+    "type": "award"
   },
   {
     "title": "E-PATHSHALA Platform Launch",
@@ -18,21 +30,27 @@
     "type": "publication"
   },
   {
-    "title": "Full-Stack Development Projects",
-    "description": "Developed multiple end-to-end applications including restaurant management systems and course management platforms.",
-    "year": "2023",
-    "type": "award"
+    "title": "CGPA 3.78 — B.Sc. CSE at BAUST",
+    "description": "Maintaining excellent academic performance in Computer Science & Engineering with focus on AI and ML coursework.",
+    "year": "2022-2026",
+    "type": "academic"
   },
   {
-    "title": "NLP & Word2Vec Implementation",
-    "description": "Built an intelligent spell checker using Word2Vec embeddings for context-aware corrections.",
-    "year": "2023",
-    "type": "competition"
+    "title": "HSC — GPA 5.00 (Science)",
+    "description": "Perfect GPA in Higher Secondary Certificate from Dhaka College, Dhaka.",
+    "year": "Completed",
+    "type": "academic"
+  },
+  {
+    "title": "SSC — GPA 5.00 (Science)",
+    "description": "Perfect GPA in Secondary School Certificate from Pirgachha G.N. Govt. Model High School, Rangpur.",
+    "year": "Completed",
+    "type": "academic"
   },
   {
     "title": "Open Source Contributions",
     "description": "Active contributor on GitHub with 106+ contributions, maintaining multiple public repositories.",
     "year": "2023-Present",
-    "type": "academic"
+    "type": "hackathon"
   }
 ]

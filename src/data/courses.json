@@ -1,0 +1,58 @@
+[
+  {
+    "title": "Digital Image Processing",
+    "code": "CSE-4246",
+    "institution": "BAUST",
+    "category": "AI/ML",
+    "relatedProject": "https://github.com/Gaurab1809/CSE-4246-Digital-Image-Processing"
+  },
+  {
+    "title": "Machine Learning",
+    "code": "CSE",
+    "institution": "BAUST",
+    "category": "AI/ML",
+    "relatedProject": ""
+  },
+  {
+    "title": "Artificial Intelligence",
+    "code": "CSE",
+    "institution": "BAUST",
+    "category": "AI/ML",
+    "relatedProject": ""
+  },
+  {
+    "title": "Data Structures & Algorithms",
+    "code": "CSE",
+    "institution": "BAUST",
+    "category": "Core CS",
+    "relatedProject": ""
+  },
+  {
+    "title": "Database Management Systems",
+    "code": "CSE",
+    "institution": "BAUST",
+    "category": "Core CS",
+    "relatedProject": ""
+  },
+  {
+    "title": "Computer Networks",
+    "code": "CSE",
+    "institution": "BAUST",
+    "category": "Core CS",
+    "relatedProject": ""
+  },
+  {
+    "title": "Software Engineering",
+    "code": "CSE",
+    "institution": "BAUST",
+    "category": "Core CS",
+    "relatedProject": ""
+  },
+  {
+    "title": "Operating Systems",
+    "code": "CSE",
+    "institution": "BAUST",
+    "category": "Core CS",
+    "relatedProject": ""
+  }
+]

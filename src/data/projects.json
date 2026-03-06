@@ -15,7 +15,7 @@
     "title": "E-PATHSHALA APP",
     "description": "Mobile application version of the E-PATHSHALA e-learning platform, bringing accessible education to mobile devices with Flutter-based cross-platform support.",
     "techStack": ["Flutter", "Dart", "Firebase", "REST API"],
-    "category": "Web",
+    "category": "Mobile",
     "github": "https://github.com/Gaurab1809/E-PATHSHALA-APP",
     "demo": "",
     "image": "e-pathshala-app",
@@ -56,7 +56,7 @@
     "title": "Course Management System",
     "description": "A console-based C++ project for managing courses and student enrollment. Features include adding, updating, deleting, and viewing courses with file handling and OOP concepts.",
     "techStack": ["C++", "OOP", "File Handling"],
-    "category": "Research",
+    "category": "Systems",
     "github": "https://github.com/Gaurab1809/Course-Management-System-CMS-",
     "image": "cms",
     "featured": false
@@ -70,5 +70,25 @@
     "github": "https://github.com/Gaurab1809/CSE-4246-Digital-Image-Processing",
     "image": "dip",
     "featured": true
+  },
+  {
+    "id": "8",
+    "title": "JobMate Android App",
+    "description": "An Android job portal app developed using Java and Firebase for connecting job seekers with employers.",
+    "techStack": ["Java", "Firebase", "Android SDK", "XML"],
+    "category": "Mobile",
+    "github": "https://github.com/Gaurab1809",
+    "image": "jobmate",
+    "featured": true
+  },
+  {
+    "id": "9",
+    "title": "Arduino Voice Controlled Robot",
+    "description": "An Arduino-based voice-controlled and obstacle-avoiding robot combining voice recognition and sensor-based navigation for autonomous movement.",
+    "techStack": ["Arduino", "C++", "Sensors", "Voice Recognition"],
+    "category": "Systems",
+    "github": "https://github.com/Gaurab1809",
+    "image": "arduino-robot",
+    "featured": false
   }
 ]

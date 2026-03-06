@@ -11,22 +11,39 @@
   "education": [
     {
       "degree": "B.Sc. Computer Science and Engineering",
-      "institution": "University in Bangladesh",
-      "year": "Final Year",
-      "details": "Focus: AI, ML, NLP, Image Processing, Computer Vision"
+      "institution": "Bangladesh Army University of Science and Technology (BAUST)",
+      "year": "2022 – 2026",
+      "details": "CGPA – 3.78 (After 7th Semester) | Focus: AI, ML, NLP, Image Processing"
+    },
+    {
+      "degree": "Higher Secondary Certificate (HSC)",
+      "institution": "Dhaka College, Dhaka",
+      "year": "Completed",
+      "details": "GPA – 5.00 (Science)"
+    },
+    {
+      "degree": "Secondary School Certificate (SSC)",
+      "institution": "Pirgachha G.N. Govt. Model High School, Rangpur",
+      "year": "Completed",
+      "details": "GPA – 5.00 (Science)"
     }
   ],
   "interests": ["Artificial Intelligence", "Machine Learning", "NLP", "Image Processing", "Computer Vision", "Deep Learning", "Cloud & DevOps"],
   "goals": "To publish journal-quality research, develop impactful AI solutions for local and global challenges, and grow as a researcher and engineer contributing to domains such as education, transportation, and public safety.",
   "social": {
     "github": "https://github.com/Gaurab1809",
-    "linkedin": "https://www.linkedin.com/in/akmmasudurrahman",
+    "linkedin": "https://www.linkedin.com/in/a-k-m-masudur-rahman-8195902a5/",
     "scholar": "https://scholar.google.com",
-    "kaggle": "https://kaggle.com",
-    "youtube": "https://youtube.com/@infoman-z9y",
+    "kaggle": "https://www.kaggle.com/akmmasudurrahman",
+    "huggingface": "https://huggingface.co/Gaurab1103",
+    "youtube": "https://youtube.com/@InfoMan-z9y",
     "facebook": "https://facebook.com/akm.gaurab",
+    "instagram": "https://www.instagram.com/akm.gaurab/",
+    "whatsapp": "https://wa.me/8801309405506",
     "email": "akmmasudurrahmangaurab@gmail.com"
   },
   "resumeUrl": "/resume.pdf",
-  "funFact": "I enjoy turning research ideas into fully working systems—and yes, I do think I'm funny 😄"
+  "funFact": "I enjoy turning research ideas into fully working systems—and yes, I do think I'm funny 😄",
+  "location": "Bangladesh",
+  "availability": "Available for Research Collaboration"
 }

@@ -26,6 +26,7 @@
         { "name": "NumPy / Pandas", "level": 92 },
         { "name": "Matplotlib / Plotly", "level": 82 },
         { "name": "NLP / Transformers", "level": 80 },
+        { "name": "SciPy", "level": 78 },
         { "name": "mlflow", "level": 65 }
       ]
     },
@@ -53,6 +54,7 @@
         { "name": "Azure", "level": 72 },
         { "name": "Firebase", "level": 82 },
         { "name": "Vercel / Netlify", "level": 85 },
+        { "name": "Cloudflare", "level": 70 },
         { "name": "Git / GitHub", "level": 92 },
         { "name": "Linux", "level": 85 }
       ]
@@ -77,6 +79,15 @@
         { "name": "Canva", "level": 85 },
         { "name": "LaTeX", "level": 82 },
         { "name": "Arduino / Raspberry Pi", "level": 70 }
+      ]
+    },
+    {
+      "name": "Other Tools",
+      "skills": [
+        { "name": "OpenGL", "level": 65 },
+        { "name": "Unity", "level": 60 },
+        { "name": "Cisco", "level": 68 },
+        { "name": "Gradle", "level": 65 }
       ]
     }
   ]
