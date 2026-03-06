@@ -75,7 +75,7 @@ export default function PathfindingGame() {
         }
         const finalGrid = g.map(row => [...row]);
         for (const cell of pathCells) {
-          if (finalGrid[cell.r][cell.c] !== 'end') finalGrid[cell.r][cell.c] = 'path';
+          if (finalGrid[cell.r][cell.c] !== 'end') finalGrid[cell.r][cell.c] = 'path' as Cell;
         }
         setGrid(finalGrid);
         setFound(true);
@@ -92,7 +92,7 @@ export default function PathfindingGame() {
           parent.set(key, curr);
           queue.push({ r: nr, c: nc });
           if (!(nr === end.r && nc === end.c)) {
-            g[nr][nc] = 'visited';
+            g[nr][nc] = 'visited' as Cell;
           }
           count++;
         }
