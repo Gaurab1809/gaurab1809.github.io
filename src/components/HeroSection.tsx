@@ -20,9 +20,9 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="mb-4"
-        >
-          <span className="inline-block px-4 py-1.5 text-xs font-mono tracking-wider uppercase text-primary border border-primary/30 rounded-full glow-border">
+          className="mb-4">
+          
+          <span className="inline-block font-mono tracking-wider uppercase text-primary border border-primary/30 rounded-full glow-border py-[6px] px-[20px] text-base text-center font-medium">
             {profile.availability}
           </span>
         </motion.div>
@@ -31,8 +31,8 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-4xl sm:text-6xl lg:text-7xl font-display font-bold mb-6 leading-tight"
-        >
+          className="text-4xl sm:text-6xl lg:text-7xl font-display font-bold mb-6 leading-tight">
+          
           <span className="text-foreground">Hi 👋, I'm</span>
           <br />
           <span className="text-gradient-primary">{profile.nickname || profile.name}</span>
@@ -42,8 +42,8 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-lg sm:text-xl text-muted-foreground mb-4 font-display font-light"
-        >
+          className="text-lg sm:text-xl text-muted-foreground mb-4 font-display font-light">
+          
           {profile.title}
         </motion.p>
 
@@ -51,8 +51,8 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="text-sm sm:text-base text-muted-foreground/70 mb-10 max-w-xl mx-auto"
-        >
+          className="text-sm sm:text-base text-muted-foreground/70 mb-10 max-w-xl mx-auto">
+          
           {profile.tagline}
         </motion.p>
 
@@ -60,32 +60,32 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1 }}
-          className="flex flex-wrap justify-center gap-4"
-        >
+          className="flex flex-wrap justify-center gap-4">
+          
           <a
             href="#projects"
-            className="px-8 py-3 rounded-lg font-display font-medium text-sm bg-primary text-primary-foreground hover:bg-primary/90 transition-all glow-primary"
-          >
+            className="px-8 py-3 rounded-lg font-display font-medium text-sm bg-primary text-primary-foreground hover:bg-primary/90 transition-all glow-primary">
+            
             View Projects
           </a>
           <a
             href="#research"
-            className="px-8 py-3 rounded-lg font-display font-medium text-sm border border-accent/30 text-accent hover:bg-accent/10 transition-all flex items-center gap-2"
-          >
+            className="px-8 py-3 rounded-lg font-display font-medium text-sm border border-accent/30 text-accent hover:bg-accent/10 transition-all flex items-center gap-2">
+            
             <FlaskConical size={16} /> Explore Research
           </a>
           <a
             href="#contact"
-            className="px-8 py-3 rounded-lg font-display font-medium text-sm border border-primary/30 text-primary hover:bg-primary/10 transition-all flex items-center gap-2"
-          >
+            className="px-8 py-3 rounded-lg font-display font-medium text-sm border border-primary/30 text-primary hover:bg-primary/10 transition-all flex items-center gap-2">
+            
             <Mail size={16} /> Contact Me
           </a>
           <a
             href={profile.resumeUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-8 py-3 rounded-lg font-display font-medium text-sm border border-border text-muted-foreground hover:text-primary hover:border-primary/30 transition-all flex items-center gap-2"
-          >
+            className="px-8 py-3 rounded-lg font-display font-medium text-sm border-border hover:border-primary/30 transition-all flex items-center gap-2 text-yellow-400 bg-primary-foreground border">
+            
             <Download size={16} /> Resume
           </a>
         </motion.div>
@@ -95,15 +95,15 @@ export default function HeroSection() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
+        className="absolute bottom-8 left-1/2 -translate-x-1/2">
+        
         <motion.div
           animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Infinity, duration: 2 }}
-        >
+          transition={{ repeat: Infinity, duration: 2 }}>
+          
           <ChevronDown className="text-muted-foreground/50" size={24} />
         </motion.div>
       </motion.div>
-    </section>
-  );
+    </section>);
+
 }
