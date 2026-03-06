@@ -1,5 +1,5 @@
 import profile from '@/data/profile.json';
-import { Github, Linkedin, BookOpen, BarChart3, Youtube, Mail } from 'lucide-react';
+import { Github, Linkedin, BookOpen, BarChart3, Youtube, Mail, Instagram, MessageCircle, ExternalLink } from 'lucide-react';
 
 export default function Footer() {
   const socials = [
@@ -8,6 +8,9 @@ export default function Footer() {
     { icon: Youtube, href: profile.social.youtube },
     { icon: BookOpen, href: profile.social.scholar },
     { icon: BarChart3, href: profile.social.kaggle },
+    { icon: ExternalLink, href: profile.social.huggingface },
+    { icon: Instagram, href: profile.social.instagram },
+    { icon: MessageCircle, href: profile.social.whatsapp },
     { icon: Mail, href: `mailto:${profile.social.email}` },
   ];
 

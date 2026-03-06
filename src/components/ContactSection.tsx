@@ -1,11 +1,11 @@
 import { useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Send, Github, Linkedin, BookOpen, BarChart3, Youtube, Mail } from 'lucide-react';
+import { Send, Github, Linkedin, BookOpen, BarChart3, Youtube, Mail, Instagram, MessageCircle, ExternalLink } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import profile from '@/data/profile.json';
 
 export default function ContactSection() {
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
   const [sending, setSending] = useState(false);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
@@ -20,7 +20,7 @@ export default function ContactSection() {
     setSending(true);
     await new Promise(r => setTimeout(r, 1000));
     toast({ title: 'Message sent!', description: "Thanks for reaching out. I'll get back to you soon." });
-    setForm({ name: '', email: '', message: '' });
+    setForm({ name: '', email: '', subject: '', message: '' });
     setSending(false);
   };
 
@@ -30,6 +30,9 @@ export default function ContactSection() {
     { icon: Youtube, href: profile.social.youtube, label: 'YouTube' },
     { icon: BookOpen, href: profile.social.scholar, label: 'Scholar' },
     { icon: BarChart3, href: profile.social.kaggle, label: 'Kaggle' },
+    { icon: ExternalLink, href: profile.social.huggingface, label: 'HuggingFace' },
+    { icon: Instagram, href: profile.social.instagram, label: 'Instagram' },
+    { icon: MessageCircle, href: profile.social.whatsapp, label: 'WhatsApp' },
     { icon: Mail, href: `mailto:${profile.social.email}`, label: 'Email' },
   ];
 
@@ -56,26 +59,39 @@ export default function ContactSection() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="space-y-4"
           >
-            <div>
-              <label className="block text-sm font-mono text-muted-foreground mb-1.5">Name</label>
-              <input
-                type="text"
-                value={form.name}
-                onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
-                className="w-full px-4 py-3 rounded-lg bg-secondary/50 border border-border text-foreground text-sm focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all"
-                placeholder="Your name"
-                maxLength={100}
-              />
+            <div className="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-mono text-muted-foreground mb-1.5">Name</label>
+                <input
+                  type="text"
+                  value={form.name}
+                  onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
+                  className="w-full px-4 py-3 rounded-lg bg-secondary/50 border border-border text-foreground text-sm focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all"
+                  placeholder="Your name"
+                  maxLength={100}
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-mono text-muted-foreground mb-1.5">Email</label>
+                <input
+                  type="email"
+                  value={form.email}
+                  onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
+                  className="w-full px-4 py-3 rounded-lg bg-secondary/50 border border-border text-foreground text-sm focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all"
+                  placeholder="your@email.com"
+                  maxLength={255}
+                />
+              </div>
             </div>
             <div>
-              <label className="block text-sm font-mono text-muted-foreground mb-1.5">Email</label>
+              <label className="block text-sm font-mono text-muted-foreground mb-1.5">Subject</label>
               <input
-                type="email"
-                value={form.email}
-                onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
+                type="text"
+                value={form.subject}
+                onChange={e => setForm(f => ({ ...f, subject: e.target.value }))}
                 className="w-full px-4 py-3 rounded-lg bg-secondary/50 border border-border text-foreground text-sm focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all"
-                placeholder="your@email.com"
-                maxLength={255}
+                placeholder="Subject"
+                maxLength={200}
               />
             </div>
             <div>
@@ -105,23 +121,25 @@ export default function ContactSection() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="flex flex-col justify-center"
           >
-            <p className="text-muted-foreground mb-4">
+            <p className="text-muted-foreground mb-2">
               I'm always open to discussing research collaborations, interesting projects, or opportunities. Feel free to reach out!
             </p>
-            <p className="text-sm text-primary font-mono mb-6">
+            <p className="text-sm text-primary font-mono mb-2">
               ✉️ {profile.social.email}
             </p>
+            <p className="text-xs text-muted-foreground mb-1">📍 {profile.location}</p>
+            <p className="text-xs text-accent font-mono mb-6">🟢 {profile.availability}</p>
 
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-2">
               {socials.map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2.5 glass rounded-lg text-sm text-muted-foreground hover:text-primary hover:glow-border transition-all"
+                  className="flex items-center gap-2 px-3 py-2 glass rounded-lg text-xs text-muted-foreground hover:text-primary hover:glow-border transition-all"
                 >
-                  <Icon size={16} />
+                  <Icon size={14} />
                   {label}
                 </a>
               ))}
