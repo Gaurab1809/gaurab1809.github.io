@@ -1,0 +1,37 @@
+[
+  {
+    "title": "President",
+    "organization": "BAUST Computer Club",
+    "period": "Feb 2025 – Present",
+    "type": "leadership",
+    "highlights": ["Leading the largest tech community at BAUST", "Organizing technical events and workshops", "Mentoring junior members"]
+  },
+  {
+    "title": "Organizing Secretary",
+    "organization": "BAUST Computer Club",
+    "period": "Feb 2025 – Present",
+    "type": "leadership",
+    "highlights": ["Coordinating club events and activities", "Managing event logistics and communications"]
+  },
+  {
+    "title": "Assistant Organizing Secretary",
+    "organization": "BAUST Computer Club",
+    "period": "Aug 2023 – Dec 2025",
+    "type": "leadership",
+    "highlights": ["Organized National Undergraduate Mathematics Olympiad", "Coordinated Math Olympiad Preliminary Contest"]
+  },
+  {
+    "title": "Assistant Organizing Secretary",
+    "organization": "CSE Society, BAUST",
+    "period": "Aug 2023 – Dec 2025",
+    "type": "leadership",
+    "highlights": ["Event coordination for departmental activities", "Technical workshop management"]
+  },
+  {
+    "title": "Organizing Executive",
+    "organization": "CSE Society, BAUST",
+    "period": "Sep 2022 – Jul 2023",
+    "type": "leadership",
+    "highlights": ["Supporting event planning and execution", "Student engagement initiatives"]
+  }
+]

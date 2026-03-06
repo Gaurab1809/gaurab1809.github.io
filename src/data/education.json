@@ -1,0 +1,23 @@
+[
+  {
+    "degree": "B.Sc. in Computer Science and Engineering",
+    "institution": "Bangladesh Army University of Science and Technology (BAUST)",
+    "period": "2022 – 2026",
+    "grade": "CGPA – 3.78 (After 7th Semester)",
+    "details": "Focus: AI, ML, NLP, Image Processing, Computer Vision"
+  },
+  {
+    "degree": "Higher Secondary School Certificate (HSC)",
+    "institution": "Dhaka College, Dhaka",
+    "period": "Completed",
+    "grade": "GPA – 5.00 (Science)",
+    "details": "Science Group"
+  },
+  {
+    "degree": "Secondary School Certificate (SSC)",
+    "institution": "Pirgachha Gyanendra Narayan (J.N) Govt. Model High School, Rangpur",
+    "period": "Completed",
+    "grade": "GPA – 5.00 (Science)",
+    "details": "Science Group"
+  }
+]

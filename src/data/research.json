@@ -1,0 +1,35 @@
+[
+  {
+    "id": "1",
+    "title": "AI-Based Image Processing for Social Good",
+    "abstract": "Research on applying computer vision and deep learning techniques to solve real-world problems in education, transportation, and public safety domains.",
+    "domain": "Computer Vision",
+    "technologies": ["Python", "PyTorch", "OpenCV", "TensorFlow"],
+    "dataset": "Custom-collected real-world datasets",
+    "status": "Ongoing",
+    "github": "https://github.com/Gaurab1809/CSE-4246-Digital-Image-Processing",
+    "interests": ["Image Classification", "Object Detection", "Semantic Segmentation"]
+  },
+  {
+    "id": "2",
+    "title": "NLP-Based Spell Correction Using Word2Vec",
+    "abstract": "An intelligent spell checker leveraging Word2Vec embeddings for context-aware spelling correction and word suggestions using NLP techniques.",
+    "domain": "NLP",
+    "technologies": ["Python", "Word2Vec", "NLP", "scikit-learn"],
+    "dataset": "Custom text corpora",
+    "status": "Completed",
+    "github": "https://github.com/Gaurab1809/Spell-Checker-word2vec",
+    "interests": ["Word Embeddings", "Language Models", "Text Processing"]
+  },
+  {
+    "id": "3",
+    "title": "Applied ML for Education Technology",
+    "abstract": "Research exploring machine learning applications in e-learning platforms to personalize content delivery and improve learning outcomes.",
+    "domain": "AI/ML",
+    "technologies": ["Python", "TensorFlow", "React", "Node.js"],
+    "dataset": "Educational interaction data",
+    "status": "Ongoing",
+    "github": "https://github.com/Gaurab1809/E-PATHSHALA",
+    "interests": ["Recommendation Systems", "Adaptive Learning", "EdTech"]
+  }
+]
