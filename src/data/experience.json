@@ -1,37 +1,187 @@
 [
   {
     "title": "President",
-    "organization": "BAUST Computer Club",
+    "organization": "CSE Society, BAUST",
     "period": "Feb 2025 – Present",
     "type": "leadership",
-    "highlights": ["Leading the largest tech community at BAUST", "Organizing technical events and workshops", "Mentoring junior members"]
+    "highlights": [
+      "Leading and coordinating activities of the official student body of the CSE Department at BAUST",
+      "Organizing programming contests, technical workshops, seminars, hackathons, and project showcase events",
+      "Promoting research, innovation, and collaboration among CSE students",
+      "Encouraging student participation in competitions, academic projects, and innovation programs",
+      "Mentoring junior students in programming, research, and academic development"
+    ]
   },
   {
     "title": "Organizing Secretary",
     "organization": "BAUST Computer Club",
     "period": "Feb 2025 – Present",
     "type": "leadership",
-    "highlights": ["Coordinating club events and activities", "Managing event logistics and communications"]
+    "highlights": [
+      "Managing logistics and execution of programming contests, workshops, and seminars",
+      "Coordinating club members and volunteers for technical events",
+      "Ensuring smooth organization of club activities and student engagement"
+    ]
+  },
+  {
+    "title": "Private Tutor",
+    "organization": "Self-Employed",
+    "period": "2022 – Present",
+    "type": "teaching",
+    "highlights": [
+      "Providing personalized tutoring in programming, mathematics, and academic subjects",
+      "Teaching C programming, algorithms, data structures, competitive programming, and software development",
+      "Designing structured learning plans, practice exercises, and coding assignments",
+      "Mentoring students in coursework, programming assignments, and exam preparation"
+    ]
+  },
+  {
+    "title": "National Undergraduate Mathematics Olympiad Organizer",
+    "organization": "BAUST Computer Club",
+    "period": "2025",
+    "type": "leadership",
+    "highlights": [
+      "Organized the National Undergraduate Mathematics Olympiad hosted at BAUST",
+      "Coordinated the Mathematics Olympiad Preliminary Contest and participant management",
+      "Handled event logistics including venue preparation, scheduling, and coordination"
+    ]
+  },
+  {
+    "title": "Event Organizer (ICPC Preliminary)",
+    "organization": "BAUST Computer Club",
+    "period": "2025",
+    "type": "leadership",
+    "highlights": [
+      "Organized and managed the ICPC Preliminary Competition at BAUST",
+      "Coordinated contest logistics, participant registration, and technical arrangements"
+    ]
+  },
+  {
+    "title": "Assistant Organizing Secretary",
+    "organization": "CSE Society, BAUST",
+    "period": "Aug 2023 – Dec 2025",
+    "type": "leadership",
+    "highlights": [
+      "Coordinated departmental events, technical workshops, and seminars",
+      "Assisted in organizing hackathons, project showcases, and academic activities"
+    ]
   },
   {
     "title": "Assistant Organizing Secretary",
     "organization": "BAUST Computer Club",
     "period": "Aug 2023 – Dec 2025",
     "type": "leadership",
-    "highlights": ["Organized National Undergraduate Mathematics Olympiad", "Coordinated Math Olympiad Preliminary Contest"]
+    "highlights": [
+      "Supported organization of technical competitions and academic events",
+      "Managed logistics, scheduling, and participant coordination"
+    ]
   },
   {
-    "title": "Assistant Organizing Secretary",
-    "organization": "CSE Society, BAUST",
-    "period": "Aug 2023 – Dec 2025",
+    "title": "Competitive Programming Event Organizer",
+    "organization": "BAUST Computer Club",
+    "period": "2024 – 2025",
     "type": "leadership",
-    "highlights": ["Event coordination for departmental activities", "Technical workshop management"]
+    "highlights": [
+      "Planned and organized multiple competitive programming contests",
+      "Handled problem setting, contest scheduling, and participant registrations"
+    ]
+  },
+  {
+    "title": "Programming Instructor",
+    "organization": "BAUST Computer Club / Department of CSE, BAUST",
+    "period": "2024",
+    "type": "teaching",
+    "highlights": [
+      "Taught C programming to junior students at BAUST",
+      "Mentored students in coding, debugging, and problem-solving techniques",
+      "Designed hands-on programming exercises and practice sessions"
+    ]
+  },
+  {
+    "title": "Programming Contest Participant",
+    "organization": "CSE Society, BAUST",
+    "period": "2023 – 2025",
+    "type": "participation",
+    "highlights": [
+      "Participated in several programming contests organized by CSE Society, BAUST",
+      "Engaged in competitive problem-solving and algorithmic challenges"
+    ]
   },
   {
     "title": "Organizing Executive",
     "organization": "CSE Society, BAUST",
     "period": "Sep 2022 – Jul 2023",
     "type": "leadership",
-    "highlights": ["Supporting event planning and execution", "Student engagement initiatives"]
+    "highlights": [
+      "Assisted in planning and executing departmental events, workshops, and seminars",
+      "Facilitated student engagement in academic and extracurricular activities"
+    ]
+  },
+  {
+    "title": "Former Debater & Member",
+    "organization": "Dhaka College Debating Society (DCDS)",
+    "period": "2019 – 2021",
+    "type": "membership",
+    "highlights": [
+      "Participated in inter-college debating competitions",
+      "Contributed to debate training sessions and discussions"
+    ]
+  },
+  {
+    "title": "Former Member",
+    "organization": "Dhaka College Science Club (DCSC)",
+    "period": "2019 – 2021",
+    "type": "membership",
+    "highlights": [
+      "Participated in science-related activities and academic events"
+    ]
+  },
+  {
+    "title": "Best Scout Award",
+    "organization": "Bangladesh Scouts",
+    "period": "2018",
+    "type": "achievement",
+    "highlights": [
+      "Awarded for outstanding contributions to community service and social development initiatives"
+    ]
+  },
+  {
+    "title": "Former Patrol Leader",
+    "organization": "Bangladesh Scouts, Pirgaccha J. N. Govt Model High School",
+    "period": "2016 – 2019",
+    "type": "leadership",
+    "highlights": [
+      "Led a Scouts team coordinating scout activities and community service initiatives",
+      "Organized training sessions and events for fellow scouts"
+    ]
+  },
+  {
+    "title": "Former President",
+    "organization": "JN Debate Club",
+    "period": "2016 – 2019",
+    "type": "leadership",
+    "highlights": [
+      "Led the debate club and organized inter-school debate competitions",
+      "Trained junior debaters and promoted public speaking and critical thinking"
+    ]
+  },
+  {
+    "title": "Former Vice-President",
+    "organization": "Omega Science Club",
+    "period": "2016 – 2019",
+    "type": "leadership",
+    "highlights": [
+      "Assisted in organizing science events and workshops",
+      "Encouraged student participation in academic and science activities"
+    ]
+  },
+  {
+    "title": "Former Member",
+    "organization": "Bangladesh Scouts",
+    "period": "2013 – 2019",
+    "type": "membership",
+    "highlights": [
+      "Participated in community service, leadership training, and scouting programs"
+    ]
   }
 ]

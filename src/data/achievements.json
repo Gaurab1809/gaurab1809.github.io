@@ -1,56 +1,328 @@
 [
   {
-    "title": "President, BAUST Computer Club",
-    "description": "Leading the largest tech community at BAUST, organizing events, workshops, and mentoring junior members.",
-    "year": "2025-Present",
-    "type": "leadership"
+    "title": "President, CSE Society, BAUST",
+    "organization": "CSE Society, BAUST",
+    "year": "Feb 2025 – Present",
+    "type": "leadership",
+    "description": "Leading and coordinating activities of the official student body of the CSE Department at BAUST. Organizing programming contests, workshops, seminars, hackathons, project showcases, and research discussions.",
+    "image": ""
   },
   {
-    "title": "AI/ML Research Projects",
-    "description": "Active research in AI, ML, NLP, and Image Processing with focus on real-world applications for social good.",
-    "year": "2024-Present",
-    "type": "publication"
+    "title": "Organizing Secretary, BAUST Computer Club",
+    "organization": "BAUST Computer Club",
+    "year": "Feb 2025 – Present",
+    "type": "leadership",
+    "description": "Managed logistics, team coordination, and execution of programming contests, technical workshops, and seminars.",
+    "image": ""
   },
   {
-    "title": "National Undergraduate Mathematics Olympiad",
-    "description": "Organized the National Undergraduate Mathematics Olympiad and Math Olympiad Preliminary Contest at BAUST.",
-    "year": "2024",
-    "type": "award"
+    "title": "KenaKata.com – E-Commerce Website",
+    "organization": "Self-Project",
+    "year": "2025",
+    "type": "achievement",
+    "description": "Developed a full-featured e-commerce website using Laravel, PHP, MVC architecture, OOP, DbC, SOLID principles, and design patterns.",
+    "image": ""
   },
   {
-    "title": "E-PATHSHALA Platform Launch",
-    "description": "Built and launched a full-stack e-learning platform making education accessible and engaging for everyone.",
-    "year": "2024",
-    "type": "award"
+    "title": "DevVerse – Developer Community Platform",
+    "organization": "Self-Project",
+    "year": "2025",
+    "type": "achievement",
+    "description": "Built a developer-centric platform for collaboration, code sharing, and community building.",
+    "github": "https://github.com/Gaurab1809/DevVerse",
+    "image": ""
+  },
+  {
+    "title": "JobMate Android App",
+    "organization": "Self-Project",
+    "year": "2025",
+    "type": "achievement",
+    "description": "An Android job portal app connecting job seekers with employers using Java, Firebase, Android SDK, and XML.",
+    "github": "https://github.com/Gaurab1809",
+    "image": ""
+  },
+  {
+    "title": "Spell Checker (Word2Vec)",
+    "organization": "Self-Project",
+    "year": "2025",
+    "type": "achievement",
+    "description": "Developed an intelligent NLP-based spell checker using Word2Vec embeddings for context-aware spelling correction.",
+    "github": "https://github.com/Gaurab1809/Spell-Checker-word2vec",
+    "image": ""
   },
   {
     "title": "Digital Image Processing Research",
-    "description": "Research and implementation of advanced image processing techniques including computer vision algorithms.",
+    "organization": "Self-Research",
+    "year": "2025–Present",
+    "type": "publication",
+    "description": "Research and implementation of digital image processing techniques including filtering, edge detection, segmentation, and computer vision algorithms.",
+    "github": "https://github.com/Gaurab1809/CSE-4246-Digital-Image-Processing",
+    "image": ""
+  },
+  {
+    "title": "AI-Based Image Processing for Social Good",
+    "organization": "Self-Research",
+    "year": "2025–Present",
+    "type": "publication",
+    "description": "Applying computer vision and deep learning techniques to tackle real-world problems in education, transportation, and public safety.",
+    "image": ""
+  },
+  {
+    "title": "IoT Smart Drainage System",
+    "organization": "Self-Research",
+    "year": "2025",
+    "type": "achievement",
+    "description": "Developed a smart IoT-based drainage monitoring system to prevent urban flooding.",
+    "image": ""
+  },
+  {
+    "title": "BChat – Integrated Social Media & Cashless Digital Economy Platform",
+    "organization": "Self-Project / Patent",
+    "year": "2025",
+    "type": "achievement",
+    "description": "Designed and proposed a comprehensive social communication platform integrating messaging, services, and a unified digital payment ecosystem for Bangladesh.",
+    "image": ""
+  },
+  {
+    "title": "Applied Machine Learning for Education Technology",
+    "organization": "Self-Research",
+    "year": "2024–Present",
+    "type": "publication",
+    "description": "Exploring machine learning applications in e-learning platforms to personalize content delivery and improve student engagement.",
+    "image": ""
+  },
+  {
+    "title": "Bangla Spell Checker",
+    "organization": "Self-Research",
+    "year": "2024–Present",
+    "type": "achievement",
+    "description": "Built an AI-based Bangla spell checking system designed to detect and correct spelling errors.",
+    "image": ""
+  },
+  {
+    "title": "Pretraining a Language Model from Scratch (BERT-like Model)",
+    "organization": "Self-Research",
+    "year": "2024–Present",
+    "type": "achievement",
+    "description": "Implemented and experimented with transformer-based language models trained from scratch for Bangla NLP tasks.",
+    "image": ""
+  },
+  {
+    "title": "Understanding Cross-Lingual NLP Models",
+    "organization": "Self-Research",
+    "year": "2024–Present",
+    "type": "achievement",
+    "description": "Conducted research exploring multilingual and cross-lingual NLP models for improved language transfer.",
+    "image": ""
+  },
+  {
+    "title": "E-PATHSHALA e-Learning Platform Launch",
+    "organization": "Self-Project",
     "year": "2024",
-    "type": "publication"
+    "type": "achievement",
+    "description": "Designed, developed, and launched a full-stack e-learning platform to personalize education.",
+    "github": "https://github.com/Gaurab1809/E-PATHSHALA",
+    "image": ""
   },
   {
-    "title": "CGPA 3.78 — B.Sc. CSE at BAUST",
-    "description": "Maintaining excellent academic performance in Computer Science & Engineering with focus on AI and ML coursework.",
-    "year": "2022-2026",
-    "type": "academic"
+    "title": "E-PATHSHALA Mobile App",
+    "organization": "Self-Project",
+    "year": "2024",
+    "type": "achievement",
+    "description": "Mobile application version of the E-PATHSHALA platform built with Flutter and Dart.",
+    "github": "https://github.com/Gaurab1809/E-PATHSHALA-APP",
+    "image": ""
   },
   {
-    "title": "HSC — GPA 5.00 (Science)",
-    "description": "Perfect GPA in Higher Secondary Certificate from Dhaka College, Dhaka.",
-    "year": "Completed",
-    "type": "academic"
+    "title": "ICPC Preliminary Competition Organizer",
+    "organization": "BAUST Computer Club",
+    "year": "2024",
+    "type": "leadership",
+    "description": "Planned and executed the ICPC Preliminary Competition at BAUST.",
+    "image": ""
   },
   {
-    "title": "SSC — GPA 5.00 (Science)",
-    "description": "Perfect GPA in Secondary School Certificate from Pirgachha G.N. Govt. Model High School, Rangpur.",
-    "year": "Completed",
-    "type": "academic"
+    "title": "Competitive Programming Event Organizer",
+    "organization": "BAUST Computer Club",
+    "year": "2023–2025",
+    "type": "leadership",
+    "description": "Organized multiple competitive programming contests for undergraduate students.",
+    "image": ""
+  },
+  {
+    "title": "National Undergraduate Mathematics Olympiad Organizer",
+    "organization": "BAUST Computer Club",
+    "year": "2023–2025",
+    "type": "leadership",
+    "description": "Organized the National Undergraduate Mathematics Olympiad and its Preliminary Contest at BAUST.",
+    "image": ""
+  },
+  {
+    "title": "Programming Contest Participant",
+    "organization": "CSE Society, BAUST",
+    "year": "2023–2025",
+    "type": "participation",
+    "description": "Participated in several programming contests organized by CSE Society.",
+    "image": ""
+  },
+  {
+    "title": "Private Tutor",
+    "organization": "Self-Employed",
+    "year": "2022–Present",
+    "type": "teaching",
+    "description": "Provided tutoring in programming, competitive programming, research methods, and academic subjects.",
+    "image": ""
+  },
+  {
+    "title": "B.Sc. CSE – CGPA 3.78",
+    "organization": "BAUST",
+    "year": "2022–Present",
+    "type": "academic",
+    "description": "Maintained excellent academic performance in Computer Science & Engineering with focus on AI and ML.",
+    "image": ""
+  },
+  {
+    "title": "Organizing Executive, CSE Society, BAUST",
+    "organization": "CSE Society, BAUST",
+    "year": "Sep 2022 – Jul 2023",
+    "type": "leadership",
+    "description": "Assisted in planning and executing departmental events, workshops, and seminars.",
+    "image": ""
   },
   {
     "title": "Open Source Contributions",
-    "description": "Active contributor on GitHub with 106+ contributions, maintaining multiple public repositories.",
-    "year": "2023-Present",
-    "type": "hackathon"
+    "organization": "GitHub",
+    "year": "2023–Present",
+    "type": "hackathon",
+    "description": "Active GitHub contributor with 100+ contributions, maintaining multiple public repositories.",
+    "image": ""
+  },
+  {
+    "title": "Former Debater & Member, DCDS",
+    "organization": "Dhaka College Debating Society (DCDS)",
+    "year": "2019–2021",
+    "type": "membership",
+    "description": "Participated in inter-college debating competitions.",
+    "image": ""
+  },
+  {
+    "title": "Former Member, DCSC",
+    "organization": "Dhaka College Science Club (DCSC)",
+    "year": "2019–2021",
+    "type": "membership",
+    "description": "Participated in science-related activities, workshops, and club events.",
+    "image": ""
+  },
+  {
+    "title": "SSC – GPA 5.00 (Science)",
+    "organization": "Pirgaccha G.N. Govt. Model High School, Rangpur",
+    "year": "Completed",
+    "type": "academic",
+    "description": "Achieved perfect GPA in Secondary School Certificate.",
+    "image": ""
+  },
+  {
+    "title": "HSC – GPA 5.00 (Science)",
+    "organization": "Dhaka College, Dhaka",
+    "year": "Completed",
+    "type": "academic",
+    "description": "Achieved perfect GPA in Higher Secondary Certificate.",
+    "image": ""
+  },
+  {
+    "title": "Multiple-time Champion – National Debate Competition",
+    "organization": "Rangpur Region",
+    "year": "2016–2019",
+    "type": "award",
+    "description": "Repeatedly won the National Debate Competition in the Rangpur Region.",
+    "image": ""
+  },
+  {
+    "title": "Multiple-time Champion – National Free Speech Competition",
+    "organization": "Rangpur Region",
+    "year": "2016–2019",
+    "type": "award",
+    "description": "Consistently achieved champion status in free speech competitions.",
+    "image": ""
+  },
+  {
+    "title": "Multiple-time Champion – National Essay Writing Competition",
+    "organization": "Rangpur & Dinajpur Region",
+    "year": "2016–2019",
+    "type": "award",
+    "description": "Repeatedly recognized as champion in essay writing competitions.",
+    "image": ""
+  },
+  {
+    "title": "Best Student Awards – Pirgaccha Upazila",
+    "organization": "Pirgaccha Upazila",
+    "year": "2016–2019",
+    "type": "award",
+    "description": "Received Best Student Awards for four consecutive years.",
+    "image": ""
+  },
+  {
+    "title": "Former President, JN Debate Club",
+    "organization": "JN Debate Club",
+    "year": "2016–2019",
+    "type": "leadership",
+    "description": "Led the debate club and organized inter-school debate competitions.",
+    "image": ""
+  },
+  {
+    "title": "Former Vice-President, Omega Science Club",
+    "organization": "Omega Science Club",
+    "year": "2016–2019",
+    "type": "leadership",
+    "description": "Assisted in planning and executing science events and workshops.",
+    "image": ""
+  },
+  {
+    "title": "Former Patrol Leader, Bangladesh Scouts",
+    "organization": "Bangladesh Scouts, Pirgaccha J. N. Govt Model High School",
+    "year": "2016–2019",
+    "type": "leadership",
+    "description": "Led a patrol team coordinating scout activities and community service initiatives.",
+    "image": ""
+  },
+  {
+    "title": "Champion – National Drawing Competition",
+    "organization": "Rangpur Region",
+    "year": "2017",
+    "type": "award",
+    "description": "Secured first place in the National Drawing Competition for Rangpur Region.",
+    "image": ""
+  },
+  {
+    "title": "National Champion – National Debate Fest",
+    "organization": "National Debate Fest",
+    "year": "2018",
+    "type": "award",
+    "description": "Achieved National Champion status demonstrating exceptional public speaking.",
+    "image": ""
+  },
+  {
+    "title": "Community Development Award (CD Award)",
+    "organization": "Bangladesh Scouts",
+    "year": "2018",
+    "type": "award",
+    "description": "Recognized for contributions to social development and community service.",
+    "image": ""
+  },
+  {
+    "title": "Best Scout Award",
+    "organization": "Bangladesh Scouts",
+    "year": "2018",
+    "type": "award",
+    "description": "Awarded for outstanding contributions to community service and social development.",
+    "image": ""
+  },
+  {
+    "title": "Former Member, Bangladesh Scouts",
+    "organization": "Bangladesh Scouts",
+    "year": "2013–2019",
+    "type": "membership",
+    "description": "Participated in community service, leadership training, and outdoor activities.",
+    "image": ""
   }
 ]
