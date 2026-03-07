@@ -84,7 +84,7 @@ export default function HeroSection() {
             href={profile.resumeUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-8 py-3 rounded-lg font-display font-medium text-sm border-border hover:border-primary/30 transition-all flex items-center gap-2 text-yellow-400 bg-primary-foreground border">
+            className="px-8 py-3 rounded-lg font-display font-medium text-sm border-border hover:border-primary/30 transition-all flex items-center gap-2 border bg-primary-foreground text-secondary-foreground">
             
             <Download size={16} /> Resume
           </a>

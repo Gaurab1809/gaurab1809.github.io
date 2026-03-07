@@ -41,7 +41,7 @@ export default function Navbar() {
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <a className="font-display text-xl font-bold text-gradient-primary" href="#">
+          <a className="text-xl text-gradient-primary font-extrabold font-sans" href="#">
             Gaurab<span className="text-accent">.</span>
           </a>
 
