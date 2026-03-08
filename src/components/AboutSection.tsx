@@ -32,8 +32,8 @@ export default function AboutSection() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             {/* Mobile: photo + bio side by side */}
-            <div className="flex gap-5 mb-8 items-start lg:block">
-              <div className="relative group shrink-0 lg:hidden">
+            <div className="flex gap-5 mb-8 items-start md:block">
+              <div className="relative group shrink-0 md:hidden">
                 <div className="absolute -inset-1.5 bg-gradient-to-r from-primary via-accent to-primary rounded-xl opacity-30 blur-lg group-hover:opacity-60 transition-opacity duration-700" />
                 <img
                   src={profilePhoto}
@@ -41,7 +41,7 @@ export default function AboutSection() {
                   className="relative w-24 h-24 sm:w-32 sm:h-32 rounded-xl object-cover border-2 border-primary/20 shadow-xl"
                 />
               </div>
-              <p className="text-muted-foreground leading-relaxed text-base sm:text-lg lg:mb-8">
+              <p className="text-muted-foreground leading-relaxed text-base sm:text-lg md:mb-8">
                 {profile.bio}
               </p>
             </div>
