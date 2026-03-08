@@ -31,9 +31,20 @@ export default function AboutSection() {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <p className="text-muted-foreground leading-relaxed mb-8 text-base sm:text-lg">
-              {profile.bio}
-            </p>
+            {/* Mobile: photo + bio side by side */}
+            <div className="flex gap-5 mb-8 items-start lg:block">
+              <div className="relative group shrink-0 lg:hidden">
+                <div className="absolute -inset-1.5 bg-gradient-to-r from-primary via-accent to-primary rounded-xl opacity-30 blur-lg group-hover:opacity-60 transition-opacity duration-700" />
+                <img
+                  src={profilePhoto}
+                  alt={profile.name}
+                  className="relative w-24 h-24 sm:w-32 sm:h-32 rounded-xl object-cover border-2 border-primary/20 shadow-xl"
+                />
+              </div>
+              <p className="text-muted-foreground leading-relaxed text-base sm:text-lg lg:mb-8">
+                {profile.bio}
+              </p>
+            </div>
 
             <div className="flex flex-wrap gap-2 mb-8">
               {profile.interests.map((interest) => (
@@ -71,19 +82,19 @@ export default function AboutSection() {
             </div>
           </motion.div>
 
-          {/* Profile Photo - aligned with top of text */}
+          {/* Profile Photo - desktop only, sticky */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex justify-center lg:justify-end lg:sticky lg:top-24"
+            className="hidden lg:flex justify-end sticky top-24"
           >
             <div className="relative group">
               <div className="absolute -inset-2 bg-gradient-to-r from-primary via-accent to-primary rounded-2xl opacity-30 blur-xl group-hover:opacity-60 transition-opacity duration-700 animate-pulse-glow" />
               <img
                 src={profilePhoto}
                 alt={profile.name}
-                className="relative w-56 h-56 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-2xl object-cover border-2 border-primary/20 shadow-2xl"
+                className="relative w-80 h-80 rounded-2xl object-cover border-2 border-primary/20 shadow-2xl"
               />
             </div>
           </motion.div>
