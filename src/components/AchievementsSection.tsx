@@ -59,7 +59,7 @@ function AchievementCard({ item, index }: { item: typeof achievements[0]; index:
   return (
     <div ref={ref} className="relative">
       {/* Desktop layout */}
-      <div className="hidden md:grid grid-cols-[1fr_40px_1fr] items-start">
+      <div className="hidden lg:grid grid-cols-[1fr_40px_1fr] items-start">
         {/* Left card */}
         <div>
           {isLeft && (
