@@ -94,7 +94,7 @@ export default function AboutSection() {
               <img
                 src={profilePhoto}
                 alt={profile.name}
-                className="relative w-80 h-80 rounded-2xl object-cover border-2 border-primary/20 shadow-2xl"
+                className="relative w-56 h-56 md:w-64 md:h-64 lg:w-80 lg:h-80 rounded-2xl object-cover border-2 border-primary/20 shadow-2xl"
               />
             </div>
           </motion.div>

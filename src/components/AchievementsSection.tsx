@@ -180,10 +180,10 @@ export default function AchievementsSection() {
         {/* Tree container with continuous trunk line */}
         <div className="relative">
           {/* Continuous trunk line - desktop (centered) */}
-          <div className="hidden md:block absolute top-0 bottom-0 left-1/2 -translate-x-px w-[2px] bg-gradient-to-b from-primary/40 via-accent/20 to-transparent" />
+          <div className="hidden lg:block absolute top-0 bottom-0 left-1/2 -translate-x-px w-[2px] bg-gradient-to-b from-primary/40 via-accent/20 to-transparent" />
           
-          {/* Continuous trunk line - mobile (left side) */}
-          <div className="md:hidden absolute top-0 bottom-0 left-[16px] w-[2px] bg-gradient-to-b from-primary/40 via-accent/20 to-transparent" />
+          {/* Continuous trunk line - mobile/tablet (left side) */}
+          <div className="lg:hidden absolute top-0 bottom-0 left-[16px] w-[2px] bg-gradient-to-b from-primary/40 via-accent/20 to-transparent" />
 
           <div className="space-y-5">
             {displayed.map((item, i) => (
