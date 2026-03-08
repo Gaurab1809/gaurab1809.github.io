@@ -3,6 +3,7 @@ import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { GraduationCap, Target, Lightbulb } from 'lucide-react';
 import profile from '@/data/profile.json';
+import profilePhoto from '@/assets/profile-photo.jpeg';
 
 export default function AboutSection() {
   const ref = useRef(null);
@@ -24,12 +25,24 @@ export default function AboutSection() {
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12">
-          {/* Bio */}
+          {/* Bio with Photo */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
+            {/* Profile Photo */}
+            <div className="flex justify-center lg:justify-start mb-8">
+              <div className="relative group">
+                <div className="absolute -inset-1 bg-gradient-to-r from-primary via-accent to-primary rounded-full opacity-50 blur-md group-hover:opacity-80 transition-opacity animate-pulse-glow" />
+                <img
+                  src={profilePhoto}
+                  alt={profile.name}
+                  className="relative w-32 h-32 sm:w-40 sm:h-40 rounded-full object-cover border-2 border-primary/30"
+                />
+              </div>
+            </div>
+
             <p className="text-muted-foreground leading-relaxed mb-8 text-lg">
               {profile.bio}
             </p>

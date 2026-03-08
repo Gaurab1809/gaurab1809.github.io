@@ -2,7 +2,6 @@ import { lazy, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown, Download, Mail, FlaskConical } from 'lucide-react';
 import profile from '@/data/profile.json';
-import profilePhoto from '@/assets/profile-photo.jpeg';
 
 const NeuralNetwork3D = lazy(() => import('./NeuralNetwork3D'));
 
@@ -17,23 +16,6 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-accent/5 pointer-events-none" />
 
       <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
-        {/* Profile Photo */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="mb-6 flex justify-center"
-        >
-          <div className="relative group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-primary via-accent to-primary rounded-full opacity-50 blur-md group-hover:opacity-80 transition-opacity animate-pulse-glow" />
-            <img
-              src={profilePhoto}
-              alt={profile.name}
-              className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-full object-cover border-2 border-primary/30"
-            />
-          </div>
-        </motion.div>
-
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}

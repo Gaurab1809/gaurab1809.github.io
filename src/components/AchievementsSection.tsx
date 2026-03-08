@@ -1,6 +1,6 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
-import { Trophy, BookOpen, Award, Medal, Users, GraduationCap, Star, Mic, Image as ImageIcon } from 'lucide-react';
+import { Trophy, BookOpen, Award, Medal, Users, GraduationCap, Star, Mic } from 'lucide-react';
 import achievements from '@/data/achievements.json';
 
 const typeIcon: Record<string, typeof Trophy> = {
@@ -29,6 +29,32 @@ const typeColor: Record<string, string> = {
   membership: 'text-muted-foreground',
 };
 
+const typeBg: Record<string, string> = {
+  award: 'bg-accent/10 border-accent/30',
+  hackathon: 'bg-primary/10 border-primary/30',
+  publication: 'bg-primary/10 border-primary/30',
+  competition: 'bg-accent/10 border-accent/30',
+  academic: 'bg-primary/10 border-primary/30',
+  leadership: 'bg-accent/10 border-accent/30',
+  achievement: 'bg-primary/10 border-primary/30',
+  teaching: 'bg-accent/10 border-accent/30',
+  participation: 'bg-muted/50 border-border',
+  membership: 'bg-muted/50 border-border',
+};
+
+const typeDot: Record<string, string> = {
+  award: 'bg-accent',
+  hackathon: 'bg-primary',
+  publication: 'bg-primary',
+  competition: 'bg-accent',
+  academic: 'bg-primary',
+  leadership: 'bg-accent',
+  achievement: 'bg-primary',
+  teaching: 'bg-accent',
+  participation: 'bg-muted-foreground',
+  membership: 'bg-muted-foreground',
+};
+
 const filterTypes = ['All', 'award', 'leadership', 'achievement', 'publication', 'academic', 'teaching', 'membership'];
 
 export default function AchievementsSection() {
@@ -38,7 +64,7 @@ export default function AchievementsSection() {
   const [showAll, setShowAll] = useState(false);
 
   const filtered = filter === 'All' ? achievements : achievements.filter(a => a.type === filter);
-  const displayed = showAll ? filtered : filtered.slice(0, 12);
+  const displayed = showAll ? filtered : filtered.slice(0, 15);
 
   return (
     <section id="achievements" className="relative" ref={ref}>
@@ -71,48 +97,71 @@ export default function AchievementsSection() {
           </div>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {displayed.map((item, i) => {
-            const Icon = typeIcon[item.type] || Award;
-            const color = typeColor[item.type] || 'text-primary';
+        {/* Tree / Timeline Layout */}
+        <div className="relative">
+          {/* Central trunk line */}
+          <div className="absolute left-4 sm:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary/50 via-accent/30 to-transparent sm:-translate-x-px" />
 
-            return (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.4, delay: Math.min(i * 0.05, 0.5) }}
-                className="glass rounded-xl p-5 hover:glow-border transition-all duration-300 group"
-              >
-                {item.image && (
-                  <div className="mb-3 rounded-lg overflow-hidden h-32">
-                    <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
-                  </div>
-                )}
-                <div className="flex items-start gap-3">
-                  <div className="mt-0.5 w-8 h-8 rounded-full bg-secondary flex items-center justify-center shrink-0">
-                    <Icon className={color} size={14} />
-                  </div>
-                  <div className="min-w-0">
-                    <div className="flex items-center gap-2 mb-1 flex-wrap">
-                      <span className="text-[10px] font-mono text-primary">{item.year}</span>
-                      <span className="text-[10px] font-mono uppercase text-muted-foreground bg-secondary px-2 py-0.5 rounded-full">
-                        {item.type}
-                      </span>
+          <div className="space-y-6">
+            {displayed.map((item, i) => {
+              const Icon = typeIcon[item.type] || Award;
+              const color = typeColor[item.type] || 'text-primary';
+              const bg = typeBg[item.type] || 'bg-primary/10 border-primary/30';
+              const dot = typeDot[item.type] || 'bg-primary';
+              const isLeft = i % 2 === 0;
+
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: isLeft ? -30 : 30 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.4, delay: Math.min(i * 0.06, 0.8) }}
+                  className={`relative flex items-start gap-4 ${
+                    /* On small screens: always left-aligned. On sm+: alternate */
+                    'pl-12 sm:pl-0'
+                  } ${isLeft ? 'sm:flex-row sm:pr-[calc(50%+2rem)]' : 'sm:flex-row-reverse sm:pl-[calc(50%+2rem)]'}`}
+                >
+                  {/* Branch dot on the trunk */}
+                  <div className={`absolute left-[13px] sm:left-1/2 top-3 w-3 h-3 rounded-full ${dot} border-2 border-background z-10 sm:-translate-x-1.5`} />
+
+                  {/* Horizontal branch line */}
+                  <div className={`hidden sm:block absolute top-[17px] h-px bg-border/50 ${
+                    isLeft ? 'right-1/2 w-8 mr-1.5' : 'left-1/2 w-8 ml-1.5'
+                  }`} />
+
+                  {/* Card */}
+                  <div className={`glass rounded-xl p-5 border ${bg} hover:glow-border transition-all duration-300 group flex-1`}>
+                    {item.image && (
+                      <div className="mb-3 rounded-lg overflow-hidden h-32">
+                        <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
+                      </div>
+                    )}
+                    <div className="flex items-start gap-3">
+                      <div className="mt-0.5 w-8 h-8 rounded-full bg-secondary flex items-center justify-center shrink-0">
+                        <Icon className={color} size={14} />
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-center gap-2 mb-1 flex-wrap">
+                          <span className="text-[10px] font-mono text-primary">{item.year}</span>
+                          <span className="text-[10px] font-mono uppercase text-muted-foreground bg-secondary px-2 py-0.5 rounded-full">
+                            {item.type}
+                          </span>
+                        </div>
+                        <h3 className="font-display font-semibold text-foreground text-sm mb-1 group-hover:text-primary transition-colors">
+                          {item.title}
+                        </h3>
+                        <p className="text-[10px] font-mono text-muted-foreground/70 mb-1">{item.organization}</p>
+                        <p className="text-xs text-muted-foreground">{item.description}</p>
+                      </div>
                     </div>
-                    <h3 className="font-display font-semibold text-foreground text-sm mb-1 group-hover:text-primary transition-colors">
-                      {item.title}
-                    </h3>
-                    <p className="text-[10px] font-mono text-muted-foreground/70 mb-1">{item.organization}</p>
-                    <p className="text-xs text-muted-foreground line-clamp-2">{item.description}</p>
                   </div>
-                </div>
-              </motion.div>
-            );
-          })}
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
 
-        {filtered.length > 12 && !showAll && (
+        {filtered.length > 15 && !showAll && (
           <div className="mt-8 text-center">
             <button
               onClick={() => setShowAll(true)}
