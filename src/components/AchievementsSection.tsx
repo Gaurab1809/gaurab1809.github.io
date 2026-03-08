@@ -1,5 +1,5 @@
 import { motion, useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useRef, useState, useMemo } from 'react';
 import { Trophy, BookOpen, Award, Medal, Users, GraduationCap, Star, Mic } from 'lucide-react';
 import achievements from '@/data/achievements.json';
 
@@ -29,74 +29,110 @@ const typeColor: Record<string, string> = {
   membership: 'text-muted-foreground',
 };
 
-const typeBg: Record<string, string> = {
-  award: 'border-accent/20',
-  hackathon: 'border-primary/20',
-  publication: 'border-primary/20',
-  competition: 'border-accent/20',
-  academic: 'border-primary/20',
-  leadership: 'border-accent/20',
-  achievement: 'border-primary/20',
-  teaching: 'border-accent/20',
-  participation: 'border-border',
-  membership: 'border-border',
-};
-
 const filterTypes = ['All', 'award', 'leadership', 'achievement', 'publication', 'academic', 'teaching', 'membership'];
 
-function AchievementItem({ item, index }: { item: typeof achievements[0]; index: number }) {
-  const itemRef = useRef(null);
-  const itemInView = useInView(itemRef, { once: true, margin: '-30px' });
+function AchievementCard({ item, index }: { item: typeof achievements[0]; index: number }) {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: '-40px' });
   const Icon = typeIcon[item.type] || Award;
   const color = typeColor[item.type] || 'text-primary';
-  const border = typeBg[item.type] || 'border-primary/20';
   const isLeft = index % 2 === 0;
 
   return (
-    <div ref={itemRef} className="relative">
-      <motion.div
-        initial={{ opacity: 0, y: 30, x: isLeft ? -20 : 20 }}
-        animate={itemInView ? { opacity: 1, y: 0, x: 0 } : {}}
-        transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-        className={`relative flex items-start ${
-          isLeft
-            ? 'md:flex-row md:pr-[calc(50%+2rem)] pl-14 md:pl-0'
-            : 'md:flex-row-reverse md:pl-[calc(50%+2rem)] pl-14 md:pr-0'
-        }`}
-      >
-        {/* Icon on trunk */}
-        <div className="absolute left-[5px] md:left-1/2 top-3 z-10 md:-translate-x-1/2">
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={itemInView ? { scale: 1 } : {}}
-            transition={{ duration: 0.3, delay: 0.1, ease: 'backOut' }}
-            className="w-8 h-8 rounded-full bg-card border-2 border-primary/30 flex items-center justify-center shadow-lg"
+    <div
+      ref={ref}
+      className="relative grid grid-cols-[1fr] md:grid-cols-[1fr_40px_1fr] items-start"
+    >
+      {/* Left card (even items) */}
+      <div className={`hidden md:block ${isLeft ? '' : 'md:invisible'}`}>
+        {isLeft && (
+          <div
+            className="glass rounded-xl p-5 border border-border/50 hover:border-primary/30 transition-all duration-300 group"
+            style={{
+              opacity: inView ? 1 : 0,
+              transform: inView ? 'translateX(0)' : 'translateX(-20px)',
+              transition: 'opacity 0.4s ease-out, transform 0.4s ease-out',
+            }}
           >
-            <Icon className={color} size={14} />
-          </motion.div>
-        </div>
-
-        {/* Branch line */}
-        <div className={`hidden md:block absolute top-[22px] h-px bg-gradient-to-r from-border to-primary/20 ${
-          isLeft ? 'right-1/2 w-5 mr-[18px]' : 'left-1/2 w-5 ml-[18px]'
-        }`} />
-
-        {/* Card */}
-        <div className={`glass rounded-xl p-5 border ${border} hover:glow-border transition-all duration-300 group flex-1 min-w-0`}>
-          <div className="flex items-center gap-2 mb-2 flex-wrap">
-            <span className="text-[10px] font-mono text-primary">{item.year}</span>
-            <span className="text-[10px] font-mono uppercase text-muted-foreground bg-secondary px-2 py-0.5 rounded-full">
-              {item.type}
-            </span>
+            <CardContent item={item} Icon={Icon} color={color} />
           </div>
-          <h3 className="font-display font-semibold text-foreground text-sm mb-1 group-hover:text-primary transition-colors">
-            {item.title}
-          </h3>
-          <p className="text-[10px] font-mono text-muted-foreground/70 mb-2">{item.organization}</p>
-          <p className="text-xs text-muted-foreground leading-relaxed">{item.description}</p>
+        )}
+      </div>
+
+      {/* Center trunk + icon */}
+      <div className="hidden md:flex flex-col items-center relative">
+        <div className="w-px bg-gradient-to-b from-primary/30 to-accent/20 absolute top-0 bottom-0" />
+        <div
+          className="relative z-10 w-9 h-9 rounded-full bg-card border-2 border-primary/30 flex items-center justify-center shadow-md mt-3"
+          style={{
+            opacity: inView ? 1 : 0,
+            transform: inView ? 'scale(1)' : 'scale(0)',
+            transition: 'opacity 0.3s ease-out 0.1s, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s',
+          }}
+        >
+          <Icon className={color} size={14} />
         </div>
-      </motion.div>
+      </div>
+
+      {/* Right card (odd items) */}
+      <div className={`hidden md:block ${!isLeft ? '' : 'md:invisible'}`}>
+        {!isLeft && (
+          <div
+            className="glass rounded-xl p-5 border border-border/50 hover:border-primary/30 transition-all duration-300 group"
+            style={{
+              opacity: inView ? 1 : 0,
+              transform: inView ? 'translateX(0)' : 'translateX(20px)',
+              transition: 'opacity 0.4s ease-out, transform 0.4s ease-out',
+            }}
+          >
+            <CardContent item={item} Icon={Icon} color={color} />
+          </div>
+        )}
+      </div>
+
+      {/* Mobile layout */}
+      <div className="md:hidden relative pl-12">
+        <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-primary/30 to-accent/20 ml-[16px]" />
+        <div
+          className="absolute left-[8px] top-3 z-10 w-[18px] h-[18px] rounded-full bg-card border-2 border-primary/30 flex items-center justify-center"
+          style={{
+            opacity: inView ? 1 : 0,
+            transform: inView ? 'scale(1)' : 'scale(0)',
+            transition: 'all 0.3s ease-out',
+          }}
+        >
+          <Icon className={color} size={8} />
+        </div>
+        <div
+          className="glass rounded-xl p-4 border border-border/50 hover:border-primary/30 transition-all duration-300 group"
+          style={{
+            opacity: inView ? 1 : 0,
+            transform: inView ? 'translateY(0)' : 'translateY(15px)',
+            transition: 'opacity 0.4s ease-out, transform 0.4s ease-out',
+          }}
+        >
+          <CardContent item={item} Icon={Icon} color={color} />
+        </div>
+      </div>
     </div>
+  );
+}
+
+function CardContent({ item, Icon, color }: { item: typeof achievements[0]; Icon: typeof Award; color: string }) {
+  return (
+    <>
+      <div className="flex items-center gap-2 mb-2 flex-wrap">
+        <span className="text-[10px] font-mono text-primary">{item.year}</span>
+        <span className="text-[10px] font-mono uppercase text-muted-foreground bg-secondary px-2 py-0.5 rounded-full">
+          {item.type}
+        </span>
+      </div>
+      <h3 className="font-display font-semibold text-foreground text-sm mb-1 group-hover:text-primary transition-colors">
+        {item.title}
+      </h3>
+      <p className="text-[10px] font-mono text-muted-foreground/70 mb-2">{item.organization}</p>
+      <p className="text-xs text-muted-foreground leading-relaxed">{item.description}</p>
+    </>
   );
 }
 
@@ -106,7 +142,10 @@ export default function AchievementsSection() {
   const [filter, setFilter] = useState('All');
   const [showAll, setShowAll] = useState(false);
 
-  const filtered = filter === 'All' ? achievements : achievements.filter(a => a.type === filter);
+  const filtered = useMemo(
+    () => filter === 'All' ? achievements : achievements.filter(a => a.type === filter),
+    [filter]
+  );
   const displayed = showAll ? filtered : filtered.slice(0, 15);
 
   return (
@@ -140,31 +179,21 @@ export default function AchievementsSection() {
           </div>
         </motion.div>
 
-        <div className="relative">
-          {/* Central trunk */}
-          <div className="absolute left-[21px] md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary/40 via-accent/20 to-transparent md:-translate-x-px" />
-
-          <div className="space-y-6">
-            {displayed.map((item, i) => (
-              <AchievementItem key={`${filter}-${i}`} item={item} index={i} />
-            ))}
-          </div>
+        <div className="space-y-4 md:space-y-5">
+          {displayed.map((item, i) => (
+            <AchievementCard key={`${filter}-${item.title}-${i}`} item={item} index={i} />
+          ))}
         </div>
 
         {filtered.length > 15 && !showAll && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
-            className="mt-10 text-center"
-          >
+          <div className="mt-10 text-center">
             <button
               onClick={() => setShowAll(true)}
               className="px-6 py-2.5 text-sm font-mono text-primary border border-primary/30 rounded-lg hover:bg-primary/10 transition-all duration-200"
             >
               Show All ({filtered.length})
             </button>
-          </motion.div>
+          </div>
         )}
       </div>
     </section>
