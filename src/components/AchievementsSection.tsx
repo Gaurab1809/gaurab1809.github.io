@@ -30,75 +30,73 @@ const typeColor: Record<string, string> = {
 };
 
 const typeBg: Record<string, string> = {
-  award: 'bg-accent/10 border-accent/30',
-  hackathon: 'bg-primary/10 border-primary/30',
-  publication: 'bg-primary/10 border-primary/30',
-  competition: 'bg-accent/10 border-accent/30',
-  academic: 'bg-primary/10 border-primary/30',
-  leadership: 'bg-accent/10 border-accent/30',
-  achievement: 'bg-primary/10 border-primary/30',
-  teaching: 'bg-accent/10 border-accent/30',
-  participation: 'bg-muted/50 border-border',
-  membership: 'bg-muted/50 border-border',
+  award: 'border-accent/20',
+  hackathon: 'border-primary/20',
+  publication: 'border-primary/20',
+  competition: 'border-accent/20',
+  academic: 'border-primary/20',
+  leadership: 'border-accent/20',
+  achievement: 'border-primary/20',
+  teaching: 'border-accent/20',
+  participation: 'border-border',
+  membership: 'border-border',
 };
 
 const filterTypes = ['All', 'award', 'leadership', 'achievement', 'publication', 'academic', 'teaching', 'membership'];
 
-// Individual item wrapper with its own inView for seamless scroll reveal
 function AchievementItem({ item, index }: { item: typeof achievements[0]; index: number }) {
   const itemRef = useRef(null);
-  const itemInView = useInView(itemRef, { once: true, margin: '-50px' });
+  const itemInView = useInView(itemRef, { once: true, margin: '-30px' });
   const Icon = typeIcon[item.type] || Award;
   const color = typeColor[item.type] || 'text-primary';
-  const bg = typeBg[item.type] || 'bg-primary/10 border-primary/30';
+  const border = typeBg[item.type] || 'border-primary/20';
   const isLeft = index % 2 === 0;
 
   return (
-    <motion.div
-      ref={itemRef}
-      initial={{ opacity: 0, y: 40 }}
-      animate={itemInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-      className={`relative flex items-start gap-4 pl-14 sm:pl-0 ${
-        isLeft ? 'sm:flex-row sm:pr-[calc(50%+2.5rem)]' : 'sm:flex-row-reverse sm:pl-[calc(50%+2.5rem)]'
-      }`}
-    >
-      {/* Icon node on trunk */}
-      <div className="absolute left-[5px] sm:left-1/2 top-2 z-10 sm:-translate-x-1/2">
-        <div className={`w-8 h-8 rounded-full bg-card border-2 border-primary/40 flex items-center justify-center shadow-md`}>
-          <Icon className={color} size={14} />
+    <div ref={itemRef} className="relative">
+      <motion.div
+        initial={{ opacity: 0, y: 30, x: isLeft ? -20 : 20 }}
+        animate={itemInView ? { opacity: 1, y: 0, x: 0 } : {}}
+        transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+        className={`relative flex items-start ${
+          isLeft
+            ? 'md:flex-row md:pr-[calc(50%+2rem)] pl-14 md:pl-0'
+            : 'md:flex-row-reverse md:pl-[calc(50%+2rem)] pl-14 md:pr-0'
+        }`}
+      >
+        {/* Icon on trunk */}
+        <div className="absolute left-[5px] md:left-1/2 top-3 z-10 md:-translate-x-1/2">
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={itemInView ? { scale: 1 } : {}}
+            transition={{ duration: 0.3, delay: 0.1, ease: 'backOut' }}
+            className="w-8 h-8 rounded-full bg-card border-2 border-primary/30 flex items-center justify-center shadow-lg"
+          >
+            <Icon className={color} size={14} />
+          </motion.div>
         </div>
-      </div>
 
-      {/* Horizontal branch line */}
-      <div className={`hidden sm:block absolute top-[18px] h-px bg-border ${
-        isLeft ? 'right-1/2 w-6 mr-4' : 'left-1/2 w-6 ml-4'
-      }`} />
+        {/* Branch line */}
+        <div className={`hidden md:block absolute top-[22px] h-px bg-gradient-to-r from-border to-primary/20 ${
+          isLeft ? 'right-1/2 w-5 mr-[18px]' : 'left-1/2 w-5 ml-[18px]'
+        }`} />
 
-      {/* Card */}
-      <div className={`glass rounded-xl p-5 border ${bg} hover:glow-border transition-all duration-300 group flex-1`}>
-        {item.image && (
-          <div className="mb-3 rounded-lg overflow-hidden h-32">
-            <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
+        {/* Card */}
+        <div className={`glass rounded-xl p-5 border ${border} hover:glow-border transition-all duration-300 group flex-1 min-w-0`}>
+          <div className="flex items-center gap-2 mb-2 flex-wrap">
+            <span className="text-[10px] font-mono text-primary">{item.year}</span>
+            <span className="text-[10px] font-mono uppercase text-muted-foreground bg-secondary px-2 py-0.5 rounded-full">
+              {item.type}
+            </span>
           </div>
-        )}
-        <div className="flex items-start gap-3">
-          <div className="min-w-0 flex-1">
-            <div className="flex items-center gap-2 mb-1 flex-wrap">
-              <span className="text-[10px] font-mono text-primary">{item.year}</span>
-              <span className="text-[10px] font-mono uppercase text-muted-foreground bg-secondary px-2 py-0.5 rounded-full">
-                {item.type}
-              </span>
-            </div>
-            <h3 className="font-display font-semibold text-foreground text-sm mb-1 group-hover:text-primary transition-colors">
-              {item.title}
-            </h3>
-            <p className="text-[10px] font-mono text-muted-foreground/70 mb-1">{item.organization}</p>
-            <p className="text-xs text-muted-foreground">{item.description}</p>
-          </div>
+          <h3 className="font-display font-semibold text-foreground text-sm mb-1 group-hover:text-primary transition-colors">
+            {item.title}
+          </h3>
+          <p className="text-[10px] font-mono text-muted-foreground/70 mb-2">{item.organization}</p>
+          <p className="text-xs text-muted-foreground leading-relaxed">{item.description}</p>
         </div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
   );
 }
 
@@ -117,7 +115,7 @@ export default function AchievementsSection() {
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+          transition={{ duration: 0.6 }}
           className="mb-12"
         >
           <h2 className="text-4xl sm:text-5xl font-display font-bold mb-4">
@@ -130,7 +128,7 @@ export default function AchievementsSection() {
               <button
                 key={type}
                 onClick={() => { setFilter(type); setShowAll(false); }}
-                className={`px-3 py-1.5 text-xs font-mono rounded-lg transition-all capitalize ${
+                className={`px-3 py-1.5 text-xs font-mono rounded-lg transition-all duration-200 capitalize ${
                   filter === type
                     ? 'bg-accent text-accent-foreground'
                     : 'text-muted-foreground hover:text-accent bg-secondary/50 hover:bg-accent/10'
@@ -142,12 +140,11 @@ export default function AchievementsSection() {
           </div>
         </motion.div>
 
-        {/* Tree / Timeline Layout */}
         <div className="relative">
-          {/* Central trunk line */}
-          <div className="absolute left-[21px] sm:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary/50 via-accent/30 to-transparent sm:-translate-x-px" />
+          {/* Central trunk */}
+          <div className="absolute left-[21px] md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary/40 via-accent/20 to-transparent md:-translate-x-px" />
 
-          <div className="space-y-8">
+          <div className="space-y-6">
             {displayed.map((item, i) => (
               <AchievementItem key={`${filter}-${i}`} item={item} index={i} />
             ))}
@@ -158,12 +155,12 @@ export default function AchievementsSection() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
+            transition={{ delay: 0.3 }}
             className="mt-10 text-center"
           >
             <button
               onClick={() => setShowAll(true)}
-              className="px-6 py-2.5 text-sm font-mono text-primary border border-primary/30 rounded-lg hover:bg-primary/10 transition-all hover:shadow-lg"
+              className="px-6 py-2.5 text-sm font-mono text-primary border border-primary/30 rounded-lg hover:bg-primary/10 transition-all duration-200"
             >
               Show All ({filtered.length})
             </button>

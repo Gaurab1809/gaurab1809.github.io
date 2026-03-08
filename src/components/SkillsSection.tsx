@@ -4,21 +4,27 @@ import skillsData from '@/data/skills.json';
 
 function SkillBar({ name, level, delay }: { name: string; level: number; delay: number }) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
+  const isInView = useInView(ref, { once: true, margin: '-20px' });
 
   return (
     <div ref={ref} className="group">
       <div className="flex justify-between mb-1.5">
         <span className="text-sm font-mono text-foreground/90">{name}</span>
-        <span className="text-xs font-mono text-primary">{level}%</span>
+        <motion.span
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.4, delay: delay + 0.3 }}
+          className="text-xs font-mono text-primary"
+        >
+          {level}%
+        </motion.span>
       </div>
       <div className="h-2 bg-secondary rounded-full overflow-hidden">
         <motion.div
           initial={{ width: 0 }}
           animate={isInView ? { width: `${level}%` } : { width: 0 }}
-          transition={{ duration: 1, delay, ease: 'easeOut' }}
+          transition={{ duration: 0.8, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="h-full rounded-full bg-gradient-to-r from-primary to-accent"
-          style={{ boxShadow: '0 0 10px hsl(190 100% 50% / 0.3)' }}
         />
       </div>
     </div>
@@ -27,7 +33,7 @@ function SkillBar({ name, level, delay }: { name: string; level: number; delay: 
 
 export default function SkillsSection() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const isInView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
     <section id="skills" className="relative" ref={ref}>
@@ -44,26 +50,26 @@ export default function SkillsSection() {
           <div className="w-20 h-1 bg-primary/50 rounded-full" />
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-6">
           {skillsData.categories.map((category, catIdx) => (
             <motion.div
               key={category.name}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: catIdx * 0.15 }}
+              transition={{ duration: 0.5, delay: catIdx * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
               className="glass rounded-xl p-6 hover:glow-border transition-all duration-300"
             >
-              <h3 className="font-display font-semibold text-lg text-foreground mb-6 flex items-center gap-2">
+              <h3 className="font-display font-semibold text-lg text-foreground mb-5 flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-primary" />
                 {category.name}
               </h3>
-              <div className="space-y-4">
+              <div className="space-y-3">
                 {category.skills.map((skill, skillIdx) => (
                   <SkillBar
                     key={skill.name}
                     name={skill.name}
                     level={skill.level}
-                    delay={catIdx * 0.15 + skillIdx * 0.1}
+                    delay={skillIdx * 0.06}
                   />
                 ))}
               </div>
