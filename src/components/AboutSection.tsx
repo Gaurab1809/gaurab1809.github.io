@@ -87,7 +87,7 @@ export default function AboutSection() {
             initial={{ opacity: 0, x: 40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="hidden lg:flex justify-end sticky top-24"
+            className="hidden md:flex justify-end sticky top-24"
           >
             <div className="relative group">
               <div className="absolute -inset-2 bg-gradient-to-r from-primary via-accent to-primary rounded-2xl opacity-30 blur-xl group-hover:opacity-60 transition-opacity duration-700 animate-pulse-glow" />
