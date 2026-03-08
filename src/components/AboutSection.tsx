@@ -24,7 +24,7 @@ export default function AboutSection() {
           <div className="w-20 h-1 bg-primary/50 rounded-full" />
         </motion.div>
 
-        <div className="grid lg:grid-cols-[1fr,auto] gap-12 items-start">
+        <div className="grid md:grid-cols-[1fr,auto] gap-12 items-start">
           {/* Bio */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
