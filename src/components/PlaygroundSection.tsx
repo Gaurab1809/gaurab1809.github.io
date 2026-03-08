@@ -14,8 +14,16 @@ import BinaryPuzzle from './games/BinaryPuzzle';
 import DataSorting from './games/DataSorting';
 import PathfindingGame from './games/PathfindingGame';
 import NeuralNetworkPuzzle from './games/NeuralNetworkPuzzle';
+import ChessGame from './games/ChessGame';
+import BossFight from './games/BossFight';
+import DevDungeon from './games/DevDungeon';
+import SwarmArena from './games/SwarmArena';
 
 const games = [
+  { id: 'chess', name: 'AI Chess', description: 'Play chess against minimax AI', icon: '♟️' },
+  { id: 'boss', name: 'Boss Fight', description: 'Defeat the Bug Lord with dev knowledge', icon: '👾' },
+  { id: 'dungeon', name: 'Dev Dungeon', description: 'Solve coding puzzles to escape', icon: '🏚️' },
+  { id: 'swarm', name: 'Swarm Arena', description: 'Survive evolving AI swarms', icon: '🎯' },
   { id: 'shooter', name: 'Bug Blaster', description: 'Shoot code bugs in space', icon: '🚀' },
   { id: 'snake', name: 'Code Snake', description: 'Classic snake with a dev twist', icon: '🐍' },
   { id: 'puzzle', name: 'Code Puzzle', description: 'Solve JavaScript challenges', icon: '🧩' },
@@ -31,7 +39,7 @@ const games = [
 ];
 
 export default function PlaygroundSection() {
-  const [activeGame, setActiveGame] = useState('shooter');
+  const [activeGame, setActiveGame] = useState('chess');
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
@@ -50,12 +58,12 @@ export default function PlaygroundSection() {
           </h2>
           <div className="w-20 h-1 bg-accent/50 rounded-full mb-6" />
           <p className="text-muted-foreground max-w-lg">
-            Take a break and explore 12 interactive mini-games showcasing algorithms, AI, problem-solving, and creative coding.
+            Take a break and explore {games.length} interactive mini-games showcasing algorithms, AI, problem-solving, and creative coding.
           </p>
         </motion.div>
 
         <div className="flex flex-col lg:flex-row gap-8">
-          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-1 gap-2 lg:w-52 shrink-0">
+          <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-8 lg:grid-cols-1 gap-1.5 lg:gap-2 lg:w-52 shrink-0">
             {games.map((game) => (
               <button
                 key={game.id}
@@ -82,6 +90,10 @@ export default function PlaygroundSection() {
             transition={{ duration: 0.3 }}
             className="flex-1 flex justify-center"
           >
+            {activeGame === 'chess' && <ChessGame />}
+            {activeGame === 'boss' && <BossFight />}
+            {activeGame === 'dungeon' && <DevDungeon />}
+            {activeGame === 'swarm' && <SwarmArena />}
             {activeGame === 'shooter' && <SpaceShooter />}
             {activeGame === 'snake' && <SnakeGame />}
             {activeGame === 'puzzle' && <CodingPuzzle />}
