@@ -60,14 +60,15 @@ export default function PlaygroundSection() {
               <button
                 key={game.id}
                 onClick={() => setActiveGame(game.id)}
-                className={`text-left px-3 py-2.5 lg:px-4 lg:py-3 rounded-lg transition-all text-sm flex-shrink-0 ${
+                className={`text-left px-2 py-2 sm:px-3 sm:py-2.5 lg:px-4 lg:py-3 rounded-lg transition-all flex-shrink-0 ${
                   activeGame === game.id
                     ? 'glass glow-border text-foreground'
                     : 'text-muted-foreground hover:text-foreground hover:bg-secondary/30'
                 }`}
               >
-                <div className="font-display font-medium flex items-center gap-2 text-xs lg:text-sm">
-                  <span>{game.icon}</span> <span className="hidden sm:inline">{game.name}</span>
+                <div className="font-display font-medium flex flex-col sm:flex-row items-center gap-1 sm:gap-2 text-[10px] sm:text-xs lg:text-sm">
+                  <span className="text-base sm:text-sm">{game.icon}</span>
+                  <span className="leading-tight text-center sm:text-left">{game.name}</span>
                 </div>
                 <div className="text-xs text-muted-foreground mt-0.5 hidden lg:block">{game.description}</div>
               </button>
