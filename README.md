@@ -30,39 +30,39 @@ The site is built with modern web technologies and focuses on performance, respo
 
 ## 🛠️ Tech Stack
 
-**Frontend**
+### Frontend
 - HTML5  
 - CSS3  
 - JavaScript  
 - React / Next.js  
 
-**Styling**
+### Styling
 - Tailwind CSS  
 - Responsive layout techniques  
 
-**Deployment**
+### Deployment
 - Lovable Platform  
 
 ---
 
 ## 📂 Project Structure
 
-
+```
 portfolio
 │
 ├── public
-│ ├── images
-│ └── assets
+│   ├── images
+│   └── assets
 │
 ├── src
-│ ├── components
-│ ├── pages
-│ ├── sections
-│ └── styles
+│   ├── components
+│   ├── pages
+│   ├── sections
+│   └── styles
 │
 ├── package.json
 └── README.md
-
+```
 
 ---
 
@@ -72,44 +72,58 @@ If you want to run the project locally:
 
 ### 1️⃣ Clone the repository
 
-
+```bash
 git clone https://github.com/yourusername/portfolio.git
-2️⃣ Navigate to the project folder
+```
+
+### 2️⃣ Navigate to the project folder
+
+```bash
 cd portfolio
-3️⃣ Install dependencies
+```
+
+### 3️⃣ Install dependencies
+
+```bash
 npm install
-4️⃣ Start the development server
+```
+
+### 4️⃣ Start the development server
+
+```bash
 npm run dev
+```
 
 The website will run at:
 
+```
 http://localhost:3000
-📸 Sections Included
+```
 
-Hero Section – Introduction and quick overview
+---
 
-About Me – Background and personal summary
+## 📸 Sections Included
 
-Skills – Technologies and tools
+- **Hero Section** – Introduction and quick overview  
+- **About Me** – Background and personal summary  
+- **Skills** – Technologies and tools  
+- **Projects** – Portfolio of completed work  
+- **Experience** – Professional journey  
+- **Contact** – Ways to connect  
 
-Projects – Portfolio of completed work
+---
 
-Experience – Professional journey
-
-Contact – Ways to connect
-
-📬 Contact
+## 📬 Contact
 
 If you'd like to collaborate or have any questions, feel free to reach out.
 
-Portfolio: https://gaurabsportfolio.lovable.app
+- **Portfolio:** https://gaurabsportfolio.lovable.app  
+- **GitHub:** Your GitHub Link  
+- **LinkedIn:** Your LinkedIn Link  
+- **Email:** your-email@example.com  
 
-GitHub: Your GitHub Link
+---
 
-LinkedIn: Your LinkedIn Link
+## 📄 License
 
-Email: your-email@example.com
-
-📄 License
-
-This project is open-source and available under the MIT License.
+This project is open-source and available under the **MIT License**.
