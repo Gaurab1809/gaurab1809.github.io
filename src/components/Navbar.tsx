@@ -45,7 +45,7 @@ export default function Navbar() {
             A. K. M. Masudur Rahman<span className="text-accent">.</span>
           </a>
 
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden lg:flex items-center gap-1">
             {navItems.map((item) =>
             <a
               key={item.href}
@@ -64,7 +64,7 @@ export default function Navbar() {
             </button>
           </div>
 
-          <div className="flex items-center gap-2 md:hidden">
+          <div className="flex items-center gap-2 lg:hidden">
             <button
               onClick={() => setDark(!dark)}
               className="p-2 text-muted-foreground hover:text-primary transition-colors">
