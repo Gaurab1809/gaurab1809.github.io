@@ -1,73 +1,48 @@
-# Welcome to your Lovable project
+# 🌐 Gaurab's Portfolio
 
-## Project info
+A modern, responsive personal portfolio website showcasing projects, skills, and professional experience. This portfolio is designed to present development work, highlight technical skills, and provide an easy way for recruiters, collaborators, and clients to get in touch.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## 🚀 Live Website
+🔗 https://gaurabsportfolio.lovable.app
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## 📌 Overview
 
-**Use Lovable**
+This portfolio website serves as a digital resume and project showcase. It highlights development work, technical skills, and professional background in a visually engaging and user-friendly format.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+The site is built with modern web technologies and focuses on performance, responsiveness, and clean UI/UX design. It provides visitors with quick access to projects, experience, and contact information.
 
-Changes made via Lovable will be committed automatically to this repo.
+---
 
-**Use your preferred IDE**
+## ✨ Features
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- Modern and responsive design  
+- Interactive and visually appealing UI  
+- Projects showcase with descriptions  
+- Skills and technology stack display  
+- Professional experience section  
+- Contact section for collaboration  
+- Optimized for desktop and mobile devices  
+- Smooth navigation and animations  
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+---
 
-Follow these steps:
+## 🛠️ Tech Stack
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+**Frontend**
+- HTML5  
+- CSS3  
+- JavaScript  
+- React / Next.js  
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+**Styling**
+- Tailwind CSS  
+- Responsive layout techniques  
 
-# Step 3: Install the necessary dependencies.
-npm i
+**Deployment**
+- Lovable Platform  
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+---
 
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+## 📂 Project Structure
