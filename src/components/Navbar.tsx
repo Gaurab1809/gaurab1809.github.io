@@ -50,7 +50,7 @@ export default function Navbar() {
             <a
               key={item.href}
               href={item.href}
-              className="px-3 py-2 text-xs font-medium text-muted-foreground hover:text-primary transition-colors rounded-lg hover:bg-primary/5">
+              className="px-3 py-2 text-xs font-medium transition-colors rounded-lg hover:bg-primary/5 text-muted-foreground">
               
                 {item.label}
               </a>
