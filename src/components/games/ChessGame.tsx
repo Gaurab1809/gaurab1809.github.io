@@ -233,7 +233,7 @@ export default function ChessGame() {
   const isLastAI = (r: number, c: number) => lastAIMove && ((lastAIMove.from[0] === r && lastAIMove.from[1] === c) || (lastAIMove.to[0] === r && lastAIMove.to[1] === c));
 
   return (
-    <div className="glass rounded-xl p-4 sm:p-6 max-w-lg mx-auto w-full">
+    <div className="glass rounded-xl p-4 sm:p-6 w-full">
       <div className="flex items-center justify-between mb-3">
         <h3 className="font-display font-semibold text-foreground flex items-center gap-2">
           <Crown size={16} className="text-primary" /> AI Chess

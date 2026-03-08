@@ -28,14 +28,14 @@ const games = [
   { id: 'snake', name: 'Code Snake', description: 'Classic snake with a dev twist', icon: '🐍' },
   { id: 'puzzle', name: 'Code Puzzle', description: 'Solve JavaScript challenges', icon: '🧩' },
   { id: 'typing', name: 'Code Typer', description: 'Test your typing speed', icon: '⌨️' },
-  { id: 'tictactoe', name: 'AI Tic Tac Toe', description: 'Play against minimax AI', icon: '🤖' },
-  { id: 'memory', name: 'Memory Match', description: 'Tech-themed card matching', icon: '🧠' },
-  { id: 'reaction', name: 'Reaction Speed', description: 'Test your reflexes', icon: '⚡' },
+  { id: 'tictactoe', name: 'Tic Tac Toe', description: 'Play against minimax AI', icon: '🤖' },
+  { id: 'memory', name: 'Memory', description: 'Tech-themed card matching', icon: '🧠' },
+  { id: 'reaction', name: 'Reaction', description: 'Test your reflexes', icon: '⚡' },
   { id: 'trivia', name: 'Dev Trivia', description: 'Quiz your dev knowledge', icon: '❓' },
-  { id: 'binary', name: 'Binary Puzzle', description: 'Binary conversions & ops', icon: '🔢' },
-  { id: 'sorting', name: 'Data Sorter', description: 'Sort the array visually', icon: '📊' },
+  { id: 'binary', name: 'Binary', description: 'Binary conversions & ops', icon: '🔢' },
+  { id: 'sorting', name: 'Data Sort', description: 'Sort the array visually', icon: '📊' },
   { id: 'pathfinding', name: 'Pathfinder', description: 'BFS algorithm visualizer', icon: '🗺️' },
-  { id: 'neural', name: 'Neural Puzzle', description: 'Compute neuron outputs', icon: '🧬' },
+  { id: 'neural', name: 'Neural Net', description: 'Compute neuron outputs', icon: '🧬' },
 ];
 
 export default function PlaygroundSection() {
@@ -62,50 +62,59 @@ export default function PlaygroundSection() {
           </p>
         </motion.div>
 
-        <div className="flex flex-col lg:flex-row gap-8">
-          <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-8 lg:grid-cols-1 gap-1.5 lg:gap-2 lg:w-52 shrink-0">
-            {games.map((game) => (
-              <button
-                key={game.id}
-                onClick={() => setActiveGame(game.id)}
-                className={`text-left px-2 py-2 sm:px-3 sm:py-2.5 lg:px-4 lg:py-3 rounded-lg transition-all flex-shrink-0 ${
-                  activeGame === game.id
-                    ? 'glass glow-border text-foreground'
-                    : 'text-muted-foreground hover:text-foreground hover:bg-secondary/30'
-                }`}
-              >
-                <div className="font-display font-medium flex flex-col sm:flex-row items-center gap-1 sm:gap-2 text-[10px] sm:text-xs lg:text-sm">
-                  <span className="text-base sm:text-sm">{game.icon}</span>
-                  <span className="leading-tight text-center sm:text-left">{game.name}</span>
-                </div>
-                <div className="text-xs text-muted-foreground mt-0.5 hidden lg:block">{game.description}</div>
-              </button>
-            ))}
+        <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
+          {/* Game selector - horizontal scrollable on mobile/tablet, vertical sidebar on desktop */}
+          <div className="lg:w-48 shrink-0">
+            <div className="flex lg:flex-col gap-1.5 overflow-x-auto lg:overflow-x-visible pb-2 lg:pb-0 snap-x lg:snap-none scrollbar-thin">
+              {games.map((game) => (
+                <button
+                  key={game.id}
+                  onClick={() => setActiveGame(game.id)}
+                  className={`snap-start flex-shrink-0 lg:flex-shrink rounded-lg transition-all
+                    px-3 py-2 lg:px-3 lg:py-2.5 min-w-[72px] lg:min-w-0 lg:w-full
+                    ${activeGame === game.id
+                      ? 'glass glow-border text-foreground'
+                      : 'text-muted-foreground hover:text-foreground hover:bg-secondary/30'
+                    }`}
+                >
+                  <div className="flex flex-col lg:flex-row items-center lg:items-center gap-1 lg:gap-2">
+                    <span className="text-lg lg:text-base">{game.icon}</span>
+                    <span className="text-[10px] sm:text-xs lg:text-sm font-display font-medium leading-tight text-center lg:text-left whitespace-nowrap lg:whitespace-normal">
+                      {game.name}
+                    </span>
+                  </div>
+                  <div className="text-[10px] text-muted-foreground mt-0.5 hidden lg:block">{game.description}</div>
+                </button>
+              ))}
+            </div>
           </div>
 
+          {/* Game area - consistent width across all games */}
           <motion.div
             key={activeGame}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
-            className="flex-1 flex justify-center"
+            className="flex-1 flex justify-center items-start"
           >
-            {activeGame === 'chess' && <ChessGame />}
-            {activeGame === 'boss' && <BossFight />}
-            {activeGame === 'dungeon' && <DevDungeon />}
-            {activeGame === 'swarm' && <SwarmArena />}
-            {activeGame === 'shooter' && <SpaceShooter />}
-            {activeGame === 'snake' && <SnakeGame />}
-            {activeGame === 'puzzle' && <CodingPuzzle />}
-            {activeGame === 'typing' && <TypingTest />}
-            {activeGame === 'tictactoe' && <TicTacToe />}
-            {activeGame === 'memory' && <MemoryGame />}
-            {activeGame === 'reaction' && <ReactionSpeed />}
-            {activeGame === 'trivia' && <DevTrivia />}
-            {activeGame === 'binary' && <BinaryPuzzle />}
-            {activeGame === 'sorting' && <DataSorting />}
-            {activeGame === 'pathfinding' && <PathfindingGame />}
-            {activeGame === 'neural' && <NeuralNetworkPuzzle />}
+            <div className="w-full max-w-md">
+              {activeGame === 'chess' && <ChessGame />}
+              {activeGame === 'boss' && <BossFight />}
+              {activeGame === 'dungeon' && <DevDungeon />}
+              {activeGame === 'swarm' && <SwarmArena />}
+              {activeGame === 'shooter' && <SpaceShooter />}
+              {activeGame === 'snake' && <SnakeGame />}
+              {activeGame === 'puzzle' && <CodingPuzzle />}
+              {activeGame === 'typing' && <TypingTest />}
+              {activeGame === 'tictactoe' && <TicTacToe />}
+              {activeGame === 'memory' && <MemoryGame />}
+              {activeGame === 'reaction' && <ReactionSpeed />}
+              {activeGame === 'trivia' && <DevTrivia />}
+              {activeGame === 'binary' && <BinaryPuzzle />}
+              {activeGame === 'sorting' && <DataSorting />}
+              {activeGame === 'pathfinding' && <PathfindingGame />}
+              {activeGame === 'neural' && <NeuralNetworkPuzzle />}
+            </div>
           </motion.div>
         </div>
       </div>

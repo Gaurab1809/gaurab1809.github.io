@@ -128,7 +128,7 @@ export default function SpaceShooter() {
   }, [started, gameOver, level, score]);
 
   return (
-    <div className="glass rounded-xl p-6 max-w-sm mx-auto px-[24px]">
+    <div className="glass rounded-xl p-4 sm:p-6 w-full">
       <div className="flex items-center justify-between mb-3">
         <h3 className="font-display font-semibold text-foreground flex items-center gap-2">
           <Crosshair size={16} className="text-accent" /> Bug Blaster
