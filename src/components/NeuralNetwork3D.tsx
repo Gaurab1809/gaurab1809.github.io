@@ -21,34 +21,29 @@ function useThemeColors() {
   }, []);
 
   return useMemo(() => ({
-    node: isDark ? '#00d4ff' : '#1a6dd4',
-    glow: isDark ? '#00d4ff' : '#2563eb',
-    connection: isDark ? '#00d4ff' : '#3b82f6',
-    connectionOpacity: isDark ? 0.08 : 0.15,
-    particle: isDark ? '#7cff00' : '#16a34a',
-    particleOpacity: isDark ? 0.5 : 0.7,
+    node: isDark ? '#00d4ff' : '#2563eb',
+    glow: isDark ? '#00d4ff' : '#3b82f6',
+    connection: isDark ? '#00d4ff' : '#2563eb',
+    connectionOpacity: isDark ? 0.25 : 0.2,
+    particle: isDark ? '#7cff00' : '#7c3aed',
+    particleOpacity: isDark ? 0.7 : 0.6,
     signal: isDark ? '#ffffff' : '#1e40af',
-    signalOpacity: isDark ? 0.9 : 0.85,
-    glowOpacity: isDark ? 0.1 : 0.15,
+    signalOpacity: isDark ? 0.9 : 0.8,
+    glowOpacity: isDark ? 0.25 : 0.2,
   }), [isDark]);
 }
 
-// Shared mouse position for cursor interactivity
 const mousePos = { x: 0, y: 0, targetX: 0, targetY: 0 };
 
 function CameraRig() {
   const { camera } = useThree();
-
   useFrame(() => {
-    // Smooth lerp toward target
-    mousePos.x += (mousePos.targetX - mousePos.x) * 0.05;
-    mousePos.y += (mousePos.targetY - mousePos.y) * 0.05;
-
-    camera.position.x = mousePos.x * 3;
-    camera.position.y = mousePos.y * 2;
+    mousePos.x += (mousePos.targetX - mousePos.x) * 0.12;
+    mousePos.y += (mousePos.targetY - mousePos.y) * 0.12;
+    camera.position.x = mousePos.x * 5;
+    camera.position.y = mousePos.y * 3.5;
     camera.lookAt(0, 0, 0);
   });
-
   return null;
 }
 
@@ -78,21 +73,20 @@ function NeuralNodes({ colors }: { colors: ReturnType<typeof useThemeColors> }) 
   useFrame(({ clock }) => {
     if (!meshRef.current || !glowRef.current) return;
     const t = clock.getElapsedTime();
+    const mx = mousePos.x;
+    const my = mousePos.y;
     nodes.forEach((n, i) => {
       const pulse = Math.sin(t * n.speed * 2 + n.offset);
-      // Add mouse influence to node positions
-      const mx = mousePos.x * 0.5;
-      const my = mousePos.y * 0.3;
       dummy.position.set(
-        n.x + Math.sin(t * 0.3 + n.offset) * 0.15 + mx * 0.2,
-        n.y + Math.cos(t * n.speed + n.offset) * 0.3 + my * 0.2,
-        n.z + Math.sin(t * 0.5 + n.offset) * 0.2
+        n.x + Math.sin(t * 0.5 + n.offset) * 0.3 + mx * 1.2,
+        n.y + Math.cos(t * n.speed * 1.5 + n.offset) * 0.4 + my * 0.8,
+        n.z + Math.sin(t * 0.7 + n.offset) * 0.3
       );
-      const scale = 0.12 + pulse * 0.04;
+      const scale = 0.15 + pulse * 0.05;
       dummy.scale.setScalar(scale);
       dummy.updateMatrix();
       meshRef.current!.setMatrixAt(i, dummy.matrix);
-      dummy.scale.setScalar(scale * 3);
+      dummy.scale.setScalar(scale * 3.5);
       dummy.updateMatrix();
       glowRef.current!.setMatrixAt(i, dummy.matrix);
     });
@@ -146,8 +140,8 @@ function NeuralConnections({ colors }: { colors: ReturnType<typeof useThemeColor
   useFrame(({ clock }) => {
     if (!linesRef.current) return;
     const t = clock.getElapsedTime();
-    linesRef.current.rotation.y = Math.sin(t * 0.1) * 0.15 + mousePos.x * 0.1;
-    linesRef.current.rotation.x = Math.sin(t * 0.07) * 0.08 + mousePos.y * 0.08;
+    linesRef.current.rotation.y = Math.sin(t * 0.15) * 0.2 + mousePos.x * 0.25;
+    linesRef.current.rotation.x = Math.sin(t * 0.1) * 0.12 + mousePos.y * 0.2;
   });
 
   const geometry = useMemo(() => {
@@ -172,15 +166,15 @@ function NeuralConnections({ colors }: { colors: ReturnType<typeof useThemeColor
 
 function DataParticles({ colors }: { colors: ReturnType<typeof useThemeColors> }) {
   const meshRef = useRef<THREE.InstancedMesh>(null);
-  const count = 120;
+  const count = 200;
   const dummy = useMemo(() => new THREE.Object3D(), []);
 
   const particles = useMemo(() => {
     return Array.from({ length: count }, () => ({
-      x: (Math.random() - 0.5) * 30,
-      y: (Math.random() - 0.5) * 25,
-      z: (Math.random() - 0.5) * 15,
-      speed: 0.1 + Math.random() * 0.3,
+      x: (Math.random() - 0.5) * 40,
+      y: (Math.random() - 0.5) * 30,
+      z: (Math.random() - 0.5) * 20,
+      speed: 0.15 + Math.random() * 0.4,
       offset: Math.random() * Math.PI * 2,
     }));
   }, []);
@@ -190,12 +184,12 @@ function DataParticles({ colors }: { colors: ReturnType<typeof useThemeColors> }
     const t = clock.getElapsedTime();
     particles.forEach((p, i) => {
       dummy.position.set(
-        p.x + Math.sin(t * p.speed + p.offset) * 1.5 + mousePos.x * 0.8,
-        p.y + Math.cos(t * p.speed * 0.7 + p.offset) * 1 + mousePos.y * 0.5,
-        p.z + Math.sin(t * p.speed * 0.5) * 0.5
+        p.x + Math.sin(t * p.speed + p.offset) * 2 + mousePos.x * 2,
+        p.y + Math.cos(t * p.speed * 0.8 + p.offset) * 1.5 + mousePos.y * 1.5,
+        p.z + Math.sin(t * p.speed * 0.5) * 0.8
       );
       const pulse = 0.5 + Math.sin(t * 3 + p.offset) * 0.5;
-      dummy.scale.setScalar(0.02 + pulse * 0.015);
+      dummy.scale.setScalar(0.03 + pulse * 0.025);
       dummy.updateMatrix();
       meshRef.current!.setMatrixAt(i, dummy.matrix);
     });
@@ -212,7 +206,7 @@ function DataParticles({ colors }: { colors: ReturnType<typeof useThemeColors> }
 
 function SignalPulses({ colors }: { colors: ReturnType<typeof useThemeColors> }) {
   const meshRef = useRef<THREE.InstancedMesh>(null);
-  const count = 30;
+  const count = 40;
   const dummy = useMemo(() => new THREE.Object3D(), []);
 
   const pulses = useMemo(() => {
@@ -228,7 +222,7 @@ function SignalPulses({ colors }: { colors: ReturnType<typeof useThemeColors> })
       return {
         startX: layerA.x, startY: startYA + nodeA * spacing,
         endX: layerB.x, endY: startYB + nodeB * spacing,
-        speed: 0.5 + Math.random() * 1.5,
+        speed: 0.8 + Math.random() * 2,
         offset: Math.random() * Math.PI * 2,
       };
     });
@@ -245,7 +239,7 @@ function SignalPulses({ colors }: { colors: ReturnType<typeof useThemeColors> })
         0
       );
       const brightness = Math.sin(progress * Math.PI);
-      dummy.scale.setScalar(0.04 + brightness * 0.03);
+      dummy.scale.setScalar(0.05 + brightness * 0.04);
       dummy.updateMatrix();
       meshRef.current!.setMatrixAt(i, dummy.matrix);
     });
@@ -288,7 +282,7 @@ export default function NeuralNetwork3D() {
 
   return (
     <div
-      className="absolute inset-0"
+      className="absolute inset-0 z-0"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
