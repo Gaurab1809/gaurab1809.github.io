@@ -97,7 +97,7 @@ export default function TicTacToeGame() {
   const reset = () => { setBoard(Array(9).fill(null)); setIsPlayerTurn(true); };
 
   return (
-    <div className="glass rounded-xl p-6 max-w-sm mx-auto">
+    <div className="glass rounded-xl p-4 sm:p-6 w-full">
       <div className="flex items-center justify-between mb-4">
         <h3 className="font-display font-semibold text-foreground">AI Tic Tac Toe</h3>
         <button onClick={reset} className="p-2 text-muted-foreground hover:text-primary transition-colors">

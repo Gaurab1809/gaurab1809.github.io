@@ -67,7 +67,7 @@ export default function DataSorting() {
   const maxVal = Math.max(...array, 1);
 
   return (
-    <div className="glass rounded-xl p-6 max-w-sm mx-auto">
+    <div className="glass rounded-xl p-4 sm:p-6 w-full">
       <div className="flex items-center justify-between mb-3">
         <h3 className="font-display font-semibold text-foreground flex items-center gap-2">
           <ArrowDownUp size={16} className="text-primary" /> Data Sorter
