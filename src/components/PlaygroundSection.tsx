@@ -65,21 +65,20 @@ export default function PlaygroundSection() {
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
           {/* Game selector - horizontal scrollable on mobile/tablet, vertical sidebar on desktop */}
           <div className="lg:w-48 shrink-0">
-            <div className="flex lg:flex-col gap-1.5 overflow-x-auto lg:overflow-x-visible pb-2 lg:pb-0 snap-x lg:snap-none scrollbar-thin">
+            <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-8 lg:flex lg:flex-col gap-1.5">
               {games.map((game) => (
                 <button
                   key={game.id}
                   onClick={() => setActiveGame(game.id)}
-                  className={`snap-start flex-shrink-0 lg:flex-shrink rounded-lg transition-all
-                    px-3 py-2 lg:px-3 lg:py-2.5 min-w-[72px] lg:min-w-0 lg:w-full
+                  className={`rounded-lg transition-all px-1.5 py-1.5 sm:px-2 sm:py-2 lg:px-3 lg:py-2.5 lg:w-full
                     ${activeGame === game.id
                       ? 'glass glow-border text-foreground'
                       : 'text-muted-foreground hover:text-foreground hover:bg-secondary/30'
                     }`}
                 >
-                  <div className="flex flex-col lg:flex-row items-center lg:items-center gap-1 lg:gap-2">
-                    <span className="text-lg lg:text-base">{game.icon}</span>
-                    <span className="text-[10px] sm:text-xs lg:text-sm font-display font-medium leading-tight text-center lg:text-left whitespace-nowrap lg:whitespace-normal">
+                  <div className="flex flex-col lg:flex-row items-center lg:items-center gap-0.5 lg:gap-2">
+                    <span className="text-base sm:text-lg lg:text-base">{game.icon}</span>
+                    <span className="text-[9px] sm:text-[10px] lg:text-sm font-display font-medium leading-tight text-center lg:text-left">
                       {game.name}
                     </span>
                   </div>
