@@ -1,24 +1,46 @@
-import { useRef, useMemo } from 'react';
+import { useRef, useMemo, useState, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
-// Neural network layer structure
 const LAYERS = [
-  { count: 6, x: -6, color: '#00d4ff' },
-  { count: 8, x: -3, color: '#00e5ff' },
-  { count: 10, x: 0, color: '#00ffcc' },
-  { count: 8, x: 3, color: '#7cff00' },
-  { count: 5, x: 6, color: '#00d4ff' },
+  { count: 6, x: -6 },
+  { count: 8, x: -3 },
+  { count: 10, x: 0 },
+  { count: 8, x: 3 },
+  { count: 5, x: 6 },
 ];
 
-function NeuralNodes() {
+function useThemeColors() {
+  const [isDark, setIsDark] = useState(true);
+  useEffect(() => {
+    const check = () => setIsDark(document.documentElement.classList.contains('dark'));
+    check();
+    const observer = new MutationObserver(check);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    return () => observer.disconnect();
+  }, []);
+
+  return useMemo(() => ({
+    node: isDark ? '#00d4ff' : '#1a6dd4',
+    glow: isDark ? '#00d4ff' : '#2563eb',
+    connection: isDark ? '#00d4ff' : '#3b82f6',
+    connectionOpacity: isDark ? 0.06 : 0.12,
+    particle: isDark ? '#7cff00' : '#16a34a',
+    particleOpacity: isDark ? 0.5 : 0.7,
+    signal: isDark ? '#ffffff' : '#1e40af',
+    signalOpacity: isDark ? 0.9 : 0.8,
+    glowOpacity: isDark ? 0.08 : 0.12,
+  }), [isDark]);
+}
+
+function NeuralNodes({ colors }: { colors: ReturnType<typeof useThemeColors> }) {
   const meshRef = useRef<THREE.InstancedMesh>(null);
   const glowRef = useRef<THREE.InstancedMesh>(null);
   const dummy = useMemo(() => new THREE.Object3D(), []);
 
   const nodes = useMemo(() => {
-    const result: { x: number; y: number; z: number; layer: number; speed: number; offset: number; color: string }[] = [];
-    LAYERS.forEach((layer, li) => {
+    const result: { x: number; y: number; z: number; speed: number; offset: number }[] = [];
+    LAYERS.forEach((layer) => {
       const spacing = 2.2;
       const startY = -((layer.count - 1) * spacing) / 2;
       for (let i = 0; i < layer.count; i++) {
@@ -26,10 +48,8 @@ function NeuralNodes() {
           x: layer.x,
           y: startY + i * spacing,
           z: (Math.random() - 0.5) * 2,
-          layer: li,
           speed: 0.3 + Math.random() * 0.4,
           offset: Math.random() * Math.PI * 2,
-          color: layer.color,
         });
       }
     });
@@ -50,8 +70,6 @@ function NeuralNodes() {
       dummy.scale.setScalar(scale);
       dummy.updateMatrix();
       meshRef.current!.setMatrixAt(i, dummy.matrix);
-
-      // Glow sphere (larger, transparent)
       dummy.scale.setScalar(scale * 3);
       dummy.updateMatrix();
       glowRef.current!.setMatrixAt(i, dummy.matrix);
@@ -61,37 +79,32 @@ function NeuralNodes() {
   });
 
   const count = nodes.length;
-
   return (
     <>
       <instancedMesh ref={meshRef} args={[undefined, undefined, count]}>
         <sphereGeometry args={[1, 16, 16]} />
-        <meshBasicMaterial color="#00d4ff" toneMapped={false} />
+        <meshBasicMaterial color={colors.node} toneMapped={false} />
       </instancedMesh>
       <instancedMesh ref={glowRef} args={[undefined, undefined, count]}>
         <sphereGeometry args={[1, 8, 8]} />
-        <meshBasicMaterial color="#00d4ff" transparent opacity={0.08} toneMapped={false} />
+        <meshBasicMaterial color={colors.glow} transparent opacity={colors.glowOpacity} toneMapped={false} />
       </instancedMesh>
     </>
   );
 }
 
-function NeuralConnections() {
+function NeuralConnections({ colors }: { colors: ReturnType<typeof useThemeColors> }) {
   const linesRef = useRef<THREE.Group>(null);
 
   const connections = useMemo(() => {
     const conns: { start: THREE.Vector3; end: THREE.Vector3 }[] = [];
-    
     for (let li = 0; li < LAYERS.length - 1; li++) {
       const layerA = LAYERS[li];
       const layerB = LAYERS[li + 1];
-      const spacingA = 2.2;
-      const spacingB = 2.2;
-      const startYA = -((layerA.count - 1) * spacingA) / 2;
-      const startYB = -((layerB.count - 1) * spacingB) / 2;
-
+      const spacing = 2.2;
+      const startYA = -((layerA.count - 1) * spacing) / 2;
+      const startYB = -((layerB.count - 1) * spacing) / 2;
       for (let a = 0; a < layerA.count; a++) {
-        // Connect to 2-3 random nodes in next layer
         const connectCount = 2 + Math.floor(Math.random() * 2);
         const targets = new Set<number>();
         while (targets.size < Math.min(connectCount, layerB.count)) {
@@ -99,8 +112,8 @@ function NeuralConnections() {
         }
         targets.forEach(b => {
           conns.push({
-            start: new THREE.Vector3(layerA.x, startYA + a * spacingA, 0),
-            end: new THREE.Vector3(layerB.x, startYB + b * spacingB, 0),
+            start: new THREE.Vector3(layerA.x, startYA + a * spacing, 0),
+            end: new THREE.Vector3(layerB.x, startYB + b * spacing, 0),
           });
         });
       }
@@ -128,13 +141,13 @@ function NeuralConnections() {
   return (
     <group ref={linesRef}>
       <lineSegments geometry={geometry}>
-        <lineBasicMaterial color="#00d4ff" transparent opacity={0.06} />
+        <lineBasicMaterial color={colors.connection} transparent opacity={colors.connectionOpacity} />
       </lineSegments>
     </group>
   );
 }
 
-function DataParticles() {
+function DataParticles({ colors }: { colors: ReturnType<typeof useThemeColors> }) {
   const meshRef = useRef<THREE.InstancedMesh>(null);
   const count = 120;
   const dummy = useMemo(() => new THREE.Object3D(), []);
@@ -169,12 +182,12 @@ function DataParticles() {
   return (
     <instancedMesh ref={meshRef} args={[undefined, undefined, count]}>
       <sphereGeometry args={[1, 6, 6]} />
-      <meshBasicMaterial color="#7cff00" transparent opacity={0.5} toneMapped={false} />
+      <meshBasicMaterial color={colors.particle} transparent opacity={colors.particleOpacity} toneMapped={false} />
     </instancedMesh>
   );
 }
 
-function SignalPulses() {
+function SignalPulses({ colors }: { colors: ReturnType<typeof useThemeColors> }) {
   const meshRef = useRef<THREE.InstancedMesh>(null);
   const count = 30;
   const dummy = useMemo(() => new THREE.Object3D(), []);
@@ -184,18 +197,14 @@ function SignalPulses() {
       const layerIdx = Math.floor(Math.random() * (LAYERS.length - 1));
       const layerA = LAYERS[layerIdx];
       const layerB = LAYERS[layerIdx + 1];
-      const spacingA = 2.2;
-      const spacingB = 2.2;
+      const spacing = 2.2;
       const nodeA = Math.floor(Math.random() * layerA.count);
       const nodeB = Math.floor(Math.random() * layerB.count);
-      const startYA = -((layerA.count - 1) * spacingA) / 2;
-      const startYB = -((layerB.count - 1) * spacingB) / 2;
-      
+      const startYA = -((layerA.count - 1) * spacing) / 2;
+      const startYB = -((layerB.count - 1) * spacing) / 2;
       return {
-        startX: layerA.x,
-        startY: startYA + nodeA * spacingA,
-        endX: layerB.x,
-        endY: startYB + nodeB * spacingB,
+        startX: layerA.x, startY: startYA + nodeA * spacing,
+        endX: layerB.x, endY: startYB + nodeB * spacing,
         speed: 0.5 + Math.random() * 1.5,
         offset: Math.random() * Math.PI * 2,
       };
@@ -223,8 +232,21 @@ function SignalPulses() {
   return (
     <instancedMesh ref={meshRef} args={[undefined, undefined, count]}>
       <sphereGeometry args={[1, 8, 8]} />
-      <meshBasicMaterial color="#ffffff" transparent opacity={0.9} toneMapped={false} />
+      <meshBasicMaterial color={colors.signal} transparent opacity={colors.signalOpacity} toneMapped={false} />
     </instancedMesh>
+  );
+}
+
+function Scene() {
+  const colors = useThemeColors();
+  return (
+    <>
+      <ambientLight intensity={0.3} />
+      <NeuralNodes colors={colors} />
+      <NeuralConnections colors={colors} />
+      <DataParticles colors={colors} />
+      <SignalPulses colors={colors} />
+    </>
   );
 }
 
@@ -236,11 +258,7 @@ export default function NeuralNetwork3D() {
         gl={{ antialias: true, alpha: true }}
         style={{ background: 'transparent' }}
       >
-        <ambientLight intensity={0.3} />
-        <NeuralNodes />
-        <NeuralConnections />
-        <DataParticles />
-        <SignalPulses />
+        <Scene />
       </Canvas>
     </div>
   );
