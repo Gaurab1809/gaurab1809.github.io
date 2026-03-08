@@ -108,7 +108,7 @@ function AchievementCard({ item, index }: { item: typeof achievements[0]; index:
       </div>
 
       {/* Mobile layout */}
-      <div className="md:hidden relative pl-12">
+      <div className="lg:hidden relative pl-12">
         <div
           className="absolute left-[8px] top-3 z-10 w-[18px] h-[18px] rounded-full bg-card border-2 border-primary/30 flex items-center justify-center"
           style={{
