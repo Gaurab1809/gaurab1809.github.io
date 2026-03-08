@@ -72,7 +72,7 @@ If you want to run the project locally:
 
 ### 1️⃣ Clone the repository
 
-```bash
+
 git clone https://github.com/yourusername/portfolio.git
 2️⃣ Navigate to the project folder
 cd portfolio
