@@ -1,5 +1,5 @@
-import { useRef, useMemo, useState, useEffect } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
+import { useRef, useMemo, useState, useEffect, useCallback } from 'react';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
 
 const LAYERS = [
@@ -24,13 +24,32 @@ function useThemeColors() {
     node: isDark ? '#00d4ff' : '#1a6dd4',
     glow: isDark ? '#00d4ff' : '#2563eb',
     connection: isDark ? '#00d4ff' : '#3b82f6',
-    connectionOpacity: isDark ? 0.06 : 0.12,
+    connectionOpacity: isDark ? 0.08 : 0.15,
     particle: isDark ? '#7cff00' : '#16a34a',
     particleOpacity: isDark ? 0.5 : 0.7,
     signal: isDark ? '#ffffff' : '#1e40af',
-    signalOpacity: isDark ? 0.9 : 0.8,
-    glowOpacity: isDark ? 0.08 : 0.12,
+    signalOpacity: isDark ? 0.9 : 0.85,
+    glowOpacity: isDark ? 0.1 : 0.15,
   }), [isDark]);
+}
+
+// Shared mouse position for cursor interactivity
+const mousePos = { x: 0, y: 0, targetX: 0, targetY: 0 };
+
+function CameraRig() {
+  const { camera } = useThree();
+
+  useFrame(() => {
+    // Smooth lerp toward target
+    mousePos.x += (mousePos.targetX - mousePos.x) * 0.05;
+    mousePos.y += (mousePos.targetY - mousePos.y) * 0.05;
+
+    camera.position.x = mousePos.x * 3;
+    camera.position.y = mousePos.y * 2;
+    camera.lookAt(0, 0, 0);
+  });
+
+  return null;
 }
 
 function NeuralNodes({ colors }: { colors: ReturnType<typeof useThemeColors> }) {
@@ -61,9 +80,12 @@ function NeuralNodes({ colors }: { colors: ReturnType<typeof useThemeColors> }) 
     const t = clock.getElapsedTime();
     nodes.forEach((n, i) => {
       const pulse = Math.sin(t * n.speed * 2 + n.offset);
+      // Add mouse influence to node positions
+      const mx = mousePos.x * 0.5;
+      const my = mousePos.y * 0.3;
       dummy.position.set(
-        n.x + Math.sin(t * 0.3 + n.offset) * 0.15,
-        n.y + Math.cos(t * n.speed + n.offset) * 0.3,
+        n.x + Math.sin(t * 0.3 + n.offset) * 0.15 + mx * 0.2,
+        n.y + Math.cos(t * n.speed + n.offset) * 0.3 + my * 0.2,
         n.z + Math.sin(t * 0.5 + n.offset) * 0.2
       );
       const scale = 0.12 + pulse * 0.04;
@@ -123,8 +145,9 @@ function NeuralConnections({ colors }: { colors: ReturnType<typeof useThemeColor
 
   useFrame(({ clock }) => {
     if (!linesRef.current) return;
-    linesRef.current.rotation.y = Math.sin(clock.getElapsedTime() * 0.1) * 0.15;
-    linesRef.current.rotation.x = Math.sin(clock.getElapsedTime() * 0.07) * 0.08;
+    const t = clock.getElapsedTime();
+    linesRef.current.rotation.y = Math.sin(t * 0.1) * 0.15 + mousePos.x * 0.1;
+    linesRef.current.rotation.x = Math.sin(t * 0.07) * 0.08 + mousePos.y * 0.08;
   });
 
   const geometry = useMemo(() => {
@@ -167,8 +190,8 @@ function DataParticles({ colors }: { colors: ReturnType<typeof useThemeColors> }
     const t = clock.getElapsedTime();
     particles.forEach((p, i) => {
       dummy.position.set(
-        p.x + Math.sin(t * p.speed + p.offset) * 1.5,
-        p.y + Math.cos(t * p.speed * 0.7 + p.offset) * 1,
+        p.x + Math.sin(t * p.speed + p.offset) * 1.5 + mousePos.x * 0.8,
+        p.y + Math.cos(t * p.speed * 0.7 + p.offset) * 1 + mousePos.y * 0.5,
         p.z + Math.sin(t * p.speed * 0.5) * 0.5
       );
       const pulse = 0.5 + Math.sin(t * 3 + p.offset) * 0.5;
@@ -242,6 +265,7 @@ function Scene() {
   return (
     <>
       <ambientLight intensity={0.3} />
+      <CameraRig />
       <NeuralNodes colors={colors} />
       <NeuralConnections colors={colors} />
       <DataParticles colors={colors} />
@@ -251,8 +275,23 @@ function Scene() {
 }
 
 export default function NeuralNetwork3D() {
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    mousePos.targetX = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+    mousePos.targetY = -((e.clientY - rect.top) / rect.height - 0.5) * 2;
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    mousePos.targetX = 0;
+    mousePos.targetY = 0;
+  }, []);
+
   return (
-    <div className="absolute inset-0">
+    <div
+      className="absolute inset-0"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
       <Canvas
         camera={{ position: [0, 0, 18], fov: 50 }}
         gl={{ antialias: true, alpha: true }}
