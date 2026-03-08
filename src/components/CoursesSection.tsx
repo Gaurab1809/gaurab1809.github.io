@@ -22,7 +22,7 @@ export default function CoursesSection() {
           <div className="w-20 h-1 bg-primary/50 rounded-full" />
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {courses.map((course, i) => (
             <motion.div
               key={i}

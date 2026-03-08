@@ -51,7 +51,7 @@ export default function ContactSection() {
           <div className="w-20 h-1 bg-primary/50 rounded-full" />
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-5xl">
+        <div className="grid md:grid-cols-2 gap-12 max-w-5xl">
           <motion.form
             onSubmit={handleSubmit}
             initial={{ opacity: 0, x: -30 }}

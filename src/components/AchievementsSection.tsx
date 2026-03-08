@@ -59,7 +59,7 @@ function AchievementCard({ item, index }: { item: typeof achievements[0]; index:
   return (
     <div ref={ref} className="relative">
       {/* Desktop layout */}
-      <div className="hidden md:grid grid-cols-[1fr_40px_1fr] items-start">
+      <div className="hidden lg:grid grid-cols-[1fr_40px_1fr] items-start">
         {/* Left card */}
         <div>
           {isLeft && (
@@ -108,7 +108,7 @@ function AchievementCard({ item, index }: { item: typeof achievements[0]; index:
       </div>
 
       {/* Mobile layout */}
-      <div className="md:hidden relative pl-12">
+      <div className="lg:hidden relative pl-12">
         <div
           className="absolute left-[8px] top-3 z-10 w-[18px] h-[18px] rounded-full bg-card border-2 border-primary/30 flex items-center justify-center"
           style={{
@@ -180,10 +180,10 @@ export default function AchievementsSection() {
         {/* Tree container with continuous trunk line */}
         <div className="relative">
           {/* Continuous trunk line - desktop (centered) */}
-          <div className="hidden md:block absolute top-0 bottom-0 left-1/2 -translate-x-px w-[2px] bg-gradient-to-b from-primary/40 via-accent/20 to-transparent" />
+          <div className="hidden lg:block absolute top-0 bottom-0 left-1/2 -translate-x-px w-[2px] bg-gradient-to-b from-primary/40 via-accent/20 to-transparent" />
           
-          {/* Continuous trunk line - mobile (left side) */}
-          <div className="md:hidden absolute top-0 bottom-0 left-[16px] w-[2px] bg-gradient-to-b from-primary/40 via-accent/20 to-transparent" />
+          {/* Continuous trunk line - mobile/tablet (left side) */}
+          <div className="lg:hidden absolute top-0 bottom-0 left-[16px] w-[2px] bg-gradient-to-b from-primary/40 via-accent/20 to-transparent" />
 
           <div className="space-y-5">
             {displayed.map((item, i) => (

@@ -55,19 +55,19 @@ export default function PlaygroundSection() {
         </motion.div>
 
         <div className="flex flex-col lg:flex-row gap-8">
-          <div className="flex lg:flex-col gap-2 overflow-x-auto lg:overflow-visible lg:w-52 shrink-0 pb-2 lg:pb-0">
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-1 gap-2 lg:w-52 shrink-0">
             {games.map((game) => (
               <button
                 key={game.id}
                 onClick={() => setActiveGame(game.id)}
-                className={`text-left px-4 py-3 rounded-lg transition-all text-sm whitespace-nowrap lg:whitespace-normal flex-shrink-0 ${
+                className={`text-left px-3 py-2.5 lg:px-4 lg:py-3 rounded-lg transition-all text-sm flex-shrink-0 ${
                   activeGame === game.id
                     ? 'glass glow-border text-foreground'
                     : 'text-muted-foreground hover:text-foreground hover:bg-secondary/30'
                 }`}
               >
-                <div className="font-display font-medium flex items-center gap-2">
-                  <span>{game.icon}</span> {game.name}
+                <div className="font-display font-medium flex items-center gap-2 text-xs lg:text-sm">
+                  <span>{game.icon}</span> <span className="hidden sm:inline">{game.name}</span>
                 </div>
                 <div className="text-xs text-muted-foreground mt-0.5 hidden lg:block">{game.description}</div>
               </button>
