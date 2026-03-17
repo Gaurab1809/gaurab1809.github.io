@@ -107,8 +107,8 @@ export default function HeroSection() {
       </div>
 
       {/* Gradient overlays */}
-      <div className="absolute inset-0 z-[1] bg-gradient-to-b from-background/20 via-background/50 to-background pointer-events-none" />
-      <div className="absolute inset-0 z-[1] bg-gradient-to-r from-primary/5 via-transparent to-accent/5 pointer-events-none" />
+      <div className="absolute inset-0 z-[1] bg-gradient-to-b from-background/10 via-background/30 to-background pointer-events-none" />
+      <div className="absolute inset-0 z-[1] bg-gradient-to-r from-primary/3 via-transparent to-accent/3 pointer-events-none" />
 
       {/* Main content */}
       <div className="relative z-[2] w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pointer-events-none">

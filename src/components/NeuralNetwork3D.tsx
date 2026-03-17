@@ -18,16 +18,16 @@ function useThemeColors() {
     coreGlow: isDark ? '#00d4ff' : '#3b82f6',
     accent: isDark ? '#7cff00' : '#7c3aed',
     ring: isDark ? '#00d4ff' : '#2563eb',
-    ringOpacity: isDark ? 0.12 : 0.1,
+    ringOpacity: isDark ? 0.12 : 0.18,
     node: isDark ? '#00d4ff' : '#2563eb',
     nodeGlow: isDark ? '#00d4ff' : '#3b82f6',
     connection: isDark ? '#00d4ff' : '#2563eb',
-    connectionOpacity: isDark ? 0.18 : 0.15,
+    connectionOpacity: isDark ? 0.18 : 0.25,
     particle: isDark ? '#7cff00' : '#7c3aed',
-    particleOpacity: isDark ? 0.5 : 0.45,
+    particleOpacity: isDark ? 0.5 : 0.65,
     signal: isDark ? '#ffffff' : '#1e40af',
-    signalOpacity: isDark ? 0.85 : 0.7,
-    glowOpacity: isDark ? 0.2 : 0.15,
+    signalOpacity: isDark ? 0.85 : 0.9,
+    glowOpacity: isDark ? 0.2 : 0.25,
   }), [isDark]);
 }
 
@@ -389,7 +389,7 @@ export default function NeuralNetwork3D() {
       onMouseLeave={handleMouseLeave}
     >
       <Canvas
-        camera={{ position: [0, 0, 14], fov: 55 }}
+        camera={{ position: [0, 0, 12], fov: 65 }}
         gl={{ antialias: true, alpha: true }}
         style={{ background: 'transparent' }}
       >
