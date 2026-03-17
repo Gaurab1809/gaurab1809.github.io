@@ -389,7 +389,7 @@ export default function NeuralNetwork3D() {
       onMouseLeave={handleMouseLeave}
     >
       <Canvas
-        camera={{ position: [0, 0, 14], fov: 55 }}
+        camera={{ position: [0, 0, 12], fov: 65 }}
         gl={{ antialias: true, alpha: true }}
         style={{ background: 'transparent' }}
       >
