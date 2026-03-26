@@ -3,17 +3,17 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 
 const navItems = [
-{ label: 'About', href: '#about' },
-{ label: 'Research Interests', href: '#research-interests' },
-{ label: 'Research', href: '#research' },
-{ label: 'Projects', href: '#projects' },
-{ label: 'Skills', href: '#skills' },
-{ label: 'Education', href: '#education' },
-{ label: 'Experience', href: '#experience' },
-{ label: 'Achievements', href: '#achievements' },
-{ label: 'Playground', href: '#playground' },
-{ label: 'Contact', href: '#contact' }];
-
+  { label: 'About', href: '#about' },
+  { label: 'Interests', href: '#research-interests' },
+  { label: 'Research', href: '#research' },
+  { label: 'Projects', href: '#projects' },
+  { label: 'Skills', href: '#skills' },
+  { label: 'Education', href: '#education' },
+  { label: 'Experience', href: '#experience' },
+  { label: 'Achievements', href: '#achievements' },
+  { label: 'Playground', href: '#playground' },
+  { label: 'Contact', href: '#contact' },
+];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -37,45 +37,48 @@ export default function Navbar() {
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      scrolled ? 'nav-blur shadow-lg' : 'bg-transparent'}`
-      }>
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <a className="text-sm sm:text-base md:text-xl text-gradient-primary font-extrabold font-sans" href="#">
+        scrolled ? 'nav-blur shadow-lg' : 'bg-transparent'
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 xl:px-8">
+        <div className="flex items-center justify-between h-14 sm:h-16">
+          <a
+            className="whitespace-nowrap text-xs sm:text-sm md:text-base xl:text-lg text-gradient-primary font-extrabold font-sans shrink-0"
+            href="#"
+          >
             A. K. M. Masudur Rahman<span className="text-accent">.</span>
           </a>
 
-          <div className="hidden lg:flex items-center gap-1">
-            {navItems.map((item) =>
-            <a
-              key={item.href}
-              href={item.href}
-              className="px-3 py-2 text-xs font-medium transition-colors rounded-lg hover:bg-primary/5 text-muted-foreground">
-              
+          <div className="hidden xl:flex items-center gap-0.5">
+            {navItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="px-2.5 py-2 text-[11px] font-medium transition-colors rounded-lg hover:bg-primary/5 text-muted-foreground whitespace-nowrap"
+              >
                 {item.label}
               </a>
-            )}
+            ))}
             <button
               onClick={() => setDark(!dark)}
-              className="ml-2 p-2 rounded-lg text-muted-foreground hover:text-primary hover:bg-primary/5 transition-colors"
-              aria-label="Toggle theme">
-              
-              {dark ? <Sun size={16} /> : <Moon size={16} />}
+              className="ml-1 p-2 rounded-lg text-muted-foreground hover:text-primary hover:bg-primary/5 transition-colors"
+              aria-label="Toggle theme"
+            >
+              {dark ? <Sun size={15} /> : <Moon size={15} />}
             </button>
           </div>
 
-          <div className="flex items-center gap-2 lg:hidden">
+          <div className="flex items-center gap-1.5 xl:hidden">
             <button
               onClick={() => setDark(!dark)}
-              className="p-2 text-muted-foreground hover:text-primary transition-colors">
-              
+              className="p-2 text-muted-foreground hover:text-primary transition-colors"
+            >
               {dark ? <Sun size={18} /> : <Moon size={18} />}
             </button>
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="p-2 text-muted-foreground hover:text-primary transition-colors">
-              
+              className="p-2 text-muted-foreground hover:text-primary transition-colors"
+            >
               {mobileOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
@@ -83,28 +86,28 @@ export default function Navbar() {
       </div>
 
       <AnimatePresence>
-        {mobileOpen &&
-        <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: 'auto' }}
-          exit={{ opacity: 0, height: 0 }}
-          className="lg:hidden glass-strong">
-          
-            <div className="px-4 py-4 flex flex-col gap-2">
-              {navItems.map((item) =>
-            <a
-              key={item.href}
-              href={item.href}
-              onClick={() => setMobileOpen(false)}
-              className="px-4 py-3 text-sm font-medium text-muted-foreground hover:text-primary transition-colors rounded-lg hover:bg-primary/5">
-              
-                  {item.label}
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="xl:hidden glass-strong"
+          >
+            <div className="px-4 py-3 flex flex-col gap-1">
+              {navItems.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="px-4 py-2.5 text-sm font-medium text-muted-foreground hover:text-primary transition-colors rounded-lg hover:bg-primary/5"
+                >
+                  {item.label === 'Interests' ? 'Research Interests' : item.label}
                 </a>
-            )}
+              ))}
             </div>
           </motion.div>
-        }
+        )}
       </AnimatePresence>
-    </motion.nav>);
-
+    </motion.nav>
+  );
 }
