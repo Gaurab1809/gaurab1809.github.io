@@ -104,6 +104,11 @@
 
   body {
     @apply bg-background text-foreground font-body antialiased;
+    background-image:
+      radial-gradient(circle at 12% 15%, hsl(var(--primary) / 0.1), transparent 28%),
+      radial-gradient(circle at 88% 24%, hsl(var(--accent) / 0.08), transparent 24%),
+      radial-gradient(circle at 50% 100%, hsl(var(--primary) / 0.06), transparent 40%);
+    background-attachment: fixed;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -136,7 +141,8 @@
 
 @layer components {
   .glass {
-    @apply bg-card/60 backdrop-blur-xl border border-border/50;
+    @apply bg-card/60 backdrop-blur-xl border border-border/50 transition-all duration-300;
+    box-shadow: 0 10px 30px hsl(var(--background) / 0.28);
   }
 
   .glass-strong {
@@ -174,7 +180,7 @@
   }
 
   .section-container {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32;
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32;
   }
 
   .nav-blur {
@@ -183,6 +189,24 @@
 }
 
 @layer utilities {
+  .surface-hover {
+    @apply hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_16px_32px_hsl(var(--primary)/0.12)];
+  }
+
+  .section-divider {
+    position: relative;
+  }
+
+  .section-divider::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: min(680px, 86%);
+    transform: translateX(-50%);
+    border-top: 1px solid hsl(var(--border) / 0.35);
+  }
+
   .animate-float {
     animation: float 6s ease-in-out infinite;
   }
@@ -194,6 +218,21 @@
   .animate-grid-scroll {
     animation: gridScroll 20s linear infinite;
   }
+}
+
+a,
+button,
+input,
+textarea {
+  transition: color 200ms ease, background-color 200ms ease, border-color 200ms ease, transform 200ms ease, box-shadow 220ms ease;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid hsl(var(--primary) / 0.65);
+  outline-offset: 2px;
 }
 
 @keyframes float {

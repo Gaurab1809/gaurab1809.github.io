@@ -3,11 +3,19 @@
     "id": "1",
     "title": "KenaKata.com – E-Commerce Website",
     "description": "Developed a full-featured e-commerce website using Laravel, PHP, MVC architecture, OOP, DbC, SOLID principles, and design patterns, with a focus on an intuitive and professional user interface.",
-    "techStack": ["Laravel", "PHP", "MVC", "OOP", "DbC", "SOLID", "Design Patterns"],
+    "techStack": [
+      "Laravel",
+      "PHP",
+      "MVC",
+      "OOP",
+      "DbC",
+      "SOLID",
+      "Design Patterns"
+    ],
     "category": "Web",
-    "github": "",
+    "github": "https://github.com/Gaurab1809/KenaKata.com-An-E-Commerce-Platform",
     "demo": "",
-    "image": "",
+    "image": "src\\assets\\KenaKata_logo.png",
     "featured": true
   },
   {
@@ -16,9 +24,9 @@
     "description": "Built a developer-centric platform for collaboration, code sharing, and community building, empowering developers to share projects, discuss ideas, and enhance their coding skills.",
     "techStack": ["React", "Node.js", "MongoDB", "TailwindCSS"],
     "category": "Web",
-    "github": "https://github.com/Gaurab1809/DevVerse",
+    "github": "https://github.com/Gaurab1809/DevVerse-A-Developer-Forum-Community-Platform-Website",
     "demo": "",
-    "image": "",
+    "image": "src\\assets\\DevVerse_Logo.png",
     "featured": true
   },
   {
@@ -29,7 +37,7 @@
     "category": "Mobile",
     "github": "https://github.com/Gaurab1809",
     "demo": "",
-    "image": "",
+    "image": "src\\assets\\jobmatelogo.jpg",
     "featured": true
   },
   {
@@ -49,9 +57,9 @@
     "description": "Launched an online e-learning platform to make education more accessible, interactive, and engaging. Built with React, Node.js, Express, MongoDB, and TailwindCSS.",
     "techStack": ["React", "Node.js", "MongoDB", "Express.js", "TailwindCSS"],
     "category": "Web",
-    "github": "https://github.com/Gaurab1809/E-PATHSHALA",
+    "github": "https://github.com/Gaurab1809/E-PATHSHALA-Web-Based-Smart-E-Learning-Platform",
     "demo": "",
-    "image": "",
+    "image": "src\\assets\\EPathshala_logo.png",
     "featured": true
   },
   {
@@ -60,20 +68,20 @@
     "description": "Mobile application version of the E-PATHSHALA platform built with Flutter and Dart, bringing e-learning to mobile devices.",
     "techStack": ["Flutter", "Dart", "Firebase", "REST API"],
     "category": "Mobile",
-    "github": "https://github.com/Gaurab1809/E-PATHSHALA-APP",
+    "github": "hhttps://github.com/Gaurab1809/E-PATHSHALA-APP-Smart-E-Learning-Platform",
     "demo": "",
-    "image": "",
+    "image": "src\\assets\\EPathshala_logo.png",
     "featured": true
   },
   {
     "id": "7",
-    "title": "Digital Image Processing Research",
-    "description": "Research and implementation of digital image processing techniques including filtering, edge detection, segmentation, and computer vision algorithms.",
-    "techStack": ["Python", "OpenCV", "NumPy", "Matplotlib"],
-    "category": "Research",
-    "github": "https://github.com/Gaurab1809/CSE-4246-Digital-Image-Processing",
+    "title": "Prohori - Android Crime Reporting & Missing Person Finder App",
+    "description": "An Android-based application designed to assist in crime reporting and missing person identification. The app allows users to report incidents, upload missing person details, and collaborate with authorities through a centralized system. It integrates real-time data sharing, image handling, and user-friendly interfaces to improve public safety and response efficiency.",
+    "techStack": ["Java", "Android Studio", "Firebase", "XML"],
+    "category": "Mobile App",
+    "github": "https://github.com/Gaurab1809/Prohori-An-Android-Crime-Prevention-and-Missing-Person-Finder-app",
     "demo": "",
-    "image": "",
+    "image": "src\\assets\\Prohori.png",
     "featured": true
   },
   {
@@ -81,7 +89,7 @@
     "title": "IoT Smart Drainage System",
     "description": "Developed a smart IoT-based drainage monitoring system to prevent urban flooding, integrating sensors, automation, and real-time monitoring.",
     "techStack": ["Arduino", "Sensors", "IoT", "Automation"],
-    "category": "Systems",
+    "category": "Research",
     "github": "",
     "demo": "",
     "image": "",
@@ -100,13 +108,13 @@
   },
   {
     "id": "10",
-    "title": "Restaurant Management System",
+    "title": "DineMaster - A Restaurant Management System",
     "description": "A comprehensive restaurant management system built with PHP for handling orders, menu management, billing, and customer tracking.",
     "techStack": ["PHP", "MySQL", "HTML", "CSS", "JavaScript"],
     "category": "Web",
-    "github": "https://github.com/Gaurab1809/Restaurant-Management-System-RMS-",
+    "github": "https://github.com/Gaurab1809/DineMaster-Restaurant-Management-System-RMS-",
     "demo": "",
-    "image": "",
+    "image": "src\\assets\\DineMaster_Logo.png",
     "featured": false
   },
   {
@@ -117,18 +125,40 @@
     "category": "Systems",
     "github": "https://github.com/Gaurab1809/Course-Management-System-CMS-",
     "demo": "",
-    "image": "",
+    "image": "src\\assets\\CMS_Logo.png",
     "featured": false
   },
   {
     "id": "12",
-    "title": "Arduino Voice Controlled Robot",
-    "description": "An Arduino-based voice-controlled and obstacle-avoiding robot combining voice recognition and sensor-based navigation for autonomous movement.",
+    "title": "ShobdoBondhu – Voice Controlled Robot",
+    "description": "An Arduino-based robot integrating voice control and obstacle avoidance for smart navigation.",
     "techStack": ["Arduino", "C++", "Sensors", "Voice Recognition"],
     "category": "Systems",
-    "github": "https://github.com/Gaurab1809",
+    "github": "https://github.com/Gaurab1809/ShobdoBondhu-Arduino-Voice-Controlled-and-Obstacle-Robot",
     "demo": "",
-    "image": "",
+    "image": "src\\assets\\ShobdoBondhu_Logo.png",
     "featured": false
+  },
+  {
+    "id": "13",
+    "title": "SmartPark – Smart Parking System",
+    "description": "An Arduino-based smart parking system that detects slot availability in real-time using ultrasonic sensors and automates entry barriers.",
+    "techStack": ["Arduino", "C++", "Ultrasonic Sensors", "Servo Motor"],
+    "category": "Systems",
+    "github": "https://github.com/Gaurab1809/SmartPark-Arduino-Based-Smart-Parking-System",
+    "demo": "",
+    "image": "src\\assets\\SmartPark_Logo.png",
+    "featured": true
+  },
+  {
+    "id": "14",
+    "title": "Arduino Radar System",
+    "description": "A radar system using Arduino and ultrasonic sensors to detect and map object positions in real-time.",
+    "techStack": ["Arduino", "C++", "Sensors", "Servo Motor"],
+    "category": "Systems",
+    "github": "https://github.com/Gaurab1809/Arduino-Radar-System",
+    "demo": "",
+    "image": "src\\assets\\RadarSystem_Logo.png",
+    "featured": true
   }
 ]

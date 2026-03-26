@@ -1,11 +1,17 @@
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { Briefcase, Users } from 'lucide-react';
-import experience from '@/data/experience.json';
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import { Briefcase, Users } from "lucide-react";
+import experience from "@/data/experience.json";
 
-function ExperienceItem({ item, index }: { item: typeof experience[0]; index: number }) {
+function ExperienceItem({
+  item,
+  index,
+}: {
+  item: (typeof experience)[0];
+  index: number;
+}) {
   const itemRef = useRef(null);
-  const itemInView = useInView(itemRef, { once: true, margin: '-30px' });
+  const itemInView = useInView(itemRef, { once: true, margin: "-30px" });
 
   return (
     <motion.div
@@ -22,8 +28,12 @@ function ExperienceItem({ item, index }: { item: typeof experience[0]; index: nu
       <div className="glass rounded-xl p-5 hover:glow-border transition-all duration-300">
         <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2 mb-2">
           <div className="min-w-0">
-            <h3 className="font-display font-semibold text-foreground text-sm">{item.title}</h3>
-            <p className="text-xs text-primary font-mono">{item.organization}</p>
+            <h3 className="font-display font-semibold text-foreground text-sm">
+              {item.title}
+            </h3>
+            <p className="text-xs text-primary font-mono">
+              {item.organization}
+            </p>
           </div>
           <span className="text-[10px] font-mono text-muted-foreground bg-secondary px-2 py-0.5 rounded-full whitespace-nowrap shrink-0">
             {item.period}
@@ -32,7 +42,10 @@ function ExperienceItem({ item, index }: { item: typeof experience[0]; index: nu
 
         <ul className="space-y-1 mt-3">
           {item.highlights.map((h, j) => (
-            <li key={j} className="text-xs text-muted-foreground flex items-start gap-2">
+            <li
+              key={j}
+              className="text-xs text-muted-foreground flex items-start gap-2"
+            >
               <span className="text-accent mt-0.5 shrink-0">▸</span>
               <span>{h}</span>
             </li>
@@ -45,7 +58,7 @@ function ExperienceItem({ item, index }: { item: typeof experience[0]; index: nu
 
 export default function ExperienceSection() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
     <section id="experience" className="relative" ref={ref}>
@@ -58,7 +71,10 @@ export default function ExperienceSection() {
         >
           <h2 className="text-4xl sm:text-5xl font-display font-bold mb-4 flex items-center gap-3">
             <Users className="text-accent" />
-            <span>Experience & <span className="text-gradient-accent">Leadership</span></span>
+            <span>
+              Experience &{" "}
+              <span className="text-gradient-accent">Leadership</span>
+            </span>
           </h2>
           <div className="w-20 h-1 bg-accent/50 rounded-full" />
         </motion.div>

@@ -1,7 +1,16 @@
-import { motion, useInView } from 'framer-motion';
-import { useRef, useState, useMemo } from 'react';
-import { Trophy, BookOpen, Award, Medal, Users, GraduationCap, Star, Mic } from 'lucide-react';
-import achievements from '@/data/achievements.json';
+import { motion, useInView } from "framer-motion";
+import { useRef, useState, useMemo } from "react";
+import {
+  Trophy,
+  BookOpen,
+  Award,
+  Medal,
+  Users,
+  GraduationCap,
+  Star,
+  Mic,
+} from "lucide-react";
+import achievements from "@/data/achievements.json";
 
 const typeIcon: Record<string, typeof Trophy> = {
   award: Award,
@@ -17,21 +26,30 @@ const typeIcon: Record<string, typeof Trophy> = {
 };
 
 const typeColor: Record<string, string> = {
-  award: 'text-accent',
-  hackathon: 'text-primary',
-  publication: 'text-primary',
-  competition: 'text-accent',
-  academic: 'text-primary',
-  leadership: 'text-accent',
-  achievement: 'text-primary',
-  teaching: 'text-accent',
-  participation: 'text-muted-foreground',
-  membership: 'text-muted-foreground',
+  award: "text-accent",
+  hackathon: "text-primary",
+  publication: "text-primary",
+  competition: "text-accent",
+  academic: "text-primary",
+  leadership: "text-accent",
+  achievement: "text-primary",
+  teaching: "text-accent",
+  participation: "text-muted-foreground",
+  membership: "text-muted-foreground",
 };
 
-const filterTypes = ['All', 'award', 'leadership', 'achievement', 'publication', 'academic', 'teaching', 'membership'];
+const filterTypes = [
+  "All",
+  "award",
+  "leadership",
+  "achievement",
+  "publication",
+  "academic",
+  "teaching",
+  "membership",
+];
 
-function CardContent({ item }: { item: typeof achievements[0] }) {
+function CardContent({ item }: { item: (typeof achievements)[0] }) {
   return (
     <>
       <div className="flex items-center gap-2 mb-2 flex-wrap">
@@ -43,17 +61,27 @@ function CardContent({ item }: { item: typeof achievements[0] }) {
       <h3 className="font-display font-semibold text-foreground text-sm mb-1 group-hover:text-primary transition-colors">
         {item.title}
       </h3>
-      <p className="text-[10px] font-mono text-muted-foreground/70 mb-2">{item.organization}</p>
-      <p className="text-xs text-muted-foreground leading-relaxed">{item.description}</p>
+      <p className="text-[10px] font-mono text-muted-foreground/70 mb-2">
+        {item.organization}
+      </p>
+      <p className="text-xs text-muted-foreground leading-relaxed">
+        {item.description}
+      </p>
     </>
   );
 }
 
-function AchievementCard({ item, index }: { item: typeof achievements[0]; index: number }) {
+function AchievementCard({
+  item,
+  index,
+}: {
+  item: (typeof achievements)[0];
+  index: number;
+}) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-40px' });
+  const inView = useInView(ref, { once: true, margin: "-40px" });
   const Icon = typeIcon[item.type] || Award;
-  const color = typeColor[item.type] || 'text-primary';
+  const color = typeColor[item.type] || "text-primary";
   const isLeft = index % 2 === 0;
 
   return (
@@ -67,8 +95,8 @@ function AchievementCard({ item, index }: { item: typeof achievements[0]; index:
               className="glass rounded-xl p-5 border border-border/50 hover:border-primary/30 transition-all duration-300 group"
               style={{
                 opacity: inView ? 1 : 0,
-                transform: inView ? 'translateX(0)' : 'translateX(-20px)',
-                transition: 'opacity 0.4s ease-out, transform 0.4s ease-out',
+                transform: inView ? "translateX(0)" : "translateX(-20px)",
+                transition: "opacity 0.4s ease-out, transform 0.4s ease-out",
               }}
             >
               <CardContent item={item} />
@@ -82,8 +110,9 @@ function AchievementCard({ item, index }: { item: typeof achievements[0]; index:
             className="relative z-10 w-9 h-9 rounded-full bg-card border-2 border-primary/30 flex items-center justify-center shadow-md mt-3"
             style={{
               opacity: inView ? 1 : 0,
-              transform: inView ? 'scale(1)' : 'scale(0)',
-              transition: 'opacity 0.3s ease-out 0.1s, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s',
+              transform: inView ? "scale(1)" : "scale(0)",
+              transition:
+                "opacity 0.3s ease-out 0.1s, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s",
             }}
           >
             <Icon className={color} size={14} />
@@ -97,8 +126,8 @@ function AchievementCard({ item, index }: { item: typeof achievements[0]; index:
               className="glass rounded-xl p-5 border border-border/50 hover:border-primary/30 transition-all duration-300 group"
               style={{
                 opacity: inView ? 1 : 0,
-                transform: inView ? 'translateX(0)' : 'translateX(20px)',
-                transition: 'opacity 0.4s ease-out, transform 0.4s ease-out',
+                transform: inView ? "translateX(0)" : "translateX(20px)",
+                transition: "opacity 0.4s ease-out, transform 0.4s ease-out",
               }}
             >
               <CardContent item={item} />
@@ -113,8 +142,8 @@ function AchievementCard({ item, index }: { item: typeof achievements[0]; index:
           className="absolute left-[8px] top-3 z-10 w-[18px] h-[18px] rounded-full bg-card border-2 border-primary/30 flex items-center justify-center"
           style={{
             opacity: inView ? 1 : 0,
-            transform: inView ? 'scale(1)' : 'scale(0)',
-            transition: 'all 0.3s ease-out',
+            transform: inView ? "scale(1)" : "scale(0)",
+            transition: "all 0.3s ease-out",
           }}
         >
           <Icon className={color} size={8} />
@@ -123,8 +152,8 @@ function AchievementCard({ item, index }: { item: typeof achievements[0]; index:
           className="glass rounded-xl p-4 border border-border/50 hover:border-primary/30 transition-all duration-300 group"
           style={{
             opacity: inView ? 1 : 0,
-            transform: inView ? 'translateY(0)' : 'translateY(15px)',
-            transition: 'opacity 0.4s ease-out, transform 0.4s ease-out',
+            transform: inView ? "translateY(0)" : "translateY(15px)",
+            transition: "opacity 0.4s ease-out, transform 0.4s ease-out",
           }}
         >
           <CardContent item={item} />
@@ -136,13 +165,16 @@ function AchievementCard({ item, index }: { item: typeof achievements[0]; index:
 
 export default function AchievementsSection() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-80px' });
-  const [filter, setFilter] = useState('All');
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const [filter, setFilter] = useState("All");
   const [showAll, setShowAll] = useState(false);
 
   const filtered = useMemo(
-    () => filter === 'All' ? achievements : achievements.filter(a => a.type === filter),
-    [filter]
+    () =>
+      filter === "All"
+        ? achievements
+        : achievements.filter((a) => a.type === filter),
+    [filter],
   );
   const displayed = showAll ? filtered : filtered.slice(0, 15);
 
@@ -161,14 +193,17 @@ export default function AchievementsSection() {
           <div className="w-20 h-1 bg-accent/50 rounded-full mb-8" />
 
           <div className="flex flex-wrap gap-2">
-            {filterTypes.map(type => (
+            {filterTypes.map((type) => (
               <button
                 key={type}
-                onClick={() => { setFilter(type); setShowAll(false); }}
+                onClick={() => {
+                  setFilter(type);
+                  setShowAll(false);
+                }}
                 className={`px-3 py-1.5 text-xs font-mono rounded-lg transition-all duration-200 capitalize ${
                   filter === type
-                    ? 'bg-accent text-accent-foreground'
-                    : 'text-muted-foreground hover:text-accent bg-secondary/50 hover:bg-accent/10'
+                    ? "bg-accent text-accent-foreground"
+                    : "text-muted-foreground hover:text-accent bg-secondary/50 hover:bg-accent/10"
                 }`}
               >
                 {type}
@@ -181,13 +216,17 @@ export default function AchievementsSection() {
         <div className="relative">
           {/* Continuous trunk line - desktop (centered) */}
           <div className="hidden lg:block absolute top-0 bottom-0 left-1/2 -translate-x-px w-[2px] bg-gradient-to-b from-primary/40 via-accent/20 to-transparent" />
-          
+
           {/* Continuous trunk line - mobile/tablet (left side) */}
           <div className="lg:hidden absolute top-0 bottom-0 left-[16px] w-[2px] bg-gradient-to-b from-primary/40 via-accent/20 to-transparent" />
 
           <div className="space-y-5">
             {displayed.map((item, i) => (
-              <AchievementCard key={`${filter}-${item.title}-${i}`} item={item} index={i} />
+              <AchievementCard
+                key={`${filter}-${item.title}-${i}`}
+                item={item}
+                index={i}
+              />
             ))}
           </div>
         </div>

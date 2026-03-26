@@ -1,11 +1,11 @@
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { GraduationCap } from 'lucide-react';
-import education from '@/data/education.json';
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import { GraduationCap } from "lucide-react";
+import education from "@/data/education.json";
 
 export default function EducationSection() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
     <section id="education" className="relative" ref={ref}>
@@ -34,8 +34,12 @@ export default function EducationSection() {
             >
               <div className="flex items-start justify-between mb-2">
                 <div>
-                  <h3 className="font-display font-semibold text-foreground">{edu.degree}</h3>
-                  <p className="text-sm text-primary font-mono mt-1">{edu.institution}</p>
+                  <h3 className="font-display font-semibold text-foreground">
+                    {edu.degree}
+                  </h3>
+                  <p className="text-sm text-primary font-mono mt-1">
+                    {edu.institution}
+                  </p>
                 </div>
                 <span className="text-xs font-mono text-muted-foreground bg-secondary px-3 py-1 rounded-full">
                   {edu.period}
@@ -45,7 +49,9 @@ export default function EducationSection() {
                 <span className="px-3 py-1 text-xs font-mono text-accent bg-accent/10 border border-accent/20 rounded-full">
                   {edu.grade}
                 </span>
-                <span className="text-xs text-muted-foreground">{edu.details}</span>
+                <span className="text-xs text-muted-foreground">
+                  {edu.details}
+                </span>
               </div>
             </motion.div>
           ))}

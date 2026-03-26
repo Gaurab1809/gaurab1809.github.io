@@ -1,17 +1,18 @@
-import { useState } from 'react';
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { ExternalLink, Github, Image as ImageIcon } from 'lucide-react';
-import projects from '@/data/projects.json';
+import { useState } from "react";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import { ExternalLink, Github, Image as ImageIcon } from "lucide-react";
+import projects from "@/data/projects.json";
 
-const categories = ['All', 'AI', 'Web', 'Mobile', 'Research', 'Systems'];
+const categories = ["All", "AI", "Web", "Mobile", "Research", "Systems"];
 
 export default function ProjectsSection() {
-  const [filter, setFilter] = useState('All');
+  const [filter, setFilter] = useState("All");
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  const filtered = filter === 'All' ? projects : projects.filter((p) => p.category === filter);
+  const filtered =
+    filter === "All" ? projects : projects.filter((p) => p.category === filter);
 
   return (
     <section id="projects" className="relative" ref={ref}>
@@ -34,8 +35,8 @@ export default function ProjectsSection() {
                 onClick={() => setFilter(cat)}
                 className={`px-4 py-2 text-sm font-mono rounded-lg transition-all ${
                   filter === cat
-                    ? 'bg-primary text-primary-foreground glow-primary'
-                    : 'text-muted-foreground hover:text-primary bg-secondary/50 hover:bg-primary/10'
+                    ? "bg-primary text-primary-foreground glow-primary"
+                    : "text-muted-foreground hover:text-primary bg-secondary/50 hover:bg-primary/10"
                 }`}
               >
                 {cat}

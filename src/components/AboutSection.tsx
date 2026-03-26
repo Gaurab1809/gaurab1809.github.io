@@ -1,13 +1,13 @@
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { Target, Lightbulb } from 'lucide-react';
-import profile from '@/data/profile.json';
-import profilePhoto from '@/assets/profile-photo.jpeg';
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
+import { Target, Lightbulb } from "lucide-react";
+import profile from "@/data/profile.json";
+import profilePhoto from "@/assets/profile-photo.jpeg";
 
 export default function AboutSection() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
     <section id="about" className="relative" ref={ref}>
@@ -62,8 +62,12 @@ export default function AboutSection() {
                 <div className="flex items-start gap-3">
                   <Target className="text-accent mt-1 shrink-0" size={20} />
                   <div>
-                    <h3 className="font-display font-semibold text-foreground mb-1">Career Goal</h3>
-                    <p className="text-sm text-muted-foreground">{profile.goals}</p>
+                    <h3 className="font-display font-semibold text-foreground mb-1">
+                      Career Goal
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      {profile.goals}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -72,9 +76,13 @@ export default function AboutSection() {
                 <div className="flex items-start gap-3">
                   <Lightbulb className="text-primary mt-1 shrink-0" size={20} />
                   <div>
-                    <h3 className="font-display font-semibold text-foreground mb-1">Research Focus</h3>
+                    <h3 className="font-display font-semibold text-foreground mb-1">
+                      Research Focus
+                    </h3>
                     <p className="text-sm text-muted-foreground">
-                      Exploring efficient deep learning architectures, transfer learning for low-resource domains, and interpretable AI systems.
+                      Exploring efficient deep learning architectures, transfer
+                      learning for low-resource domains, and interpretable AI
+                      systems.
                     </p>
                   </div>
                 </div>

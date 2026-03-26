@@ -1,10 +1,18 @@
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
-import skillsData from '@/data/skills.json';
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import skillsData from "@/data/skills.json";
 
-function SkillBar({ name, level, delay }: { name: string; level: number; delay: number }) {
+function SkillBar({
+  name,
+  level,
+  delay,
+}: {
+  name: string;
+  level: number;
+  delay: number;
+}) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-20px' });
+  const isInView = useInView(ref, { once: true, margin: "-20px" });
 
   return (
     <div ref={ref} className="group">
@@ -33,7 +41,7 @@ function SkillBar({ name, level, delay }: { name: string; level: number; delay: 
 
 export default function SkillsSection() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-80px' });
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
     <section id="skills" className="relative" ref={ref}>
@@ -56,7 +64,11 @@ export default function SkillsSection() {
               key={category.name}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: catIdx * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+              transition={{
+                duration: 0.5,
+                delay: catIdx * 0.1,
+                ease: [0.25, 0.46, 0.45, 0.94],
+              }}
               className="glass rounded-xl p-6 hover:glow-border transition-all duration-300"
             >
               <h3 className="font-display font-semibold text-lg text-foreground mb-5 flex items-center gap-2">

@@ -1,11 +1,11 @@
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { BookOpen, ExternalLink } from 'lucide-react';
-import courses from '@/data/courses.json';
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import { BookOpen, ExternalLink } from "lucide-react";
+import courses from "@/data/courses.json";
 
 export default function CoursesSection() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
     <section id="courses" className="relative" ref={ref}>
@@ -31,11 +31,15 @@ export default function CoursesSection() {
               transition={{ duration: 0.4, delay: i * 0.05 }}
               className="glass rounded-xl p-4 hover:glow-border transition-all duration-300 group"
             >
-              <span className="text-[10px] font-mono text-primary/60 uppercase">{course.category}</span>
+              <span className="text-[10px] font-mono text-primary/60 uppercase">
+                {course.category}
+              </span>
               <h3 className="font-display font-semibold text-foreground text-sm mt-1 mb-1 group-hover:text-primary transition-colors">
                 {course.title}
               </h3>
-              <p className="text-[10px] font-mono text-muted-foreground">{course.institution}</p>
+              <p className="text-[10px] font-mono text-muted-foreground">
+                {course.institution}
+              </p>
               {course.relatedProject && (
                 <a
                   href={course.relatedProject}

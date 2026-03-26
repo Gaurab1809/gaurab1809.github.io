@@ -3,7 +3,7 @@
 A modern, responsive personal portfolio website showcasing projects, skills, and professional experience. This portfolio is designed to present development work, highlight technical skills, and provide an easy way for recruiters, collaborators, and clients to get in touch.
 
 ## 🚀 Live Website
-🔗 https://gaurabsportfolio.lovable.app
+🔗 https://gaurabsportfolio.example.com
 
 ---
 
@@ -41,7 +41,7 @@ The site is built with modern web technologies and focuses on performance, respo
 - Responsive layout techniques  
 
 ### Deployment
-- Lovable Platform  
+- Static hosting platform
 
 ---
 
@@ -88,6 +88,18 @@ cd portfolio
 npm install
 ```
 
+### 3.1️⃣ Configure contact email (EmailJS)
+
+Create a `.env` file from `.env.example` and fill in your EmailJS keys:
+
+```bash
+cp .env.example .env
+```
+
+EmailJS templates should include these variables:
+- Owner notification template: `to_email`, `from_name`, `from_email`, `subject`, `message`, `reply_to`
+- Auto-reply template: `to_email`, `to_name`, `from_name`, `subject`, `original_message`
+
 ### 4️⃣ Start the development server
 
 ```bash
@@ -117,7 +129,7 @@ http://localhost:3000
 
 If you'd like to collaborate or have any questions, feel free to reach out.
 
-- **Portfolio:** https://gaurabsportfolio.lovable.app  
+- **Portfolio:** https://gaurabsportfolio.example.com  
 - **GitHub:** Your GitHub Link  
 - **LinkedIn:** Your LinkedIn Link  
 - **Email:** your-email@example.com  

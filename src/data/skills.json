@@ -85,6 +85,9 @@
       "name": "Other Tools",
       "skills": [
         { "name": "OpenGL", "level": 65 },
+        { "name": "MS Word", "level": 95 },
+        { "name": "MS Excel", "level": 90 },
+        { "name": "MS PowerPoint", "level": 92 },
         { "name": "Unity", "level": 60 },
         { "name": "Cisco", "level": 68 },
         { "name": "Gradle", "level": 65 }

@@ -16,21 +16,24 @@ import ScrollProgress from '@/components/ScrollProgress';
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden relative">
+      <div className="pointer-events-none absolute -top-28 -left-20 h-72 w-72 rounded-full bg-primary/10 blur-3xl" />
+      <div className="pointer-events-none absolute top-[28%] -right-24 h-80 w-80 rounded-full bg-accent/10 blur-3xl" />
+      <div className="pointer-events-none absolute bottom-0 left-1/3 h-72 w-72 rounded-full bg-primary/8 blur-3xl" />
       <ScrollProgress />
       <Navbar />
       <HeroSection />
-      <AboutSection />
-      <ResearchInterestsSection />
-      <ResearchSection />
-      <ProjectsSection />
-      <SkillsSection />
-      <EducationSection />
-      <ExperienceSection />
-      <CoursesSection />
-      <AchievementsSection />
-      <PlaygroundSection />
-      <ContactSection />
+      <div className="section-divider"><AboutSection /></div>
+      <div className="section-divider"><ResearchInterestsSection /></div>
+      <div className="section-divider"><ResearchSection /></div>
+      <div className="section-divider"><ProjectsSection /></div>
+      <div className="section-divider"><SkillsSection /></div>
+      <div className="section-divider"><EducationSection /></div>
+      <div className="section-divider"><ExperienceSection /></div>
+      <div className="section-divider"><CoursesSection /></div>
+      <div className="section-divider"><AchievementsSection /></div>
+      <div className="section-divider"><PlaygroundSection /></div>
+      <div className="section-divider"><ContactSection /></div>
       <Footer />
     </div>
   );

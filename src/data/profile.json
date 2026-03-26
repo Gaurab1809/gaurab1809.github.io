@@ -28,7 +28,15 @@
       "details": "GPA – 5.00 (Science)"
     }
   ],
-  "interests": ["Artificial Intelligence", "Machine Learning", "NLP", "Image Processing", "Computer Vision", "Deep Learning", "Cloud & DevOps"],
+  "interests": [
+    "Artificial Intelligence",
+    "Machine Learning",
+    "NLP",
+    "Image Processing",
+    "Computer Vision",
+    "Deep Learning",
+    "Cloud & DevOps"
+  ],
   "goals": "To publish journal-quality research, develop impactful AI solutions for local and global challenges, and grow as a researcher and engineer contributing to domains such as education, transportation, and public safety.",
   "social": {
     "github": "https://github.com/Gaurab1809",
@@ -42,7 +50,7 @@
     "whatsapp": "https://wa.me/8801309405506",
     "email": "akmmasudurrahmangaurab@gmail.com"
   },
-  "resumeUrl": "/resume.pdf",
+  "resumeUrl": "/gaurabs_resume.pdf",
   "funFact": "I enjoy turning research ideas into fully working systems—and yes, I do think I'm funny 😄",
   "location": "Bangladesh",
   "availability": "Available for Research & Project Collaboration"
