@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🌐 Gaurab's Portfolio
 
 A modern, responsive personal portfolio website showcasing projects, skills, and professional experience. This portfolio is designed to present development work, highlight technical skills, and provide an easy way for recruiters, collaborators, and clients to get in touch.
@@ -139,3 +140,7 @@ If you'd like to collaborate or have any questions, feel free to reach out.
 ## 📄 License
 
 This project is open-source and available under the **MIT License**.
+=======
+# akmmasudurrahman.github.io
+A. K. M. Masudur Rahman – Portfolio  Welcome to my personal portfolio! This site showcases my projects, skills, and experience in AI, Machine Learning, Data Science, Web &amp; Mobile Development. 
+>>>>>>> 576f89247721f4a7be98e6f115c08816ae2add01
