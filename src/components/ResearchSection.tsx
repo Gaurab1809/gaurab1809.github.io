@@ -1,15 +1,23 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
-import { FlaskConical, Github } from 'lucide-react';
+import { FlaskConical, Github, ExternalLink, ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import research from '@/data/research.json';
 
 const domains = ['All', ...Array.from(new Set(research.map(r => r.domain)))];
 
+const statusColor: Record<string, string> = {
+  Published: 'text-accent',
+  Completed: 'text-accent',
+  Ongoing: 'text-primary',
+  Proposed: 'text-muted-foreground',
+};
+
 export default function ResearchSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-80px' });
-  const [expanded, setExpanded] = useState<string | null>(null);
   const [filter, setFilter] = useState('All');
+  const navigate = useNavigate();
 
   const filtered = filter === 'All' ? research : research.filter(r => r.domain === filter);
 
@@ -52,12 +60,12 @@ export default function ResearchSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: Math.min(i * 0.08, 0.4), ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="glass rounded-xl overflow-hidden hover:glow-border transition-all duration-300 cursor-pointer flex flex-col"
-              onClick={() => setExpanded(expanded === item.id ? null : item.id)}
+              className="glass rounded-xl overflow-hidden hover:glow-border transition-all duration-300 cursor-pointer flex flex-col group"
+              onClick={() => navigate(`/research/${item.id}`)}
             >
               {item.image && (
                 <div className="h-36 overflow-hidden flex-shrink-0">
-                  <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
+                  <img src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                 </div>
               )}
               <div className="p-5 flex flex-col flex-1">
@@ -65,43 +73,17 @@ export default function ResearchSection() {
                   <span className="px-2 py-0.5 text-[10px] font-mono uppercase bg-primary/10 text-primary border border-primary/20 rounded-full truncate">
                     {item.domain}
                   </span>
-                  <span className={`text-[10px] font-mono shrink-0 ${item.status === 'Completed' ? 'text-accent' : 'text-primary'}`}>
+                  <span className={`text-[10px] font-mono shrink-0 ${statusColor[item.status] || 'text-muted-foreground'}`}>
                     {item.status}
                   </span>
                 </div>
 
-                <h3 className="font-display font-semibold text-foreground text-sm mb-2 line-clamp-2">{item.title}</h3>
-                <p className={`text-xs text-muted-foreground mb-3 ${expanded === item.id ? '' : 'line-clamp-2'}`}>
+                <h3 className="font-display font-semibold text-foreground text-sm mb-2 line-clamp-2 group-hover:text-primary transition-colors">
+                  {item.title}
+                </h3>
+                <p className="text-xs text-muted-foreground mb-3 line-clamp-2">
                   {item.abstract}
                 </p>
-
-                {expanded === item.id && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    transition={{ duration: 0.3 }}
-                    className="space-y-3 overflow-hidden"
-                  >
-                    {item.dataset && (
-                      <div>
-                        <p className="text-[10px] font-mono text-muted-foreground/70 uppercase mb-1">Dataset</p>
-                        <p className="text-xs text-muted-foreground">{item.dataset}</p>
-                      </div>
-                    )}
-                    {item.interests && (
-                      <div>
-                        <p className="text-[10px] font-mono text-muted-foreground/70 uppercase mb-1">Interests</p>
-                        <div className="flex flex-wrap gap-1">
-                          {item.interests.map(interest => (
-                            <span key={interest} className="px-2 py-0.5 text-[10px] font-mono text-accent/80 bg-accent/5 border border-accent/10 rounded">
-                              {interest}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                  </motion.div>
-                )}
 
                 <div className="flex flex-wrap gap-1.5 mt-auto pt-3">
                   {item.technologies.slice(0, 4).map(tech => (
@@ -116,17 +98,35 @@ export default function ResearchSection() {
                   )}
                 </div>
 
-                {item.github && (
-                  <a
-                    href={item.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-primary transition-colors mt-3"
-                    onClick={e => e.stopPropagation()}
-                  >
-                    <Github size={14} /> View Repository
-                  </a>
-                )}
+                <div className="flex items-center justify-between mt-3 pt-3 border-t border-border/50">
+                  <div className="flex gap-2">
+                    {item.github && (
+                      <a
+                        href={item.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-muted-foreground hover:text-primary transition-colors"
+                        onClick={e => e.stopPropagation()}
+                      >
+                        <Github size={14} />
+                      </a>
+                    )}
+                    {item.paperLink && (
+                      <a
+                        href={item.paperLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-muted-foreground hover:text-primary transition-colors"
+                        onClick={e => e.stopPropagation()}
+                      >
+                        <ExternalLink size={14} />
+                      </a>
+                    )}
+                  </div>
+                  <span className="text-[10px] font-mono text-muted-foreground group-hover:text-primary flex items-center gap-1 transition-colors">
+                    View Details <ArrowRight size={10} className="group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </div>
               </div>
             </motion.div>
           ))}
