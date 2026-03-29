@@ -121,6 +121,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 z-[1] bg-gradient-to-b from-background/5 via-background/45 to-background pointer-events-none" />
       <div className="absolute inset-0 z-[1] bg-gradient-to-r from-primary/5 via-transparent to-accent/5 pointer-events-none" />
       <div className="absolute inset-0 z-[1] pointer-events-none [background:radial-gradient(circle_at_18%_28%,hsl(var(--primary)/0.14),transparent_28%),radial-gradient(circle_at_82%_22%,hsl(var(--accent)/0.12),transparent_24%)]" />
+      <div className="absolute inset-x-0 top-0 z-[1] h-24 bg-gradient-to-b from-background/60 to-transparent pointer-events-none" />
 
       {/* Main content */}
       <div className="relative z-[2] w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pointer-events-none">
@@ -143,7 +144,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               transition={{ duration: 1, delay: 0.4 }}
-              className="text-3xl sm:text-5xl lg:text-6xl font-display font-bold mb-5 leading-[1.05] drop-shadow-[0_4px_14px_hsl(var(--background)/0.2)]"
+              className="text-3xl sm:text-5xl lg:text-6xl font-display font-bold mb-5 leading-[1.02] tracking-tight drop-shadow-[0_6px_18px_hsl(var(--background)/0.22)]"
             >
               <span className="text-foreground">Engineering</span>
               <br />
@@ -156,7 +157,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="text-sm sm:text-base text-foreground/80 mb-3 font-display font-light"
+              className="text-sm sm:text-base text-muted-foreground mb-3 font-display font-light"
             >
               AI/ML Researcher • Full Stack Developer • System Architect
             </motion.p>
@@ -165,7 +166,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.75 }}
-              className="text-xs sm:text-sm text-muted-foreground mb-5 max-w-xl mx-auto lg:mx-0"
+              className="text-xs sm:text-sm text-muted-foreground/85 mb-6 max-w-xl mx-auto lg:mx-0 leading-relaxed"
             >
               Building intelligent systems that learn, adapt, and scale.
             </motion.p>
@@ -206,10 +207,10 @@ export default function HeroSection() {
             >
               <a
                 href="#projects"
-                className="group relative px-6 py-2.5 rounded-xl font-display font-medium text-sm bg-primary text-primary-foreground hover:bg-primary/90 transition-all glow-primary backdrop-blur-sm overflow-hidden hover:-translate-y-0.5 shadow-[0_10px_24px_hsl(var(--primary)/0.28)]"
+                className="group relative px-6 py-2.5 rounded-xl font-display font-medium text-[13px] sm:text-sm bg-primary text-primary-foreground hover:bg-primary/90 transition-all glow-primary backdrop-blur-sm overflow-hidden hover:-translate-y-0.5 shadow-[0_14px_30px_hsl(var(--primary)/0.28)]"
               >
                 <span className="relative z-10">Explore My Work</span>
-                <span className="absolute inset-0 bg-primary/20 scale-0 group-hover:scale-100 transition-transform duration-500 rounded-lg" />
+                <span className="absolute inset-0 bg-primary/20 scale-0 group-hover:scale-100 transition-transform duration-500 rounded-xl" />
               </a>
               <a
                 href="#research"
@@ -231,7 +232,7 @@ export default function HeroSection() {
                 rel="noopener noreferrer"
                 className="px-6 py-2.5 rounded-xl font-display font-medium text-sm border border-border hover:border-primary/30 transition-all flex items-center gap-2 bg-card/65 text-foreground backdrop-blur-sm hover:-translate-y-0.5"
               >
-                <Download size={16} /> Resume
+                <Download size={16} /> Download Resume (PDF)
               </a>
             </motion.div>
           </div>
