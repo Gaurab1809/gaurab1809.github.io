@@ -23,6 +23,8 @@ Built with React and modern front-end best practices
 
 Keywords: personal portfolio, React website, web development, frontend portfolio, responsive design, projects showcase
 
+🌐 Portfolio: [Live Website](https://gaurab1809.github.io/) 🌟
+
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%"> 
 
 
@@ -142,7 +144,6 @@ Gaurab1809.github.io serves as a professional portfolio platform for showcasing 
 🎓 Department of Computer Science and Engineering (CSE)  
 🏫 Bangladesh Army University of Science and Technology (BAUST), Saidpur  
 
-🌐 Portfolio: https://github.com/Gaurab1809/gaurab1809.github.io 
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%"> <!-- Support --> <img src="https://capsule-render.vercel.app/api?type=waving&text=%E2%AD%90%20Support&fontSize=32&width=1200&height=130&color=0:FF416C,100:FF4B2B" width="100%">
 
