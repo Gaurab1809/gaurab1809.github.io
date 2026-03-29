@@ -42,14 +42,16 @@ Keywords: personal portfolio, React website, web development, frontend portfolio
 
 
 <!-- Tech Stack --> 
-<img src="https://capsule-render.vercel.app/api?type=waving&text=%F0%9F%92%A1%20Tech%20Stack&fontSize=32&width=1200&height=130&color=0:00F260,100:0575E6" width="100%"> <div align="center">
+<img src="https://capsule-render.vercel.app/api?type=waving&text=%F0%9F%92%A1%20Tech%20Stack&fontSize=32&width=1200&height=130&color=0:00F260,100:0575E6" width="100%"> 
 
-- Technology	Purpose  
-- HTML5 & CSS3	Structure & styling  
-- JavaScript (ES6+)	Dynamic behavior  
-- React.js	Component-based UI  
-- Tailwind CSS	Styling & layout  
-- Vercel	Deployment  
+<div align="center">
+
+  Technology	Purpose  
+  HTML5 & CSS3	Structure & styling  
+  JavaScript (ES6+)	Dynamic behavior  
+  React.js	Component-based UI  
+  Tailwind CSS	Styling & layout  
+  Vercel	Deployment  
 
 
 </div> <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%"> 
