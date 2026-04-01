@@ -42,7 +42,11 @@
         { "name": "Node.js", "level": 85 },
         { "name": "Laravel", "level": 70 },
         { "name": "TailwindCSS", "level": 90 },
-        { "name": "Bootstrap", "level": 82 }
+        { "name": "Bootstrap", "level": 82 },
+        { "name": "Radix UI", "level": 80 },
+        { "name": "React Router", "level": 85 },
+        { "name": "React Query", "level": 78 },
+        { "name": "Framer Motion", "level": 85 }
       ]
     },
     {
@@ -71,20 +75,23 @@
       ]
     },
     {
-      "name": "Design & Tools",
+      "name": "Build Tools & Development",
       "skills": [
-        { "name": "Figma", "level": 80 },
-        { "name": "Adobe Photoshop", "level": 78 },
-        { "name": "Adobe Premiere Pro", "level": 72 },
-        { "name": "Canva", "level": 85 },
-        { "name": "LaTeX", "level": 82 },
-        { "name": "Arduino / Raspberry Pi", "level": 70 }
+        { "name": "Vite", "level": 85 },
+        { "name": "ESLint", "level": 80 },
+        { "name": "Vitest", "level": 75 },
+        { "name": "PostCSS", "level": 78 },
+        { "name": "SWC", "level": 70 },
+        { "name": "gh-pages", "level": 75 },
+        { "name": "TypeScript", "level": 82 },
+        { "name": "Autoprefixer", "level": 70 }
       ]
     },
     {
       "name": "Other Tools",
       "skills": [
         { "name": "OpenGL", "level": 65 },
+        { "name": "Three.js", "level": 75 },
         { "name": "MS Word", "level": 95 },
         { "name": "MS Excel", "level": 90 },
         { "name": "MS PowerPoint", "level": 92 },
