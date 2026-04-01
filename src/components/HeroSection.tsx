@@ -2,7 +2,6 @@ import { lazy, Suspense, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   ChevronDown,
-  Download,
   Mail,
   FlaskConical,
   Activity,
@@ -232,7 +231,7 @@ export default function HeroSection() {
                 rel="noopener noreferrer"
                 className="px-6 py-2.5 rounded-xl font-display font-medium text-sm border border-border hover:border-primary/30 transition-all flex items-center gap-2 bg-card/65 text-foreground backdrop-blur-sm hover:-translate-y-0.5"
               >
-                <Download size={16} /> Download Resume (PDF)
+                Resume
               </a>
             </motion.div>
           </div>
