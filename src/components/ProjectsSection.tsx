@@ -1,8 +1,14 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { ExternalLink, Github, Image as ImageIcon } from "lucide-react";
 import projects from "@/data/projects.json";
+import {
+  normalizeCategory,
+  normalizeFilterValue,
+  resolveImageUrl,
+  toSafeArray,
+} from "@/lib/data";
 
 const categories = ["All", "AI", "Web", "Mobile", "Research", "Systems"];
 
@@ -11,8 +17,25 @@ export default function ProjectsSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
+  const normalizedProjects = useMemo(() => {
+    return toSafeArray(projects).map((project) => ({
+      ...project,
+      title: project.title || "Untitled Project",
+      description: project.description || "",
+      category: normalizeCategory(project.category),
+      image: resolveImageUrl(project.image),
+      techStack: toSafeArray(project.techStack),
+      featured: Boolean(project.featured),
+    }));
+  }, [projects]);
+
   const filtered =
-    filter === "All" ? projects : projects.filter((p) => p.category === filter);
+    filter === "All"
+      ? normalizedProjects
+      : normalizedProjects.filter(
+          (p) =>
+            normalizeFilterValue(p.category) === normalizeFilterValue(filter),
+        );
 
   return (
     <section id="projects" className="relative" ref={ref}>

@@ -1,10 +1,9 @@
 import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { FlaskConical, Github, ExternalLink, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import research from "@/data/research.json";
-
-const domains = ["All", ...Array.from(new Set(research.map((r) => r.domain)))];
+import { resolveImageUrl, toSafeArray } from "@/lib/data";
 
 const statusColor: Record<string, string> = {
   Published: "text-accent",
@@ -19,8 +18,31 @@ export default function ResearchSection() {
   const [filter, setFilter] = useState("All");
   const navigate = useNavigate();
 
+  const normalizedResearch = useMemo(
+    () =>
+      toSafeArray(research).map((item) => ({
+        ...item,
+        image: resolveImageUrl(item.image),
+        technologies: toSafeArray(item.technologies),
+        interests: toSafeArray(item.interests),
+      })),
+    [research],
+  );
+
+  const domains = useMemo(
+    () => [
+      "All",
+      ...Array.from(
+        new Set(normalizedResearch.map((r) => r.domain).filter(Boolean)),
+      ),
+    ],
+    [normalizedResearch],
+  );
+
   const filtered =
-    filter === "All" ? research : research.filter((r) => r.domain === filter);
+    filter === "All"
+      ? normalizedResearch
+      : normalizedResearch.filter((r) => r.domain === filter);
 
   return (
     <section id="research" className="relative" ref={ref}>

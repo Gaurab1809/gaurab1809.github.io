@@ -13,6 +13,7 @@ import {
   Download,
 } from "lucide-react";
 import research from "@/data/research.json";
+import { resolveImageUrl, toSafeArray } from "@/lib/data";
 
 type Person = {
   name?: string;
@@ -62,7 +63,9 @@ const statusStyle: Record<string, string> = {
 export default function ResearchDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const item = (research as ResearchItem[]).find((r) => r.id === id);
+  const item = toSafeArray(research as ResearchItem[]).find(
+    (r) => String(r.id) === String(id),
+  );
 
   const normalizePerson = (person?: Person) => {
     if (!person || typeof person !== "object")

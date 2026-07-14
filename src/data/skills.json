@@ -11,7 +11,6 @@
         { "name": "C", "level": 78 },
         { "name": "Dart", "level": 72 },
         { "name": "PHP", "level": 75 },
-        { "name": "C#", "level": 68 },
         { "name": "Kotlin", "level": 65 }
       ]
     },
@@ -35,8 +34,6 @@
       "skills": [
         { "name": "React / React Native", "level": 88 },
         { "name": "Next.js", "level": 82 },
-        { "name": "Django", "level": 80 },
-        { "name": "Flask", "level": 78 },
         { "name": "Express.js", "level": 85 },
         { "name": "Flutter", "level": 75 },
         { "name": "Node.js", "level": 85 },
@@ -51,12 +48,12 @@
         { "name": "Docker", "level": 85 },
         { "name": "AWS", "level": 78 },
         { "name": "Google Cloud", "level": 75 },
-        { "name": "Azure", "level": 72 },
         { "name": "Firebase", "level": 82 },
         { "name": "Vercel / Netlify", "level": 85 },
         { "name": "Cloudflare", "level": 70 },
         { "name": "Git / GitHub", "level": 92 },
-        { "name": "Linux", "level": 85 }
+        { "name": "Linux", "level": 85 },
+        { "name": "CI/CD", "level": 75 }
       ]
     },
     {
@@ -74,8 +71,6 @@
       "name": "Design & Tools",
       "skills": [
         { "name": "Figma", "level": 80 },
-        { "name": "Adobe Photoshop", "level": 78 },
-        { "name": "Adobe Premiere Pro", "level": 72 },
         { "name": "Canva", "level": 85 },
         { "name": "LaTeX", "level": 82 },
         { "name": "Arduino / Raspberry Pi", "level": 70 }
@@ -90,8 +85,31 @@
         { "name": "MS PowerPoint", "level": 92 },
         { "name": "Unity", "level": 60 },
         { "name": "Cisco", "level": 68 },
-        { "name": "Gradle", "level": 65 }
+        { "name": "Jupyter Notebook", "level": 88 },
+        { "name": "VS Code", "level": 90 },
+        { "name": "PyCharm", "level": 85 }
       ]
-    }
+    },
+    {
+      "name": "Soft Skills",
+      "skills": [
+        { "name": "Problem Solving", "level": 90 },
+        { "name": "Teamwork", "level": 88 },
+        { "name": "Communication", "level": 85 },
+        { "name": "Time Management", "level": 82 },
+        { "name": "Adaptability", "level": 80 },
+        { "name": "Leadership", "level": 78 },
+        { "name": "Creativity", "level": 75 },
+        { "name": "Critical Thinking", "level": 82 },
+        { "name": "Collaboration", "level": 85 }
+      ]
+    },
+    {
+      "name": "Languages (Spoken)",
+      "skills": [
+        { "name": "English", "level": 90 },
+        { "name": "Hindi", "level": 60},
+        { "name": "Bengali", "level": 100 }
   ]
+}
 }

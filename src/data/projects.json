@@ -1,6 +1,108 @@
 [
   {
     "id": "1",
+    "title": "CodeSense AI – AI Code Explainer for Beginners",
+    "description": "Designed and built an AI-powered code companion that explains code line-by-line, detects bugs, suggests optimizations, and teaches programming concepts in Bangla. Built with a custom prompt-engineered AI core, an interactive 3D visual experience, and a real Monaco editor supporting 8+ languages.",
+    "techStack": [
+      "React",
+      "TypeScript",
+      "Prompt Engineering",
+      "Monaco Editor",
+      "Prism.js",
+      "Supabase",
+      "Tailwind CSS"
+    ],
+    "category": "AI / Web",
+    "github": "https://github.com/Gaurab1809/codesenseai",
+    "demo": "https://codesenseai.lovable.app/",
+    "image": "src\\assets\\CodeSenseAI_logo.png",
+    "featured": true
+  },
+  {
+    "id": "2",
+    "title": "MediMate Health Companion – AI Medication & Symptom Tracker",
+    "description": "Built a full-stack AI-powered personal health platform that digitizes medication scheduling, symptom journaling, and proactive health insights. Features an AI symptom checker, adherence streak tracking, doctor-ready PDF report export, and HIPAA-aware Supabase authentication with a calm, responsive dashboard UI.",
+    "techStack": [
+      "React",
+      "TypeScript",
+      "Vite",
+      "TanStack Start",
+      "Tailwind CSS",
+      "Supabase",
+      "shadcn/ui",
+      "Claude API"
+    ],
+    "category": "AI",
+    "github": "https://github.com/Gaurab1809/medimate-health-companion",
+    "demo": "https://medimatehealthcompanion.lovable.app",
+    "image": "src\\assets\\medimate-logo.png",
+    "featured": true
+  },
+
+  {
+    "id": "3",
+    "title": "BAUST Tea Bar – Faculty Food & Tea Ordering Platform",
+    "description": "Developed a secure, full-stack food and tea ordering and service management system built exclusively for BAUST faculty and authority. Includes role-based access control, real-time order tracking, monthly billing, email notifications via Nodemailer, and a fully responsive dark-mode UI, tested with Vitest and deployed on Vercel.",
+    "techStack": [
+      "React",
+      "TypeScript",
+      "Express",
+      "Firebase",
+      "SQLite",
+      "Tailwind CSS",
+      "JWT",
+      "Vitest"
+    ],
+    "category": "Full-Stack",
+    "github": "https://github.com/Gaurab1809/BAUST-TEA-BAR",
+    "demo": "https://baust-tea-bar-psi.vercel.app",
+    "image": "src\\assets\\teabarlogo.png",
+    "featured": false
+  },
+
+  {
+    "id": "4",
+    "title": "Smart Campus Assistant Platform – AI University Management System",
+    "description": "Led and architected a collaborative, hackathon-scale mini university management system built like a real software company, coordinating 8 specialized teams across AI, backend, frontend, mobile, UI/UX, QA, security, and data analysis. Delivered an AI chatbot for FAQs and deadlines, class schedules, notices, assignment reminders, and an analytics dashboard, with a companion Android app.",
+    "techStack": [
+      "React",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "FastAPI",
+      "LangChain",
+      "ChromaDB",
+      "Kotlin",
+      "Jetpack Compose"
+    ],
+    "category": "Full-Stack",
+    "github": "https://github.com/Gaurab1809/Smart-Campus-Assistant-Platform",
+    "demo": "",
+    "image": "src\\assets\\smart_campus_logo.png",
+    "featured": false
+  },
+
+  {
+    "id": "5",
+    "title": "CSE Society, BAUST – Official Digital Platform",
+    "description": "Designed and built the official web platform for the CSE Society at BAUST, featuring member registration, an admin dashboard, event and announcement feeds, group messaging, a digital constitution reader, and a dynamic poster generator, backed by Supabase authentication and data storage.",
+    "techStack": [
+      "React",
+      "TypeScript",
+      "TanStack Start",
+      "Tailwind CSS",
+      "Supabase",
+      "shadcn/ui",
+      "html2canvas"
+    ],
+    "category": "Full-Stack",
+    "github": "https://github.com/Gaurab1809/cse-society-baust",
+    "demo": "https://csesocietybaustwebaspp.lovable.app/",
+    "image": "src\\assets\\cse-society-logo.png",
+    "featured": true
+  },
+  {
+    "id": "6",
     "title": "KenaKata.com – E-Commerce Website",
     "description": "Developed a full-featured e-commerce website using Laravel, PHP, MVC architecture, OOP, DbC, SOLID principles, and design patterns, with a focus on an intuitive and professional user interface.",
     "techStack": [
@@ -19,7 +121,7 @@
     "featured": true
   },
   {
-    "id": "2",
+    "id": "7",
     "title": "DevVerse – Developer Community Platform",
     "description": "Built a developer-centric platform for collaboration, code sharing, and community building, empowering developers to share projects, discuss ideas, and enhance their coding skills.",
     "techStack": ["React", "Node.js", "MongoDB", "TailwindCSS"],
@@ -30,7 +132,7 @@
     "featured": true
   },
   {
-    "id": "3",
+    "id": "8",
     "title": "JobMate Android App",
     "description": "An Android job portal app connecting job seekers with employers, developed using Java, Firebase, Android SDK, and XML.",
     "techStack": ["Java", "Firebase", "Android SDK", "XML"],
@@ -41,7 +143,7 @@
     "featured": true
   },
   {
-    "id": "4",
+    "id": "9",
     "title": "Spell Checker (Word2Vec)",
     "description": "Developed an intelligent NLP-based spell checker using Word2Vec embeddings for context-aware spelling correction and word suggestions.",
     "techStack": ["Python", "Word2Vec", "NLP", "scikit-learn"],
@@ -52,7 +154,7 @@
     "featured": true
   },
   {
-    "id": "5",
+    "id": "10",
     "title": "E-PATHSHALA – Full-Stack E-Learning Platform",
     "description": "Launched an online e-learning platform to make education more accessible, interactive, and engaging. Built with React, Node.js, Express, MongoDB, and TailwindCSS.",
     "techStack": ["React", "Node.js", "MongoDB", "Express.js", "TailwindCSS"],
@@ -63,18 +165,18 @@
     "featured": true
   },
   {
-    "id": "6",
+    "id": "11",
     "title": "E-PATHSHALA Mobile App",
     "description": "Mobile application version of the E-PATHSHALA platform built with Flutter and Dart, bringing e-learning to mobile devices.",
     "techStack": ["Flutter", "Dart", "Firebase", "REST API"],
     "category": "Mobile",
-    "github": "hhttps://github.com/Gaurab1809/E-PATHSHALA-APP-Smart-E-Learning-Platform",
+    "github": "https://github.com/Gaurab1809/E-PATHSHALA-APP-Smart-E-Learning-Platform",
     "demo": "",
     "image": "src\\assets\\EPathshala_logo.png",
     "featured": true
   },
   {
-    "id": "7",
+    "id": "12",
     "title": "Prohori - Android Crime Reporting & Missing Person Finder App",
     "description": "An Android-based application designed to assist in crime reporting and missing person identification. The app allows users to report incidents, upload missing person details, and collaborate with authorities through a centralized system. It integrates real-time data sharing, image handling, and user-friendly interfaces to improve public safety and response efficiency.",
     "techStack": ["Java", "Android Studio", "Firebase", "XML"],
@@ -85,7 +187,7 @@
     "featured": true
   },
   {
-    "id": "8",
+    "id": "13",
     "title": "IoT Smart Drainage System",
     "description": "Developed a smart IoT-based drainage monitoring system to prevent urban flooding, integrating sensors, automation, and real-time monitoring.",
     "techStack": ["Arduino", "Sensors", "IoT", "Automation"],
@@ -96,7 +198,7 @@
     "featured": true
   },
   {
-    "id": "9",
+    "id": "14",
     "title": "BChat – Integrated Social Media & Cashless Digital Economy Platform",
     "description": "Designed and proposed a comprehensive social communication platform integrating messaging, services, and a unified digital payment ecosystem for Bangladesh.",
     "techStack": ["React", "Node.js", "MongoDB", "Payment APIs"],
@@ -107,7 +209,7 @@
     "featured": true
   },
   {
-    "id": "10",
+    "id": "15",
     "title": "DineMaster - A Restaurant Management System",
     "description": "A comprehensive restaurant management system built with PHP for handling orders, menu management, billing, and customer tracking.",
     "techStack": ["PHP", "MySQL", "HTML", "CSS", "JavaScript"],
@@ -118,7 +220,7 @@
     "featured": false
   },
   {
-    "id": "11",
+    "id": "16",
     "title": "Course Management System",
     "description": "A console-based C++ project for managing courses and student enrollment with file handling and OOP concepts.",
     "techStack": ["C++", "OOP", "File Handling"],
@@ -129,7 +231,7 @@
     "featured": false
   },
   {
-    "id": "12",
+    "id": "17",
     "title": "ShobdoBondhu – Voice Controlled Robot",
     "description": "An Arduino-based robot integrating voice control and obstacle avoidance for smart navigation.",
     "techStack": ["Arduino", "C++", "Sensors", "Voice Recognition"],
@@ -140,7 +242,7 @@
     "featured": false
   },
   {
-    "id": "13",
+    "id": "18",
     "title": "SmartPark – Smart Parking System",
     "description": "An Arduino-based smart parking system that detects slot availability in real-time using ultrasonic sensors and automates entry barriers.",
     "techStack": ["Arduino", "C++", "Ultrasonic Sensors", "Servo Motor"],
@@ -151,7 +253,7 @@
     "featured": true
   },
   {
-    "id": "14",
+    "id": "19",
     "title": "Arduino Radar System",
     "description": "A radar system using Arduino and ultrasonic sensors to detect and map object positions in real-time.",
     "techStack": ["Arduino", "C++", "Sensors", "Servo Motor"],

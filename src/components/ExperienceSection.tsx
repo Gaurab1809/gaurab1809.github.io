@@ -2,6 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Briefcase, Users } from "lucide-react";
 import experience from "@/data/experience.json";
+import { toSafeArray } from "@/lib/data";
 
 function ExperienceItem({
   item,
@@ -83,8 +84,8 @@ export default function ExperienceSection() {
           <div className="absolute left-4 top-0 bottom-0 w-px bg-gradient-to-b from-primary/50 via-accent/20 to-transparent" />
 
           <div className="space-y-6">
-            {experience.map((item, i) => (
-              <ExperienceItem key={i} item={item} index={i} />
+            {toSafeArray(experience).map((item, i) => (
+              <ExperienceItem key={item.title || i} item={item} index={i} />
             ))}
           </div>
         </div>

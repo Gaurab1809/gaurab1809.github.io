@@ -1,6 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import skillsData from "@/data/skills.json";
+import { toSafeArray } from "@/lib/data";
 
 function SkillBar({
   name,
@@ -59,9 +60,9 @@ export default function SkillsSection() {
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-6">
-          {skillsData.categories.map((category, catIdx) => (
+          {toSafeArray(skillsData?.categories).map((category, catIdx) => (
             <motion.div
-              key={category.name}
+              key={category.name || `category-${catIdx}`}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{
@@ -76,11 +77,11 @@ export default function SkillsSection() {
                 {category.name}
               </h3>
               <div className="space-y-3">
-                {category.skills.map((skill, skillIdx) => (
+                {toSafeArray(category?.skills).map((skill, skillIdx) => (
                   <SkillBar
-                    key={skill.name}
-                    name={skill.name}
-                    level={skill.level}
+                    key={skill.name || `skill-${skillIdx}`}
+                    name={skill.name || "Unnamed skill"}
+                    level={Number(skill.level) || 0}
                     delay={skillIdx * 0.06}
                   />
                 ))}
