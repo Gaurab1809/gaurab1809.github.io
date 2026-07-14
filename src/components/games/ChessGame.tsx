@@ -1,322 +1,497 @@
-import { useState, useCallback, useMemo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { RotateCcw, Crown, Zap, Brain } from 'lucide-react';
+import { useCallback, useMemo, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  Brain,
+  Crown,
+  Lightbulb,
+  RotateCcw,
+  Undo2,
+  Zap,
+} from "lucide-react";
+import {
+  cloneState,
+  createInitialState,
+  DEPTH,
+  Difficulty,
+  findKing,
+  formatMove,
+  getAIMove,
+  getCapturedPieces,
+  getGameStatus,
+  getHintMove,
+  getLegalMovesForPiece,
+  getPromotionMoves,
+  isInCheck,
+  isWhite,
+  makeChessMove,
+  PIECE_UNICODE,
+  type ChessMove,
+  type ChessState,
+  type Pos,
+  type PromotionPiece,
+} from "./chessEngine";
 
-type Piece = string | null;
-type Board = Piece[][];
-type Pos = [number, number];
-
-const INIT: Board = [
-  ['r','n','b','q','k','b','n','r'],
-  ['p','p','p','p','p','p','p','p'],
-  [null,null,null,null,null,null,null,null],
-  [null,null,null,null,null,null,null,null],
-  [null,null,null,null,null,null,null,null],
-  [null,null,null,null,null,null,null,null],
-  ['P','P','P','P','P','P','P','P'],
-  ['R','N','B','Q','K','B','N','R'],
-];
-
-const U: Record<string, string> = {
-  K:'♔',Q:'♕',R:'♖',B:'♗',N:'♘',P:'♙',
-  k:'♚',q:'♛',r:'♜',b:'♝',n:'♞',p:'♟',
+type HistoryEntry = {
+  state: ChessState;
+  notation: string;
 };
 
-const VAL: Record<string, number> = { p:100,n:320,b:330,r:500,q:900,k:20000,P:100,N:320,B:330,R:500,Q:900,K:20000 };
-
-const isWhite = (p: string) => p === p.toUpperCase();
-const inBounds = (r: number, c: number) => r >= 0 && r < 8 && c >= 0 && c < 8;
-
-function getMoves(board: Board, r: number, c: number): Pos[] {
-  const p = board[r][c];
-  if (!p) return [];
-  const moves: Pos[] = [];
-  const white = isWhite(p);
-  const type = p.toLowerCase();
-
-  const addIfValid = (tr: number, tc: number) => {
-    if (!inBounds(tr, tc)) return false;
-    const target = board[tr][tc];
-    if (target && isWhite(target) === white) return false;
-    moves.push([tr, tc]);
-    return !target;
-  };
-
-  const slide = (dirs: Pos[]) => {
-    for (const [dr, dc] of dirs) {
-      for (let i = 1; i < 8; i++) {
-        if (!addIfValid(r + dr * i, c + dc * i)) break;
-      }
-    }
-  };
-
-  if (type === 'p') {
-    const dir = white ? -1 : 1;
-    const start = white ? 6 : 1;
-    if (inBounds(r+dir, c) && !board[r+dir][c]) {
-      moves.push([r+dir, c]);
-      if (r === start && !board[r+dir*2][c]) moves.push([r+dir*2, c]);
-    }
-    for (const dc of [-1, 1]) {
-      if (inBounds(r+dir, c+dc) && board[r+dir][c+dc] && isWhite(board[r+dir][c+dc]!) !== white)
-        moves.push([r+dir, c+dc]);
-    }
-  } else if (type === 'n') {
-    for (const [dr, dc] of [[-2,-1],[-2,1],[-1,-2],[-1,2],[1,-2],[1,2],[2,-1],[2,1]] as Pos[])
-      addIfValid(r+dr, c+dc);
-  } else if (type === 'b') {
-    slide([[-1,-1],[-1,1],[1,-1],[1,1]]);
-  } else if (type === 'r') {
-    slide([[-1,0],[1,0],[0,-1],[0,1]]);
-  } else if (type === 'q') {
-    slide([[-1,-1],[-1,1],[1,-1],[1,1],[-1,0],[1,0],[0,-1],[0,1]]);
-  } else if (type === 'k') {
-    for (const [dr, dc] of [[-1,-1],[-1,0],[-1,1],[0,-1],[0,1],[1,-1],[1,0],[1,1]] as Pos[])
-      addIfValid(r+dr, c+dc);
-  }
-  return moves;
-}
-
-function cloneBoard(b: Board): Board { return b.map(r => [...r]); }
-
-function makeMove(board: Board, fr: number, fc: number, tr: number, tc: number): Board {
-  const b = cloneBoard(board);
-  const piece = b[fr][fc];
-  b[tr][tc] = piece;
-  b[fr][fc] = null;
-  // Auto-promote pawns
-  if (piece === 'P' && tr === 0) b[tr][tc] = 'Q';
-  if (piece === 'p' && tr === 7) b[tr][tc] = 'q';
-  return b;
-}
-
-function evaluate(board: Board): number {
-  let score = 0;
-  for (let r = 0; r < 8; r++)
-    for (let c = 0; c < 8; c++) {
-      const p = board[r][c];
-      if (p) score += (isWhite(p) ? -1 : 1) * VAL[p]; // AI is black
-    }
-  return score;
-}
-
-function isKingAlive(board: Board, white: boolean): boolean {
-  const king = white ? 'K' : 'k';
-  for (const row of board) for (const cell of row) if (cell === king) return true;
-  return false;
-}
-
-function minimax(board: Board, depth: number, alpha: number, beta: number, maximizing: boolean): number {
-  if (!isKingAlive(board, true)) return 100000;
-  if (!isKingAlive(board, false)) return -100000;
-  if (depth === 0) return evaluate(board);
-
-  const isBlack = maximizing;
-  let best = maximizing ? -Infinity : Infinity;
-
-  for (let r = 0; r < 8; r++)
-    for (let c = 0; c < 8; c++) {
-      const p = board[r][c];
-      if (!p || isWhite(p) === isBlack) continue;
-      for (const [tr, tc] of getMoves(board, r, c)) {
-        const nb = makeMove(board, r, c, tr, tc);
-        const val = minimax(nb, depth - 1, alpha, beta, !maximizing);
-        if (maximizing) { best = Math.max(best, val); alpha = Math.max(alpha, val); }
-        else { best = Math.min(best, val); beta = Math.min(beta, val); }
-        if (beta <= alpha) return best;
-      }
-    }
-  return best;
-}
-
-function getAIMove(board: Board, depth: number): { from: Pos; to: Pos } | null {
-  let bestVal = -Infinity;
-  let bestMove: { from: Pos; to: Pos } | null = null;
-  for (let r = 0; r < 8; r++)
-    for (let c = 0; c < 8; c++) {
-      if (!board[r][c] || isWhite(board[r][c]!)) continue;
-      for (const [tr, tc] of getMoves(board, r, c)) {
-        const nb = makeMove(board, r, c, tr, tc);
-        const val = minimax(nb, depth - 1, -Infinity, Infinity, false);
-        if (val > bestVal) { bestVal = val; bestMove = { from: [r, c], to: [tr, tc] }; }
-      }
-    }
-  return bestMove;
-}
-
-type Difficulty = 'easy' | 'medium' | 'hard';
-const DEPTH: Record<Difficulty, number> = { easy: 1, medium: 2, hard: 3 };
+const PROMOTION_OPTIONS: PromotionPiece[] = ["q", "r", "b", "n"];
 
 export default function ChessGame() {
-  const [board, setBoard] = useState<Board>(cloneBoard(INIT));
+  const [gameState, setGameState] = useState<ChessState>(createInitialState);
   const [selected, setSelected] = useState<Pos | null>(null);
-  const [validMoves, setValidMoves] = useState<Pos[]>([]);
-  const [difficulty, setDifficulty] = useState<Difficulty>('medium');
+  const [validMoves, setValidMoves] = useState<ChessMove[]>([]);
+  const [difficulty, setDifficulty] = useState<Difficulty>("medium");
   const [history, setHistory] = useState<string[]>([]);
+  const [stateHistory, setStateHistory] = useState<HistoryEntry[]>([]);
   const [gameOver, setGameOver] = useState<string | null>(null);
   const [thinking, setThinking] = useState(false);
-  const [lastAIMove, setLastAIMove] = useState<{ from: Pos; to: Pos } | null>(null);
+  const [lastAIMove, setLastAIMove] = useState<ChessMove | null>(null);
+  const [hintMove, setHintMove] = useState<ChessMove | null>(null);
   const [score, setScore] = useState({ player: 0, ai: 0 });
+  const [pendingPromotion, setPendingPromotion] = useState<{
+    from: Pos;
+    to: Pos;
+  } | null>(null);
 
-  const cols = 'abcdefgh';
-  const notation = (r: number, c: number) => `${cols[c]}${8-r}`;
+  const board = gameState.board;
+  const playerTurn = gameState.whiteToMove;
+
+  const whiteKing = useMemo(() => findKing(board, true), [board]);
+  const blackKing = useMemo(() => findKing(board, false), [board]);
+  const whiteInCheck = useMemo(() => isInCheck(board, true), [board]);
+  const blackInCheck = useMemo(() => isInCheck(board, false), [board]);
+  const captured = useMemo(() => getCapturedPieces(board), [board]);
 
   const reset = () => {
-    setBoard(cloneBoard(INIT));
+    setGameState(createInitialState());
     setSelected(null);
     setValidMoves([]);
     setHistory([]);
+    setStateHistory([]);
     setGameOver(null);
     setThinking(false);
     setLastAIMove(null);
+    setHintMove(null);
+    setPendingPromotion(null);
   };
 
-  const handleClick = useCallback((r: number, c: number) => {
-    if (gameOver || thinking) return;
-    const piece = board[r][c];
+  const finishGame = useCallback(
+    (message: string, winner?: "player" | "ai" | "draw") => {
+      setGameOver(message);
+      setSelected(null);
+      setValidMoves([]);
+      setHintMove(null);
+      setPendingPromotion(null);
 
-    if (selected) {
-      const isValid = validMoves.some(([vr, vc]) => vr === r && vc === c);
-      if (isValid) {
-        const from = selected;
-        const captured = board[r][c];
-        const nb = makeMove(board, from[0], from[1], r, c);
-        setBoard(nb);
-        setSelected(null);
-        setValidMoves([]);
-        const moveStr = `${U[board[from[0]][from[1]]!]} ${notation(from[0], from[1])}→${notation(r, c)}${captured ? ' ×'+U[captured] : ''}`;
-        setHistory(h => [...h, moveStr]);
+      if (winner === "player") {
+        setScore((s) => ({ ...s, player: s.player + 1 }));
+      } else if (winner === "ai") {
+        setScore((s) => ({ ...s, ai: s.ai + 1 }));
+      }
+    },
+    [],
+  );
 
-        if (!isKingAlive(nb, false)) {
-          setGameOver('You win!');
-          setScore(s => ({ ...s, player: s.player + 1 }));
-          return;
-        }
+  const resolveGameState = useCallback(
+    (state: ChessState) => {
+      const status = getGameStatus(state);
+      if (status === "checkmate") {
+        finishGame(
+          state.whiteToMove ? "AI wins by checkmate!" : "You win by checkmate!",
+          state.whiteToMove ? "ai" : "player",
+        );
+        return true;
+      }
+      if (status === "stalemate") {
+        finishGame("Stalemate — draw.", "draw");
+        return true;
+      }
+      return false;
+    },
+    [finishGame],
+  );
 
+  const applyMove = useCallback(
+    (state: ChessState, move: ChessMove, isPlayerMove: boolean) => {
+      const nextState = makeChessMove(state, move);
+      const notation = formatMove(state, move);
+
+      setGameState(nextState);
+      setStateHistory((entries) => [
+        ...entries,
+        { state: cloneState(nextState), notation },
+      ]);
+      setHistory((entries) => [...entries, notation]);
+      setSelected(null);
+      setValidMoves([]);
+      setHintMove(null);
+      setPendingPromotion(null);
+
+      if (isPlayerMove) {
+        setLastAIMove(null);
+      }
+
+      if (resolveGameState(nextState)) return;
+
+      if (isPlayerMove) {
         setThinking(true);
-        setTimeout(() => {
-          const aiMove = getAIMove(nb, DEPTH[difficulty]);
-          if (aiMove) {
-            const { from: af, to: at } = aiMove;
-            const aiCaptured = nb[at[0]][at[1]];
-            const ab = makeMove(nb, af[0], af[1], at[0], at[1]);
-            setBoard(ab);
-            setLastAIMove(aiMove);
-            const aiStr = `${U[nb[af[0]][af[1]]!]} ${notation(af[0], af[1])}→${notation(at[0], at[1])}${aiCaptured ? ' ×'+U[aiCaptured] : ''}`;
-            setHistory(h => [...h, aiStr]);
-            if (!isKingAlive(ab, true)) {
-              setGameOver('AI wins!');
-              setScore(s => ({ ...s, ai: s.ai + 1 }));
-            }
+        window.setTimeout(() => {
+          const aiMove = getAIMove(nextState, DEPTH[difficulty]);
+          if (!aiMove) {
+            resolveGameState(nextState);
+            setThinking(false);
+            return;
           }
+
+          const aiState = makeChessMove(nextState, aiMove);
+          setGameState(aiState);
+          setLastAIMove(aiMove);
+          setStateHistory((entries) => [
+            ...entries,
+            {
+              state: cloneState(aiState),
+              notation: formatMove(nextState, aiMove),
+            },
+          ]);
+          setHistory((entries) => [
+            ...entries,
+            formatMove(nextState, aiMove),
+          ]);
+
+          resolveGameState(aiState);
           setThinking(false);
-        }, 300);
-      } else {
-        if (piece && isWhite(piece)) {
+        }, 350);
+      }
+    },
+    [difficulty, resolveGameState],
+  );
+
+  const handlePromotion = (piece: PromotionPiece) => {
+    if (!pendingPromotion) return;
+
+    const move = getPromotionMoves(
+      gameState,
+      pendingPromotion.from,
+      pendingPromotion.to,
+    ).find((candidate) => candidate.promotion === piece);
+
+    if (!move) return;
+    applyMove(gameState, move, true);
+  };
+
+  const handleClick = useCallback(
+    (r: number, c: number) => {
+      if (gameOver || thinking || !playerTurn || pendingPromotion) return;
+
+      const piece = board[r][c];
+
+      if (selected) {
+        const move = validMoves.find(
+          (candidate) => candidate.to[0] === r && candidate.to[1] === c,
+        );
+
+        if (move) {
+          if (move.promotion) {
+            setPendingPromotion({ from: selected, to: [r, c] });
+            return;
+          }
+          applyMove(gameState, move, true);
+        } else if (piece && isWhite(piece)) {
           setSelected([r, c]);
-          setValidMoves(getMoves(board, r, c));
+          setValidMoves(getLegalMovesForPiece(gameState, r, c));
+          setHintMove(null);
         } else {
           setSelected(null);
           setValidMoves([]);
         }
-      }
-    } else {
-      if (piece && isWhite(piece)) {
+      } else if (piece && isWhite(piece)) {
         setSelected([r, c]);
-        setValidMoves(getMoves(board, r, c));
+        setValidMoves(getLegalMovesForPiece(gameState, r, c));
+        setHintMove(null);
       }
-    }
-  }, [board, selected, validMoves, gameOver, thinking, difficulty]);
+    },
+    [
+      applyMove,
+      board,
+      gameOver,
+      gameState,
+      pendingPromotion,
+      playerTurn,
+      selected,
+      thinking,
+      validMoves,
+    ],
+  );
 
-  const isHighlighted = (r: number, c: number) => validMoves.some(([vr, vc]) => vr === r && vc === c);
-  const isSelected = (r: number, c: number) => selected?.[0] === r && selected?.[1] === c;
-  const isLastAI = (r: number, c: number) => lastAIMove && ((lastAIMove.from[0] === r && lastAIMove.from[1] === c) || (lastAIMove.to[0] === r && lastAIMove.to[1] === c));
+  const handleUndo = () => {
+    if (thinking || gameOver || stateHistory.length === 0) return;
+
+    const steps = stateHistory.length >= 2 ? 2 : 1;
+    const nextHistory = stateHistory.slice(0, -steps);
+    const notationHistory = history.slice(0, -steps);
+
+    if (nextHistory.length === 0) {
+      reset();
+      return;
+    }
+
+    const previous = nextHistory[nextHistory.length - 1].state;
+    setGameState(cloneState(previous));
+    setStateHistory(nextHistory);
+    setHistory(notationHistory);
+    setSelected(null);
+    setValidMoves([]);
+    setLastAIMove(null);
+    setHintMove(null);
+    setPendingPromotion(null);
+    setGameOver(null);
+  };
+
+  const handleHint = () => {
+    if (gameOver || thinking || !playerTurn) return;
+    const move = getHintMove(gameState, DEPTH[difficulty]);
+    setHintMove(move);
+    if (move) {
+      setSelected(move.from);
+      setValidMoves(getLegalMovesForPiece(gameState, move.from[0], move.from[1]));
+    }
+  };
+
+  const isHighlighted = (r: number, c: number) =>
+    validMoves.some((move) => move.to[0] === r && move.to[1] === c);
+  const isSelected = (r: number, c: number) =>
+    selected?.[0] === r && selected?.[1] === c;
+  const isLastAI = (r: number, c: number) =>
+    lastAIMove &&
+    ((lastAIMove.from[0] === r && lastAIMove.from[1] === c) ||
+      (lastAIMove.to[0] === r && lastAIMove.to[1] === c));
+  const isHintSquare = (r: number, c: number) =>
+    hintMove &&
+    ((hintMove.from[0] === r && hintMove.from[1] === c) ||
+      (hintMove.to[0] === r && hintMove.to[1] === c));
+  const isKingInCheckSquare = (r: number, c: number) =>
+    (whiteInCheck &&
+      whiteKing &&
+      whiteKing[0] === r &&
+      whiteKing[1] === c) ||
+    (blackInCheck &&
+      blackKing &&
+      blackKing[0] === r &&
+      blackKing[1] === c);
+
+  const statusMessage = gameOver
+    ? gameOver
+    : pendingPromotion
+      ? "Choose a promotion piece"
+      : thinking
+        ? "AI is thinking..."
+        : !playerTurn
+          ? "Waiting for AI..."
+          : whiteInCheck
+            ? "You are in check!"
+            : "Your move (White)";
 
   return (
     <div className="glass rounded-xl p-4 sm:p-6 w-full">
       <div className="flex items-center justify-between mb-3">
         <h3 className="font-display font-semibold text-foreground flex items-center gap-2">
-          <Crown size={16} className="text-primary" /> AI Chess
+          <Crown size={16} className="text-primary" /> Advanced AI Chess
         </h3>
-        <button onClick={reset} className="p-2 text-muted-foreground hover:text-primary transition-colors">
-          <RotateCcw size={16} />
-        </button>
+        <div className="flex items-center gap-1">
+          <button
+            onClick={handleHint}
+            disabled={Boolean(gameOver) || thinking || !playerTurn}
+            className="p-2 text-muted-foreground hover:text-accent transition-colors disabled:opacity-40"
+            title="Hint"
+          >
+            <Lightbulb size={16} />
+          </button>
+          <button
+            onClick={handleUndo}
+            disabled={thinking || stateHistory.length === 0}
+            className="p-2 text-muted-foreground hover:text-primary transition-colors disabled:opacity-40"
+            title="Undo last turn"
+          >
+            <Undo2 size={16} />
+          </button>
+          <button
+            onClick={reset}
+            className="p-2 text-muted-foreground hover:text-primary transition-colors"
+            title="Reset game"
+          >
+            <RotateCcw size={16} />
+          </button>
+        </div>
       </div>
 
-      <div className="flex justify-between items-center mb-3">
-        <div className="flex gap-1">
-          {(['easy','medium','hard'] as Difficulty[]).map(d => (
-            <button key={d} onClick={() => { setDifficulty(d); reset(); }}
-              className={`px-2 py-1 rounded text-xs font-mono transition-all ${difficulty === d ? 'bg-primary/20 text-primary border border-primary/30' : 'text-muted-foreground hover:text-foreground'}`}>
-              {d === 'easy' && <Zap size={10} className="inline mr-1" />}
-              {d === 'medium' && <Brain size={10} className="inline mr-1" />}
-              {d === 'hard' && <Crown size={10} className="inline mr-1" />}
-              {d}
+      <div className="flex justify-between items-center mb-3 gap-2">
+        <div className="flex gap-1 flex-wrap">
+          {(["easy", "medium", "hard"] as Difficulty[]).map((level) => (
+            <button
+              key={level}
+              onClick={() => {
+                setDifficulty(level);
+                reset();
+              }}
+              className={`px-2 py-1 rounded text-xs font-mono transition-all ${difficulty === level ? "bg-primary/20 text-primary border border-primary/30" : "text-muted-foreground hover:text-foreground"}`}
+            >
+              {level === "easy" && <Zap size={10} className="inline mr-1" />}
+              {level === "medium" && <Brain size={10} className="inline mr-1" />}
+              {level === "hard" && <Crown size={10} className="inline mr-1" />}
+              {level}
             </button>
           ))}
         </div>
-        <div className="text-xs font-mono">
+        <div className="text-xs font-mono shrink-0">
           <span className="text-primary">You:{score.player}</span>
           <span className="text-muted-foreground mx-2">|</span>
           <span className="text-accent">AI:{score.ai}</span>
         </div>
       </div>
 
-      {/* Board */}
-      <div className="relative aspect-square w-full max-w-[320px] mx-auto mb-3" style={{ perspective: '800px' }}>
-        <div className="w-full h-full grid grid-cols-8 grid-rows-8 rounded-lg overflow-hidden border border-border shadow-lg"
-          style={{ transform: 'rotateX(2deg)', transformStyle: 'preserve-3d' }}>
-          {board.map((row, r) => row.map((piece, c) => {
-            const dark = (r + c) % 2 === 1;
-            const highlighted = isHighlighted(r, c);
-            const sel = isSelected(r, c);
-            const aiHL = isLastAI(r, c);
-            return (
-              <motion.button key={`${r}-${c}`}
-                onClick={() => handleClick(r, c)}
-                whileHover={{ scale: 1.05, zIndex: 10 }}
-                className={`relative flex items-center justify-center text-lg sm:text-2xl transition-colors duration-150
-                  ${dark ? 'bg-secondary' : 'bg-muted/30'}
-                  ${sel ? 'ring-2 ring-primary ring-inset bg-primary/20' : ''}
-                  ${highlighted ? 'bg-accent/20' : ''}
-                  ${aiHL ? 'bg-destructive/10' : ''}
-                `}>
-                {highlighted && !piece && (
-                  <div className="absolute w-2 h-2 rounded-full bg-accent/50" />
-                )}
-                {highlighted && piece && (
-                  <div className="absolute inset-0 border-2 border-accent/50 rounded-sm" />
-                )}
-                {piece && (
-                  <motion.span
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    className={`relative z-10 drop-shadow-md ${isWhite(piece) ? 'text-foreground' : 'text-primary'}`}
-                    style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
-                    {U[piece]}
-                  </motion.span>
-                )}
-              </motion.button>
-            );
-          }))}
+      <div className="mb-3 flex items-center justify-between gap-2 text-[11px] font-mono">
+        <div className="flex flex-wrap gap-1 min-h-[18px]">
+          {captured.black.map((piece, index) => (
+            <span key={`cap-b-${piece}-${index}`} className="text-primary">
+              {PIECE_UNICODE[piece]}
+            </span>
+          ))}
         </div>
+        <div className="flex flex-wrap gap-1 min-h-[18px] justify-end">
+          {captured.white.map((piece, index) => (
+            <span key={`cap-w-${piece}-${index}`} className="text-foreground/70">
+              {PIECE_UNICODE[piece]}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <div
+        className={`mb-3 text-center text-xs font-mono rounded-lg px-3 py-2 ${
+          gameOver
+            ? "bg-accent/10 text-accent border border-accent/20"
+            : whiteInCheck && !gameOver
+              ? "bg-destructive/10 text-destructive border border-destructive/20"
+              : "bg-background/50 text-muted-foreground border border-border/50"
+        }`}
+      >
+        {statusMessage}
+      </div>
+
+      <div
+        className="relative aspect-square w-full max-w-[320px] mx-auto mb-3"
+        style={{ perspective: "800px" }}
+      >
+        <div
+          className="w-full h-full grid grid-cols-8 grid-rows-8 rounded-lg overflow-hidden border border-border shadow-lg"
+          style={{ transform: "rotateX(2deg)", transformStyle: "preserve-3d" }}
+        >
+          {board.map((row, r) =>
+            row.map((piece, c) => {
+              const dark = (r + c) % 2 === 1;
+              const highlighted = isHighlighted(r, c);
+              const sel = isSelected(r, c);
+              const aiHL = isLastAI(r, c);
+              const hintHL = isHintSquare(r, c);
+              const kingCheck = isKingInCheckSquare(r, c);
+
+              return (
+                <motion.button
+                  key={`${r}-${c}`}
+                  onClick={() => handleClick(r, c)}
+                  whileHover={
+                    !gameOver && !thinking && !pendingPromotion
+                      ? { scale: 1.05, zIndex: 10 }
+                      : {}
+                  }
+                  className={`relative flex items-center justify-center text-lg sm:text-2xl transition-colors duration-150
+                  ${dark ? "bg-secondary" : "bg-muted/30"}
+                  ${sel ? "ring-2 ring-primary ring-inset bg-primary/20" : ""}
+                  ${highlighted ? "bg-accent/20" : ""}
+                  ${aiHL ? "bg-destructive/10" : ""}
+                  ${hintHL ? "bg-yellow-500/10 ring-1 ring-yellow-500/30 ring-inset" : ""}
+                  ${kingCheck ? "bg-destructive/20 ring-1 ring-destructive/40 ring-inset" : ""}
+                `}
+                >
+                  {highlighted && !piece && (
+                    <div className="absolute w-2 h-2 rounded-full bg-accent/50" />
+                  )}
+                  {highlighted && piece && (
+                    <div className="absolute inset-0 border-2 border-accent/50 rounded-sm" />
+                  )}
+                  {piece && (
+                    <motion.span
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      className={`relative z-10 drop-shadow-md ${isWhite(piece) ? "text-foreground" : "text-primary"}`}
+                      style={{ textShadow: "0 2px 4px rgba(0,0,0,0.5)" }}
+                    >
+                      {PIECE_UNICODE[piece]}
+                    </motion.span>
+                  )}
+                </motion.button>
+              );
+            }),
+          )}
+        </div>
+
         {thinking && (
           <div className="absolute inset-0 flex items-center justify-center bg-background/30 backdrop-blur-sm rounded-lg">
-            <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 1, ease: 'linear' }}>
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+            >
               <Brain size={24} className="text-primary" />
             </motion.div>
           </div>
         )}
+
+        <AnimatePresence>
+          {pendingPromotion && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-0 flex items-center justify-center bg-background/70 backdrop-blur-sm rounded-lg"
+            >
+              <div className="glass rounded-xl p-4 border border-border/50">
+                <p className="text-xs font-mono text-muted-foreground mb-3 text-center">
+                  Promote pawn to
+                </p>
+                <div className="flex gap-2">
+                  {PROMOTION_OPTIONS.map((piece) => (
+                    <button
+                      key={piece}
+                      onClick={() => handlePromotion(piece)}
+                      className="w-12 h-12 rounded-lg bg-secondary hover:bg-primary/20 text-2xl transition-colors"
+                    >
+                      {PIECE_UNICODE[piece.toUpperCase()]}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
-      {/* Move history */}
       <div className="h-16 overflow-y-auto bg-background/50 rounded-lg p-2 text-xs font-mono text-muted-foreground scrollbar-thin">
         {history.length === 0 ? (
-          <span className="text-muted-foreground/50">Play white pieces. Move history appears here...</span>
+          <span className="text-muted-foreground/50">
+            Full rules enabled: castling, en passant, promotion, checkmate, and
+            stalemate.
+          </span>
         ) : (
-          history.map((m, i) => (
-            <span key={i} className={`inline-block mr-2 ${i % 2 === 0 ? 'text-foreground' : 'text-primary'}`}>
-              {Math.floor(i/2)+1}{i%2===0?'.':'...'}{m}
+          history.map((move, index) => (
+            <span
+              key={index}
+              className={`inline-block mr-2 ${index % 2 === 0 ? "text-foreground" : "text-primary"}`}
+            >
+              {Math.floor(index / 2) + 1}
+              {index % 2 === 0 ? "." : "..."}
+              {move}
             </span>
           ))
         )}
@@ -324,9 +499,28 @@ export default function ChessGame() {
 
       <AnimatePresence>
         {gameOver && (
-          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
-            className="mt-3 text-center font-display font-semibold text-sm">
-            <span className={gameOver.includes('You') ? 'text-accent' : 'text-primary'}>{gameOver} {gameOver.includes('You') ? '🎉' : '🤖'}</span>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            className="mt-3 text-center font-display font-semibold text-sm"
+          >
+            <span
+              className={
+                gameOver.includes("You win")
+                  ? "text-accent"
+                  : gameOver.includes("draw")
+                    ? "text-muted-foreground"
+                    : "text-primary"
+              }
+            >
+              {gameOver}{" "}
+              {gameOver.includes("You win")
+                ? "🎉"
+                : gameOver.includes("draw")
+                  ? "🤝"
+                  : "🤖"}
+            </span>
           </motion.div>
         )}
       </AnimatePresence>

@@ -57,7 +57,7 @@
     "github": "https://github.com/Gaurab1809/BAUST-TEA-BAR",
     "demo": "https://baust-tea-bar-psi.vercel.app",
     "image": "src\\assets\\teabarlogo.png",
-    "featured": false
+    "featured": true
   },
 
   {
@@ -79,7 +79,7 @@
     "github": "https://github.com/Gaurab1809/Smart-Campus-Assistant-Platform",
     "demo": "",
     "image": "src\\assets\\smart_campus_logo.png",
-    "featured": false
+    "featured": true
   },
 
   {
@@ -217,7 +217,7 @@
     "github": "https://github.com/Gaurab1809/DineMaster-Restaurant-Management-System-RMS-",
     "demo": "",
     "image": "src\\assets\\DineMaster_Logo.png",
-    "featured": false
+    "featured": true
   },
   {
     "id": "16",
@@ -228,7 +228,7 @@
     "github": "https://github.com/Gaurab1809/Course-Management-System-CMS-",
     "demo": "",
     "image": "src\\assets\\CMS_Logo.png",
-    "featured": false
+    "featured": true
   },
   {
     "id": "17",
@@ -239,7 +239,7 @@
     "github": "https://github.com/Gaurab1809/ShobdoBondhu-Arduino-Voice-Controlled-and-Obstacle-Robot",
     "demo": "",
     "image": "src\\assets\\ShobdoBondhu_Logo.png",
-    "featured": false
+    "featured": true
   },
   {
     "id": "18",

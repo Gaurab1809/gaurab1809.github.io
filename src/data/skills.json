@@ -53,7 +53,9 @@
         { "name": "Cloudflare", "level": 70 },
         { "name": "Git / GitHub", "level": 92 },
         { "name": "Linux", "level": 85 },
-        { "name": "CI/CD", "level": 75 }
+        { "name": "CI/CD", "level": 75 },
+        { "name": "Agile / Scrum", "level": 82 },
+        { "name": "Testing & QA", "level": 80 }
       ]
     },
     {
@@ -77,39 +79,22 @@
       ]
     },
     {
-      "name": "Other Tools",
+      "name": "Development Tools",
       "skills": [
-        { "name": "OpenGL", "level": 65 },
-        { "name": "MS Word", "level": 95 },
-        { "name": "MS Excel", "level": 90 },
-        { "name": "MS PowerPoint", "level": 92 },
-        { "name": "Unity", "level": 60 },
-        { "name": "Cisco", "level": 68 },
-        { "name": "Jupyter Notebook", "level": 88 },
         { "name": "VS Code", "level": 90 },
-        { "name": "PyCharm", "level": 85 }
+        { "name": "PyCharm", "level": 85 },
+        { "name": "Jupyter Notebook", "level": 88 },
+        { "name": "OpenGL", "level": 65 },
+        { "name": "Unity", "level": 60 }
       ]
     },
     {
-      "name": "Soft Skills",
+      "name": "Spoken Languages",
       "skills": [
-        { "name": "Problem Solving", "level": 90 },
-        { "name": "Teamwork", "level": 88 },
-        { "name": "Communication", "level": 85 },
-        { "name": "Time Management", "level": 82 },
-        { "name": "Adaptability", "level": 80 },
-        { "name": "Leadership", "level": 78 },
-        { "name": "Creativity", "level": 75 },
-        { "name": "Critical Thinking", "level": 82 },
-        { "name": "Collaboration", "level": 85 }
+        { "name": "Bengali", "proficiency": "Native", "level": 100 },
+        { "name": "English", "proficiency": "Fluent", "level": 90 },
+        { "name": "Hindi", "proficiency": "Conversational", "level": 65 }
       ]
-    },
-    {
-      "name": "Languages (Spoken)",
-      "skills": [
-        { "name": "English", "level": 90 },
-        { "name": "Hindi", "level": 60},
-        { "name": "Bengali", "level": 100 }
+    }
   ]
-}
 }

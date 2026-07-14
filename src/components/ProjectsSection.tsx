@@ -2,18 +2,19 @@ import { useMemo, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { ExternalLink, Github, Image as ImageIcon } from "lucide-react";
-import projects from "@/data/projects.json";
 import {
   normalizeCategory,
   normalizeFilterValue,
   resolveImageUrl,
   toSafeArray,
+  usePortfolioData,
 } from "@/lib/data";
 
 const categories = ["All", "AI", "Web", "Mobile", "Research", "Systems"];
 
 export default function ProjectsSection() {
   const [filter, setFilter] = useState("All");
+  const projects = usePortfolioData<any[]>("projects.json", []);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 

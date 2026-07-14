@@ -10,6 +10,9 @@ lerna-debug.log*
 node_modules/
 dist
 dist-ssr
+
+# Stale production bundles accidentally copied to repo root
+/assets/
 *.local
 
 # Vite caches (never commit)

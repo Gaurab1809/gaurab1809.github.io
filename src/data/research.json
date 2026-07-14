@@ -1,12 +1,12 @@
 [
   {
     "id": "1",
-    "title": "Automatic Handwritten Exam Paper Evaluation for Bangla and English",
-    "abstract": "This research presents a computer vision-based automated evaluation system for handwritten examination scripts in both Bangla and English. The proposed framework integrates advanced image preprocessing, optical character recognition (OCR), and deep learning-based feature extraction to interpret handwritten responses. A hybrid grading mechanism combining semantic similarity and rule-based evaluation is employed to ensure consistent and scalable assessment. Experimental results demonstrate strong performance in text extraction and grading accuracy, highlighting its potential for deployment in large-scale academic environments.",
+    "title": "AI-Powered Automated Exam Evaluation and OBE-Based University Assessment System",
+    "abstract": "Funded by: Bangladesh Accreditation Council (BAC), Project No.: RP-26/2025–26. This research presents a computer vision-based automated evaluation system for handwritten examination scripts in both Bangla and English. The proposed framework integrates advanced image preprocessing, optical character recognition (OCR), and deep learning-based feature extraction to interpret handwritten responses. A hybrid grading mechanism combining semantic similarity and rule-based evaluation is employed to ensure consistent and scalable assessment. Experimental results demonstrate strong performance in text extraction and grading accuracy, highlighting its potential for deployment in large-scale academic environments.",
     "domain": "Computer Vision & Image Processing",
     "technologies": ["Python", "OpenCV", "Tesseract OCR", "PyTorch"],
     "dataset": "Custom dataset of scanned handwritten exam scripts (Bangla & English)",
-    "status": "Ongoing",
+    "status": "Completed",
     "github": "",
     "interests": ["OCR", "Handwriting Recognition", "Image Analysis"],
     "image": "",
@@ -69,12 +69,12 @@
   },
   {
     "id": "4",
-    "title": "Dengue Prediction Using Ensemble Models",
+    "title": "Patient-Level Dengue Detection via Threshold-Tuned Stacking Ensembles: A Clinical Machine Learning Study from Bangladesh",
     "abstract": "This research develops an ensemble-based machine learning framework for predicting dengue outbreaks using epidemiological and environmental data. The system combines multiple models through stacking and optimizes performance using ROC-AUC and threshold tuning. Results indicate improved predictive accuracy and robustness, supporting early warning systems.",
     "domain": "Artificial Intelligence & Machine Learning",
     "technologies": ["Python", "scikit-learn", "XGBoost", "Pandas", "NumPy"],
     "dataset": "Epidemiological and environmental datasets",
-    "status": "Completed",
+    "status": "Under Review",
     "github": "",
     "interests": ["Ensemble Learning", "Epidemiology", "Predictive Modeling"],
     "image": "",
@@ -181,36 +181,6 @@
   },
   {
     "id": "10",
-    "title": "AI-Based Image Processing for Social Good",
-    "abstract": "This project applies computer vision and deep learning techniques to address real-world challenges in education, transportation, and public safety. The system focuses on building practical and impactful AI solutions.",
-    "domain": "Computer Vision",
-    "technologies": ["Python", "PyTorch", "OpenCV", "TensorFlow"],
-    "dataset": "Custom real-world datasets",
-    "status": "Ongoing",
-    "github": "",
-    "interests": ["Image Classification", "Object Detection", "Segmentation"],
-    "image": "",
-    "supervisor": { "name": "", "designation": "", "organization": "" },
-    "coSupervisor": { "name": "", "designation": "", "organization": "" },
-    "paperLink": ""
-  },
-  {
-    "id": "11",
-    "title": "Applied Machine Learning for Education Technology",
-    "abstract": "This study explores machine learning applications in e-learning platforms, focusing on recommendation systems and adaptive learning. The system enhances personalization and improves student engagement.",
-    "domain": "AI/ML",
-    "technologies": ["Python", "TensorFlow", "React", "Node.js"],
-    "dataset": "Educational interaction datasets",
-    "status": "Ongoing",
-    "github": "",
-    "interests": ["Recommendation Systems", "Adaptive Learning", "EdTech"],
-    "image": "",
-    "supervisor": { "name": "", "designation": "", "organization": "" },
-    "coSupervisor": { "name": "", "designation": "", "organization": "" },
-    "paperLink": ""
-  },
-  {
-    "id": "12",
     "title": "B-Agent – A Smart Intelligent Agent",
     "abstract": "This project develops an intelligent agent capable of autonomous decision-making using reinforcement learning and AI planning techniques. The system demonstrates adaptive behavior in dynamic environments.",
     "domain": "Artificial Intelligence & Machine Learning",
@@ -229,7 +199,7 @@
     "paperLink": ""
   },
   {
-    "id": "13",
+    "id": "11",
     "title": "Screen Time, Sleep & Stress – EDA and Classification",
     "abstract": "This study analyzes the relationship between screen time, sleep patterns, and stress levels using exploratory data analysis and classification models. Results reveal strong behavioral correlations and predictive insights.",
     "domain": "Artificial Intelligence & Machine Learning",
@@ -250,18 +220,26 @@
     "paperLink": ""
   },
   {
-    "id": "14",
-    "title": "IoT-Enabled Smart Drainage Monitoring and Automated Water DischargeSystem with Dual Sensor False-Alarm Mitigation for Urban Areas in Bangladesh",
+    "id": "12",
+    "title": "Low-Cost IoT-Based Smart Drainage Monitoring and Automated Discharge System with Dual-Sensor False-Positive Mitigation for Urban Bangladesh",
     "abstract": "This project proposes an IoT-based smart drainage monitoring system for urban flood prevention. Using real-time sensor data and automated alerts, the system enhances urban infrastructure resilience.",
     "domain": "IoT & Smart Systems",
     "technologies": ["Arduino", "Raspberry Pi", "Python", "IoT Sensors"],
     "dataset": "Real-time sensor data",
-    "status": "Ongoing",
+    "status": "Under Review",
     "github": "",
     "interests": ["IoT Systems", "Urban Flood Management", "Automation"],
     "image": "",
-    "supervisor": { "name": "", "designation": "", "organization": "" },
-    "coSupervisor": { "name": "", "designation": "", "organization": "" },
+    "supervisor": {
+      "name": "Anite Halim Sagor",
+      "designation": "Lecturer",
+      "organization": "CSE, Bangladesh Army University of Science and Technology (BAUST), Saidpur"
+    },
+    "coSupervisor": {
+      "name": "Saad Ahmed",
+      "designation": "Lecturer",
+      "organization": "CSE, Bangladesh Army University of Science and Technology (BAUST), Saidpur"
+    },
     "paperLink": ""
   }
 ]

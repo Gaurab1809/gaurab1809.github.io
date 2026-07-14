@@ -1,14 +1,18 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Briefcase, Users } from "lucide-react";
-import experience from "@/data/experience.json";
-import { toSafeArray } from "@/lib/data";
+import { toSafeArray, usePortfolioData } from "@/lib/data";
 
 function ExperienceItem({
   item,
   index,
 }: {
-  item: (typeof experience)[0];
+  item: {
+    title?: string;
+    organization?: string;
+    period?: string;
+    highlights?: string[];
+  };
   index: number;
 }) {
   const itemRef = useRef(null);
@@ -60,6 +64,7 @@ function ExperienceItem({
 export default function ExperienceSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const experience = usePortfolioData<any[]>("experience.json", []);
 
   return (
     <section id="experience" className="relative" ref={ref}>

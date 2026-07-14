@@ -2,12 +2,12 @@ import { motion, useInView } from "framer-motion";
 import { useMemo, useRef, useState } from "react";
 import { FlaskConical, Github, ExternalLink, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import research from "@/data/research.json";
-import { resolveImageUrl, toSafeArray } from "@/lib/data";
+import { resolveImageUrl, toSafeArray, usePortfolioData } from "@/lib/data";
 
 const statusColor: Record<string, string> = {
   Published: "text-accent",
   Completed: "text-accent",
+  "Under Review": "text-accent",
   Ongoing: "text-primary",
   Proposed: "text-muted-foreground",
 };
@@ -16,6 +16,7 @@ export default function ResearchSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
   const [filter, setFilter] = useState("All");
+  const research = usePortfolioData<any[]>("research.json", []);
   const navigate = useNavigate();
 
   const normalizedResearch = useMemo(

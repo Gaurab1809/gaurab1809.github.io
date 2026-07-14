@@ -1,15 +1,16 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import skillsData from "@/data/skills.json";
-import { toSafeArray } from "@/lib/data";
+import { toSafeArray, usePortfolioData } from "@/lib/data";
 
 function SkillBar({
   name,
   level,
+  proficiency,
   delay,
 }: {
   name: string;
   level: number;
+  proficiency?: string;
   delay: number;
 }) {
   const ref = useRef(null);
@@ -25,7 +26,7 @@ function SkillBar({
           transition={{ duration: 0.4, delay: delay + 0.3 }}
           className="text-xs font-mono text-primary"
         >
-          {level}%
+          {proficiency ?? `${level}%`}
         </motion.span>
       </div>
       <div className="h-2 bg-secondary rounded-full overflow-hidden">
@@ -43,6 +44,12 @@ function SkillBar({
 export default function SkillsSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const liveSkillsData = usePortfolioData<{
+    categories?: Array<{
+      name?: string;
+      skills?: Array<{ name?: string; level?: number; proficiency?: string }>;
+    }>;
+  }>("skills.json", {});
 
   return (
     <section id="skills" className="relative" ref={ref}>
@@ -60,7 +67,7 @@ export default function SkillsSection() {
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-6">
-          {toSafeArray(skillsData?.categories).map((category, catIdx) => (
+          {toSafeArray(liveSkillsData?.categories).map((category, catIdx) => (
             <motion.div
               key={category.name || `category-${catIdx}`}
               initial={{ opacity: 0, y: 30 }}
@@ -82,6 +89,7 @@ export default function SkillsSection() {
                     key={skill.name || `skill-${skillIdx}`}
                     name={skill.name || "Unnamed skill"}
                     level={Number(skill.level) || 0}
+                    proficiency={skill.proficiency}
                     delay={skillIdx * 0.06}
                   />
                 ))}

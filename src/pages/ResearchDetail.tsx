@@ -12,8 +12,7 @@ import {
   FileText,
   Download,
 } from "lucide-react";
-import research from "@/data/research.json";
-import { resolveImageUrl, toSafeArray } from "@/lib/data";
+import { resolveImageUrl, toSafeArray, usePortfolioData } from "@/lib/data";
 
 type Person = {
   name?: string;
@@ -56,6 +55,7 @@ type ResearchItem = {
 const statusStyle: Record<string, string> = {
   Published: "bg-accent/10 text-accent border-accent/20",
   Completed: "bg-accent/10 text-accent border-accent/20",
+  "Under Review": "bg-accent/10 text-accent border-accent/20",
   Ongoing: "bg-primary/10 text-primary border-primary/20",
   Proposed: "bg-muted text-muted-foreground border-border",
 };
@@ -63,6 +63,8 @@ const statusStyle: Record<string, string> = {
 export default function ResearchDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const research = usePortfolioData<ResearchItem[]>("research.json", []);
+
   const item = toSafeArray(research as ResearchItem[]).find(
     (r) => String(r.id) === String(id),
   );

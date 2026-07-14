@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 const assetModules = import.meta.glob("../assets/*", {
   eager: true,
   import: "default",
@@ -17,6 +19,11 @@ const assetLookup = Object.entries(assetModules).reduce<Record<string, string>>(
   },
   {},
 );
+
+const dataModules = import.meta.glob("../data/*.json") as Record<
+  string,
+  () => Promise<{ default: unknown }>
+>;
 
 function normalizePath(value?: string | null) {
   return typeof value === "string" ? value.replace(/\\/g, "/").trim() : "";
@@ -64,4 +71,65 @@ export function normalizeCategory(value?: string | null) {
 
 export function normalizeFilterValue(value?: string | null) {
   return normalizeCategory(value).trim().toLowerCase();
+}
+
+function getDataLoader(fileName: string) {
+  const normalized = fileName.replace(/^\/+/, "");
+  return dataModules[`../data/${normalized}`];
+}
+
+export async function loadPortfolioData<T>(fileName: string): Promise<T> {
+  const loader = getDataLoader(fileName);
+  if (!loader) {
+    throw new Error(`Failed to load ${fileName}`);
+  }
+
+  const module = await loader();
+  return module.default as T;
+}
+
+export function usePortfolioData<T>(fileName: string, initialValue: T) {
+  const [data, setData] = useState<T>(initialValue);
+
+  useEffect(() => {
+    let mounted = true;
+    let interval: number | undefined;
+
+    const refresh = async () => {
+      try {
+        const nextValue = await loadPortfolioData<T>(fileName);
+        if (mounted) {
+          setData(nextValue);
+        }
+      } catch {
+        // Keep the last loaded value when a refresh fails.
+      }
+    };
+
+    void refresh();
+
+    if (import.meta.env.DEV) {
+      interval = window.setInterval(() => {
+        void refresh();
+      }, 2000);
+    }
+
+    const onFocus = () => {
+      void refresh();
+    };
+
+    window.addEventListener("focus", onFocus);
+    document.addEventListener("visibilitychange", onFocus);
+
+    return () => {
+      mounted = false;
+      if (interval) {
+        window.clearInterval(interval);
+      }
+      window.removeEventListener("focus", onFocus);
+      document.removeEventListener("visibilitychange", onFocus);
+    };
+  }, [fileName]);
+
+  return data;
 }

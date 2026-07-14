@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { useRef, useState, useMemo } from "react";
+import { useMemo, useRef, useState } from "react";
 import {
   Trophy,
   BookOpen,
@@ -10,7 +10,7 @@ import {
   Star,
   Mic,
 } from "lucide-react";
-import achievements from "@/data/achievements.json";
+import { usePortfolioData } from "@/lib/data";
 
 const typeIcon: Record<string, typeof Trophy> = {
   award: Award,
@@ -49,7 +49,17 @@ const filterTypes = [
   "membership",
 ];
 
-function CardContent({ item }: { item: (typeof achievements)[0] }) {
+function CardContent({
+  item,
+}: {
+  item: {
+    year?: string;
+    type?: string;
+    title?: string;
+    organization?: string;
+    description?: string;
+  };
+}) {
   return (
     <>
       <div className="flex items-center gap-2 mb-2 flex-wrap">
@@ -75,7 +85,13 @@ function AchievementCard({
   item,
   index,
 }: {
-  item: (typeof achievements)[0];
+  item: {
+    year?: string;
+    type?: string;
+    title?: string;
+    organization?: string;
+    description?: string;
+  };
   index: number;
 }) {
   const ref = useRef(null);
@@ -168,13 +184,14 @@ export default function AchievementsSection() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
   const [filter, setFilter] = useState("All");
   const [showAll, setShowAll] = useState(false);
+  const achievements = usePortfolioData<any[]>("achievements.json", []);
 
   const filtered = useMemo(
     () =>
       filter === "All"
         ? achievements
         : achievements.filter((a) => a.type === filter),
-    [filter],
+    [filter, achievements],
   );
   const displayed = showAll ? filtered : filtered.slice(0, 15);
 
